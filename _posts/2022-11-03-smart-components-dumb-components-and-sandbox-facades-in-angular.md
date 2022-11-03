@@ -94,6 +94,19 @@ export class NameComponent  {
 
 ```
 
+### Folder structure
+
+Even though this is obviously highly opinionated, we come up with a folder structure that looks like this:
+
+- `feat-lib/lib/src/components/ui/foo/foo.ui-component.ts`
+- `feat-lib/lib/src/components/smart/bar/bar.smart-component.ts`
+
+When we use Nrwl devtools, we could leverage the following command to create this:
+
+```shell
+npx nx g @nrwl/angular:component components/ui/foo --type=ui-component --project=feat-lib
+```
+
 ## Sandbox facades
 
 Smart components usually live in feature libraries. Feature libraries are Angular modules or libraries 
