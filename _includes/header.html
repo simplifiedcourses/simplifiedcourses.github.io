@@ -1,0 +1,18 @@
+<header class="site-header" role="banner">
+
+    <div class="container">
+        {%- assign default_paths = site.pages | map: "path" -%}
+        {%- assign page_paths = site.header_pages | default: default_paths -%}
+        <div class="header">
+            <a href="https://simplified.courses">
+                <img class="header__logo" src="/assets/simplified-logo.png" alt="">
+            </a>
+            <ul class="header__menu">
+                <li><a href="https://blog.simplified.courses">Blog</a></li>
+                <li><a href="https://simplified.courses/about">About</a></li>
+                <li><a href="https://simplified.courses/contact">Contact</a></li>
+                <li><a href="https://simplified.courses/login">Log In</a></li>
+            </ul>
+        </div>
+    </div>
+</header>

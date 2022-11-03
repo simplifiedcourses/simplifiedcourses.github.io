@@ -23,14 +23,20 @@ email: brecht@simplified.courses
 description: >- # this means to ignore newlines until "baseurl:"
   Tech blog where we explain Simplified Angular principles and proven practices
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://blog.simplified.courses" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: pick_simplified
 github_username:  simplifiedcourses
+permalink: /:title/
+disqus:
+  shortname: brechtbilliet
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+google_analytics: UA-43296458-6
+google_verification:
+disqus-shortname: brechtbilliet
 
 # Exclude from processing.
 # The following items will not be processed, by default.
