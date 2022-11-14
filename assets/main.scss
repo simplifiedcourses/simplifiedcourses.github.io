@@ -120,3 +120,16 @@ body {
   padding: 0 40px;
   margin: 0 auto;
 }
+a.post-link {
+  text-decoration: none;
+  font-size: 36px;
+  font-family: Roboto;
+  color: #000;
+  padding-top: 20px;
+  &:hover {
+    text-decoration: none;
+  }
+}
+h1.post-title {
+  padding-top: 20px;
+}
