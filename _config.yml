@@ -28,7 +28,7 @@ twitter_username: pick_simplified
 github_username:  simplifiedcourses
 permalink: /:title/
 disqus:
-  shortname: brechtbilliet
+  shortname: blog-simplified-courses
 
 # Build settings
 theme: minima
