@@ -131,3 +131,5 @@ If you read this, you will really learn how Angular ticks!
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">My <a href="https://twitter.com/hashtag/Angular?src=hash&amp;ref_src=twsrc%5Etfw">#Angular</a> Change Detection ebook is ready!<br>It is free for people that subscribe before the 1st of december 2022.<br>✅ Stackblitz examples<br>✅ Links to the actual Angular codebase everywhere<br>✅ Best practices<br>✅ You will learn how Angular ticks<a href="https://t.co/W4kgE2siS6">https://t.co/W4kgE2siS6</a> <a href="https://t.co/p5VFs7pYSQ">pic.twitter.com/p5VFs7pYSQ</a></p>&mdash; Brecht Billiet👨‍💻 - Simplified Angular Courses (@brechtbilliet) <a href="https://twitter.com/brechtbilliet/status/1590989014621818880?ref_src=twsrc%5Etfw">November 11, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+Get the ebook By clicking on the image below!
+[![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/free-angular-change-detection-simplified-e-book)
