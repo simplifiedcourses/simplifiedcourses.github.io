@@ -10,7 +10,9 @@ layout: default
         <ul class="post-list">
             {%- for post in site.posts -%}
             <li>
-                <img src="/{{post.cover}}" alt="">
+                <a href="{{ post.url | relative_url }}">
+                    <img src="/{{post.cover}}" alt="">
+                </a>
                 <h3>
                     <a class="post-link" href="{{ post.url | relative_url }}">
                         {{ post.title | escape }}
