@@ -1,0 +1,9 @@
+{
+    "grammarly.selectors": [
+        {
+            "language": "markdown",
+            "scheme": "file",
+            "pattern": "_posts/2022-11-25-angular-performant-drag-and-drop.md"
+        }
+    ]
+}
