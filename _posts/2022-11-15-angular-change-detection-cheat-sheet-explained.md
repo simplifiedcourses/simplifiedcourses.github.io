@@ -18,6 +18,8 @@ application:
 ## The Angular Change Detection Cheat Sheet explained
 
 Even though the Angular Change Detection Cheat Sheet should be self-explanatory. We love to give some information about it anyway.
+Also take a look at the [Angular performant drag-and-drop with RxJS](https://blog.simplified.courses/angular-performant-drag-and-drop-with-rxjs/) article. 
+We can apply the cheat sheet there and see if we grasp it.
 This article contains some screenshots about the cheat sheet, but if you want to have the original version you can get it here.
 
 <a style="color: #ffffff;border-color: #00cccc;border-radius: 50px;background-color: #00cccc;font-size: 90%;font-weight: 700;
@@ -132,4 +134,4 @@ If you read this, you will really learn how Angular ticks!
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">My <a href="https://twitter.com/hashtag/Angular?src=hash&amp;ref_src=twsrc%5Etfw">#Angular</a> Change Detection ebook is ready!<br>It is free for people that subscribe before the 1st of december 2022.<br>✅ Stackblitz examples<br>✅ Links to the actual Angular codebase everywhere<br>✅ Best practices<br>✅ You will learn how Angular ticks<a href="https://t.co/W4kgE2siS6">https://t.co/W4kgE2siS6</a> <a href="https://t.co/p5VFs7pYSQ">pic.twitter.com/p5VFs7pYSQ</a></p>&mdash; Brecht Billiet👨‍💻 - Simplified Angular Courses (@brechtbilliet) <a href="https://twitter.com/brechtbilliet/status/1590989014621818880?ref_src=twsrc%5Etfw">November 11, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Get the ebook By clicking on the image below!
-[![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/free-angular-change-detection-simplified-e-book)
+[![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book)
