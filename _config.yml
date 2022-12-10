@@ -33,6 +33,7 @@ disqus:
 # Build settings
 theme: minima
 plugins:
+  - jekyll-sitemap
   - jekyll-feed
 google_analytics: UA-43296458-6
 google_verification:
