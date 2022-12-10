@@ -327,3 +327,5 @@ We learned that Angular runs Change Detection twice in development mode:
 will be thrown.
 
 You can learn more about this subject and Change Detection in general in the [Angular Change Detection Simplified ebook](https://www.simplified.courses/angular-change-detection-simplified-e-book), where we will learn how Angular ticks and works under the hood. The `ExpressionChangedAfterItHasBeenCheckedError` error is demystified completely there.
+[ebook](https://www.simplified.courses/angular-change-detection-simplified-e-book)!
+[![Angular Change Detection ebook](/assets/angular-performant-drag-and-drop/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book)
