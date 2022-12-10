@@ -129,7 +129,7 @@ Do you want to test your knowledge? I created a free [Angular Change Detection Q
 ## Ebook
 
 If you are interested, we have also written an Ebook that explains Angular Change Detection in depth.
-It follows the actual process in the codebase and has references to the Github repo of Angular everywhere.
+It follows the actual process in the codebase and has references to the GitHub repo of Angular everywhere.
 If you read this, you will really learn how Angular ticks!
 
 
