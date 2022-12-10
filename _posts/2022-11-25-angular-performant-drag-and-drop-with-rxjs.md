@@ -226,7 +226,7 @@ export class DraggableBoxComponent implements AfterViewInit, OnDestroy {
 
 ## Optimizing the Change Detection
 
-By default all the drag events will trigger Change Detection everywhere.
+By default, all the drag events will trigger Change Detection everywhere.
 We see that in the lowest view a drag event is happening that will result in Change Detection being triggered everywhere!
 
 ![Change Detection Angular](/assets/angular-performant-drag-and-drop/all-triggered.png)
@@ -247,7 +247,7 @@ component will not get checked unless it is marked with `LViewFlags.Dirty`:
 })
 ```
 
-This however will not make sure Change Detection isn't triggered on app level.
+This however will not make sure Change Detection isn't triggered on the app level.
 
 We can avoid the Change Detection trigger by running the code that is inside the `ngAfterViewInit()` in the **outer zone** (outside of Angular).
 After all, we are updating the position with vanilla js. The only thing that will break is the `dragging` class.

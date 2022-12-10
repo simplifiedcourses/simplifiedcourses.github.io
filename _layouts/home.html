@@ -4,25 +4,16 @@ layout: default
 <div class="wrapper">
 
     <div class="home">
+        <h1>Simplified Blog</h1>
         {{ content }}
 
         {%- if site.posts.size > 0 -%}
         <ul class="post-list">
             {%- for post in site.posts -%}
-            <li>
+            <li class="post-list__post">
                 <a href="{{ post.url | relative_url }}">
-                    <img src="/{{post.cover}}" alt="">
+                    <img src="/{{post.cover}}" alt="{{ post.title | escape }}">
                 </a>
-                <h3>
-                    <a class="post-link" href="{{ post.url | relative_url }}">
-                        {{ post.title | escape }}
-                    </a>
-                </h3>
-                <section class="post-excerpt">
-                    <p>{{ post.content | strip_html | truncatewords: 26 }} <a class="read-more"
-                                                                              href="{{ site.baseurl }}{{ post.url | remove: '/' }}">&raquo;</a>
-                    </p>
-                </section>
                 <footer class="post-meta">
 
                     <img class="author-thumb" src="/assets/brecht.png" alt="Author image" nopin="nopin"/>
@@ -34,6 +25,12 @@ layout: default
                         }}
                     </time>
                 </footer>
+                <h3>
+                    <a class="post-link" href="{{ post.url | relative_url }}">
+                        {{ post.title | escape }}
+                    </a>
+                </h3>
+               
                 {%- if site.show_excerpts -%}
                 {{ post.excerpt }}
                 {%- endif -%}

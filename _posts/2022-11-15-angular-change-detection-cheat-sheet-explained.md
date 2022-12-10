@@ -18,15 +18,15 @@ application:
 ## The Angular Change Detection Cheat Sheet explained
 
 Even though the Angular Change Detection Cheat Sheet should be self-explanatory. We love to give some information about it anyway.
-Also take a look at the [Angular performant drag-and-drop with RxJS](https://blog.simplified.courses/angular-performant-drag-and-drop-with-rxjs/) article. 
+Also, take a look at the [Angular performant drag-and-drop with RxJS](https://blog.simplified.courses/angular-performant-drag-and-drop-with-rxjs/) article. 
 We can apply the cheat sheet there and see if we grasp it.
-This article contains some screenshots about the cheat sheet, but if you want to have the original version you can get it here.
+This article contains some screenshots of the cheat sheet, but if you want to have the original version you can get it here.
 
 <a style="color: #ffffff;border-color: #00cccc;border-radius: 50px;background-color: #00cccc;font-size: 90%;font-weight: 700;
 line-height: 1.5;
 padding: 8px 16px; font-family: roboto" href="https://www.simplified.courses/free-angular-change-detection-cheat-sheet" target="_blank">Get the free Angular Change Detection Cheat Sheet</a>
 
-If you want to print the Cheat Sheet and hang it in your office, send us an email or reach out on twitter, and we can send you a version
+If you want to print the Cheat Sheet and hang it in your office, send us an email or reach out on [Twitter](https://twitter.com/brechtbilliet), and we can send you a version
 in printable quality!
 
 This Cheat Sheet is divided into 2 blocks:
@@ -38,10 +38,10 @@ The difference between this is key. `LViewFlags.Dirty` is only relevant when
 the Change Detection Strategy is set to `OnPush`. Because that's when knowledge about Change Detection becomes important.
 If we are using the default strategy we don't really have to know how Change Detection works, because all components will get checked every time.
 This is of course bad for performance, but it will be predictable.
-It's when we use the `OnPush` strategy, that's it becomes important that we know how Angular ticks.
+It's when we use the `OnPush` strategy, that it becomes important that we know how Angular ticks.
 
-The **what triggers Change Detection** section show us how and when Change Detection will be triggered. 
-This block is divided into 4 sub blocks:
+The **what triggers Change Detection** section shows us how and when Change Detection will be triggered. 
+This block is divided into 4 sub-blocks:
 
 - **Default Strategy**: Shows how Change Detection works with the default strategy.
 - **OnPush Strategy on all components**: Shows how Change Detection works when the `OnPush` strategy is applied to all components.
@@ -64,7 +64,7 @@ We can see 3 different triggers here in the yellow box. Yellow boxes show trigge
 - async pipe
 - Event binding
 
-We can see that there is a difference from where those triggers occur.
+We can see that there is a difference in where those triggers occur.
 The 3 triggers will result in the same behavior, but we can see the difference in which components
 are marked dirty, based on where those triggers occur.
 
@@ -75,7 +75,7 @@ that view dirty and not its parents. This is different from the previous trigger
 
 ### Third example
 
-In this example we see that the 5 triggers in the yellow box will not mark anything dirty.
+In this example, we see that the 5 triggers in the yellow box will not mark anything dirty.
 It's there to illustrate some common misconceptions. They trigger Change Detection but they don't mark anything dirty.
 
 ![](/assets/angular-change-detection-cheat-sheet-explained/angular-change-detection-cheat-sheet-simplified-1.png)
@@ -87,16 +87,16 @@ It's there to illustrate some common misconceptions. They trigger Change Detecti
 In this block we want to show that when we use the default Change Detection Strategy, Change Detection will run always when:
 - applicationRef.tick()
 - any event is triggered
-- an event is being bound
+- an event is bound
 
-In the second example we want to show that `detectChanges()` always runs from top to bottom, so when we run it on the root component,
+In the second example, we want to show that `detectChanges()` always runs from top to bottom, so when we run it on the root component,
 it will trigger change detection for all components and when we use it on a child component, change detection will run for that component and all its children.
 
 ![](/assets/angular-change-detection-cheat-sheet-explained/angular-change-detection-cheat-sheet-simplified-2.png)
 
 ### OnPush Strategy on all components
 
-In this block we want to show how Change Detection will run when `OnPush` is applied to all components
+In this block, we want to show how Change Detection will run when `OnPush` is applied to all components
 and the views aren't marked with `LViewFlags.dirty`.  We can see that Change Detection runs only on `detectChanges()` but
 that it only runs for the component itself. We can also see that event binding will trigger change detection because behind the
 scenes binding an event will mark the view dirty and all its parents as well.
@@ -111,9 +111,8 @@ Here we want to show that Change Detection will always run on the parent but not
 ![](/assets/angular-change-detection-cheat-sheet-explained/angular-change-detection-cheat-sheet-simplified-4.png)
 
 ### appRef.tick() with dirty marked views and OnPush strategy on child components
-
-Here we visualise how the `OnPush` strategy will work when child components are marked with `LViewFlags.dirty`.
-Here we can see the biggest performance optimisation. This shows exactly how the
+Here we visualize how the `OnPush` strategy will work when child components are marked with `LViewFlags.dirty`.
+Here we can see the biggest performance optimization. This shows exactly how the
 `OnPush` strategy can conditionally run Change Detection on only the views that need it.
 
 ![](/assets/angular-change-detection-cheat-sheet-explained/angular-change-detection-cheat-sheet-simplified-5.png)
@@ -125,12 +124,12 @@ already, you can do that [here](https://www.simplified.courses/free-angular-chan
 Remember, if you want the fully printable version, just reach out to us! We love to see our
 work hanging in your awesome office!
 
-You want to test your knowledge? I created a free [Angular Change Detection Quiz](https://www.simplified.courses/angular-change-detection-quiz) that I explain [in this video blog](/angular-change-detection-quiz-explained/).
+Do you want to test your knowledge? I created a free [Angular Change Detection Quiz](https://www.simplified.courses/angular-change-detection-quiz) that I explain [in this video blog](/angular-change-detection-quiz-explained/).
 
 ## Ebook
 
 If you are interested, we have also written an Ebook that explains Angular Change Detection in depth.
-It follows the actual process in the codebase and has references to the github repo of Angular everywhere.
+It follows the actual process in the codebase and has references to the Github repo of Angular everywhere.
 If you read this, you will really learn how Angular ticks!
 
 

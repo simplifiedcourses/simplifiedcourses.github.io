@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="wrapper">
-    <img src="/{{page.cover}}" alt="">
+    <img src="/{{page.cover}}" alt="{{ page.title | escape }}">
     <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
         <header class="post-header">
             <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>

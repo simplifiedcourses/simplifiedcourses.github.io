@@ -55,6 +55,11 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
+    flex-direction: column;
+    align-items:center;
+    @media screen and (min-width: 800px){
+      flex-direction: row;
+    }
     a {
       margin: 0 10px;
       color: #45505d;
@@ -132,4 +137,24 @@ a.post-link {
 }
 h1.post-title {
   padding-top: 20px;
+  word-break: break-word;
+}
+h1,h2,h3,h4, code {
+  word-break: break-word;
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  &__post {
+    max-width: 450px;
+    margin: 10px;
+    h3 a{
+      font-size: 1.5rem;
+      word-break: break-word;
+    }
+    .post-meta {
+      padding-top: 10px;
+    }
+  }
 }
