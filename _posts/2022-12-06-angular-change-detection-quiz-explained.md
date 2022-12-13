@@ -27,7 +27,7 @@ You can take the quiz here:
 ## The Angular Change Detection Quiz explained
 
 I explained the entire thing in this video, and I give a bunch of pointers as well.
-I'm looking forward to getting feedback of you on this!
+I'm looking forward to getting feedback from you on this!
 
 <iframe width="100%" height="500" src="https://www.youtube.com/embed/W7JgNdSLFWs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -35,10 +35,7 @@ I'm looking forward to getting feedback of you on this!
 ## Conclusion
 
 I hope you enjoyed the video, and are able to ace the Quiz now! If you want to support me
-or want a deeper understanding of Angular Change Detection there is a **50% discount coupon** hidden
-in the video.
-
-Get the ebook By clicking on the image below (discount code in the video)!
+or want a deeper understanding of Angular Change Detection, get the ebook By clicking on the image below!
 [![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book)
 
 Thanks for your time and let's talk soon!
