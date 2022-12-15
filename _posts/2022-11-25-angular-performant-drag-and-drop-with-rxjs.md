@@ -10,7 +10,7 @@ cover: assets/angular-performant-drag-and-drop.png
 ---
 
 Implementing drag-and-drop functionality can easily be achieved by leveraging one of the many
-drag-and-drop libraries out there. We prefer to use the [Angular CDK](https://material.angular.io/cdk/drag-drop/overview) occasionally, but sometimes we need something more customized.
+drag-and-drop libraries out there. We prefer to use the [Angular CDK](https://material.angular.io/cdk/drag-drop/overview){:target="_blank"}. occasionally, but sometimes we need something more customized.
 
 In this article, we will learn how we can leverage RxJS in combination with Angular to implement drag-and-drop functionality that is optimized for performance.
 As this concept might be seen as something complex, we will simplify it for you!
@@ -234,8 +234,8 @@ We see that in the lowest view a drag event is happening that will result in Cha
 If we understand how Angular Change Detection works, we should realize that every `mousedown`, `mouseup` but also
 `mousemove` event will trigger a `tick()` function on our root view multiple times a second when we are dragging.
 This means that every view in our application will get checked for changes all the time.
-If you don't know how Change Detection works, you can download this [free Cheat Sheet](https://blog.simplified.courses/angular-change-detection-cheat-sheet-explained/), or learn about it in this [ebook](https://www.simplified.courses/angular-change-detection-simplified-e-book)!
-[![Angular Change Detection ebook](/assets/angular-performant-drag-and-drop/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book)
+If you don't know how Change Detection works, you can download this [free Cheat Sheet](https://blog.simplified.courses/angular-change-detection-cheat-sheet-explained/){:target="_blank"}, or learn about it in this [ebook](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}.!
+[![Angular Change Detection ebook](/assets/angular-performant-drag-and-drop/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}.
 
 The first thing we want to do is use the `OnPush` Change Detection Strategy so our
 component will not get checked unless it is marked with `LViewFlags.Dirty`:
@@ -305,7 +305,7 @@ We could optimize this by detaching from the ChangeDetectorRef and triggering `d
 For that, we need to inject the `ChangeDetectorRef` and detach from it. That means that Change Detection will never run for this component.
 We can manually trigger Change Detection **for this component only** by running `detectChanges()`.
 
-![Change Detection Angular](/assets/angular-performant-drag-and-drop/local-detectchanges.png)
+![Change Detection Angular](/assets/angular-performant-drag-and-drop/local-detectchanges.png){:target="_blank"}.
 
 
 ```typescript
@@ -349,7 +349,6 @@ Now our component is completely independent of Change Detection, and it does not
 initiate Change Detection anywhere.
 
 We can see the finished example in this Stackblitz:
-[https://stackblitz.com/edit/angular-ivy-heyrwg](https://stackblitz.com/edit/angular-ivy-heyrwg)
+[https://stackblitz.com/edit/angular-ivy-heyrwg](https://stackblitz.com/edit/angular-ivy-heyrwg){:target="_blank"}.
 
-Big thanks to the reviewer:
-- Bryan Hannes
+Special thanks to the reviewer [Bryan Hannes](https://bryanhannes.com/){:target="_blank"}.

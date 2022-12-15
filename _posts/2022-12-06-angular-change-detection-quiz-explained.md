@@ -18,11 +18,11 @@ Since we consider Change Detection in Angular a very important topic we decided 
 the answers to this Quiz.
 
 Before you take a look at the video please try to take the quiz first! You could use the
-[Angular Change Detection Cheat Sheet](https://blog.simplified.courses/angular-change-detection-cheat-sheet-explained/) to help you ace the questions.
+[Angular Change Detection Cheat Sheet](https://blog.simplified.courses/angular-change-detection-cheat-sheet-explained/){:target="_blank"} to help you ace the questions.
 We explain the cheat sheet in the article mentioned above.
 
 You can take the quiz here:
-[![Change Detection Quiz](/assets/cd-quiz.png)](https://www.simplified.courses/angular-change-detection-quiz)
+[![Change Detection Quiz](/assets/cd-quiz.png)](https://www.simplified.courses/angular-change-detection-quiz){:target="_blank"}
 
 ## The Angular Change Detection Quiz explained
 
@@ -36,6 +36,6 @@ I'm looking forward to getting feedback from you on this!
 
 I hope you enjoyed the video, and are able to ace the Quiz now! If you want to support me
 or want a deeper understanding of Angular Change Detection, get the ebook By clicking on the image below!
-[![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book)
+[![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}.
 
 Thanks for your time and let's talk soon!

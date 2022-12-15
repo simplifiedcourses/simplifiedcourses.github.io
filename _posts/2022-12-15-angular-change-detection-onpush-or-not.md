@@ -23,7 +23,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     ...
-    // This can be omitted, since it is the dfault
+    // This can be omitted, since it is the default
     changeDetection: ChangeDetectionStrategy.Default
 })
 ```
@@ -41,7 +41,7 @@ This means that whenever something happens, for instance:
 That Change Detection will run on all views that are bound to components that should be rendered in the DOM of our application.
 This is suboptimal, to say the least. **We don't want to trigger Change Detection on all of our views every time**.
 
-This could result in a bad performance, especially when we have multiple `*ngFor` directives that are creating tons and tons of instances of components.
+This could result in bad performance, especially when we have multiple `*ngFor` directives that are creating tons and tons of instances of components.
 
 ## Introducing OnPush
 
@@ -67,8 +67,8 @@ Now when is a `lView` marked `lViewFlags.dirty`?
 - When a set input is called on that view by a parent when Change Detection runs.
 
 So when the view:
-- has a user clicking on a button
-- has a user doing anything that will trigger some kind of event
+- Has a user clicking on a button
+- Has a user doing anything that will trigger some kind of event
 - Has an async pipe
 The `lView` that is bound to that component and all its parent's views are marked as `lViewFlags.dirty`, so that component and all its parents (including the root component)
 will be Change Detected.
@@ -79,7 +79,7 @@ You can play around with [this example](https://stackblitz.com/edit/angular-ivy-
 
 Click on the mark buttons to see how the `OnPush` strategy behaves.
 
-## How big is the impact of Angular Its OnPush Change Detection strategy?
+## How big is the impact of ChangeDetection.OnPush in Angular?
 
 The impact of `OnPush` should be considered big, especially when there are a lot of components that need to be rendered.
 We can decrease the number of components that should be rendered significantly, by using the `OnPush` strategy.
@@ -186,3 +186,4 @@ Use Angular its `OnPush` strategy but only use it if you grasp Angular Change De
 
 I hope you like the article. I'm looking forward to reading your comment in the comments below!
 
+Special thanks to the reviewer [Bryan Hannes](https://bryanhannes.com/){:target="_blank"}.

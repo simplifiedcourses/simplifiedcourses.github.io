@@ -71,7 +71,7 @@ What are the benefits of a components?
 - It makes it easier to follow the dataflow and find bugs in the application
 - We can optimize our application for performance regarding Change Detection
 
-In the tweet below you see that we have created an ebook about [Change Detection](https://www.simplified.courses/angular-change-detection-simplified-e-book).
+In the tweet below you see that we have created an ebook about [Change Detection](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}.
 
 ### What is a smart component?
 
@@ -265,5 +265,5 @@ There are multiple ways of doing things and there is no right or wrong.
 
 Special thanks to the reviewers!
 
-- [Martin](https://twitter.com/chaos_monster)
-- [Gregor Woiwode](https://twitter.com/GregOnNet)
+- [Martin](https://twitter.com/chaos_monster){:target="_blank"}
+- [Gregor Woiwode](https://twitter.com/GregOnNet){:target="_blank"}

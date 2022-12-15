@@ -18,7 +18,7 @@ application:
 ## The Angular Change Detection Cheat Sheet explained
 
 Even though the Angular Change Detection Cheat Sheet should be self-explanatory. We love to give some information about it anyway.
-Also, take a look at the [Angular performant drag-and-drop with RxJS](https://blog.simplified.courses/angular-performant-drag-and-drop-with-rxjs/) article. 
+Also, take a look at the [Angular performant drag-and-drop with RxJS](https://blog.simplified.courses/angular-performant-drag-and-drop-with-rxjs/){:target="_blank"} article. 
 We can apply the cheat sheet there and see if we grasp it.
 This article contains some screenshots of the cheat sheet, but if you want to have the original version you can get it here.
 
@@ -26,7 +26,7 @@ This article contains some screenshots of the cheat sheet, but if you want to ha
 line-height: 1.5;
 padding: 8px 16px; font-family: roboto" href="https://www.simplified.courses/free-angular-change-detection-cheat-sheet" target="_blank">Get the free Angular Change Detection Cheat Sheet</a>
 
-If you want to print the Cheat Sheet and hang it in your office, send us an email or reach out on [Twitter](https://twitter.com/brechtbilliet), and we can send you a version
+If you want to print the Cheat Sheet and hang it in your office, send us an email or reach out on [Twitter](https://twitter.com/brechtbilliet){:target="_blank"}, and we can send you a version
 in printable quality!
 
 This Cheat Sheet is divided into 2 blocks:
@@ -120,11 +120,11 @@ Here we can see the biggest performance optimization. This shows exactly how the
 ## Wrapping up
 
 We hope this article will explain the Angular Change Detection Cheat Sheet and if you haven't downloaded it
-already, you can do that [here](https://www.simplified.courses/free-angular-change-detection-cheat-sheet)!
+already, you can do that [here](https://www.simplified.courses/free-angular-change-detection-cheat-sheet){:target="_blank"}!
 Remember, if you want the fully printable version, just reach out to us! We love to see our
 work hanging in your awesome office!
 
-Do you want to test your knowledge? I created a free [Angular Change Detection Quiz](https://www.simplified.courses/angular-change-detection-quiz) that I explain [in this video blog](/angular-change-detection-quiz-explained/).
+Do you want to test your knowledge? I created a free [Angular Change Detection Quiz](https://www.simplified.courses/angular-change-detection-quiz){:target="_blank"} that I explain [in this video blog](/angular-change-detection-quiz-explained/){:target="_blank"}.
 
 ## Ebook
 
@@ -134,4 +134,4 @@ If you read this, you will really learn how Angular ticks!
 
 
 Get the ebook By clicking on the image below!
-[![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book)
+[![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}
