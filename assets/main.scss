@@ -149,6 +149,16 @@ h1,h2,h3,h4, code {
   &__post {
     max-width: 450px;
     margin: 10px;
+    a {
+      img {
+        border-radius:8px;
+      }
+    }
+    a:hover {
+      img {
+        outline: 8px solid #0CC;
+      }
+    }
     h3 a{
       font-size: 1.5rem;
       word-break: break-word;
