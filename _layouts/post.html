@@ -1,15 +1,14 @@
 ---
 layout: default
 ---
-<div class="wrapper">
-    <img src="/{{page.cover}}" alt="{{ page.title | escape }}">
+<div class="wrapper article-wrapper">
     <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
         <header class="post-header">
             <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
             <p class="post-meta">
                 <img class="author-thumb" src="/assets/brecht.png" alt="Author image" nopin="nopin"/>
-                Written by Brecht Billiet
-                <a href="https://twitter.com/brechtbilliet" target="_blank">@brechtbilliet</a> on
+                &nbsp;Written by Brecht Billiet&nbsp;
+                <a href="https://twitter.com/brechtbilliet" target="_blank">@brechtbilliet</a>&nbsp;on&nbsp;
                 <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
                     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
                     {{ page.date | date: date_format }}
@@ -19,14 +18,20 @@ layout: default
                                                                                               itemprop="name">Brecht Billiet</span></span>
                 {%- endif -%}
             </p>
+    <img class="post-image" src="/{{page.cover}}" alt="{{ page.title | escape }}">
+
         </header>
 
         <div class="post-content e-content" itemprop="articleBody">
             {{ content }}
         </div>
-        <script src=https://www.simplified.courses/forms/2147985035/embed.js></script>
-        {%- if site.disqus.shortname -%}
-        {%- include disqus_comments.html -%}
+        <div class="post-subscribe">
+            <h3>Join the club and get notified with new content</h3>
+            <p>Get notified about our future blog articles by subscribing with the button below.</p>
+            <p>We won't send spam, unsubscribe whenever you want.</p>
+            <script src=https://www.simplified.courses/forms/2147985035/embed.js></script>        {%- if site.disqus.shortname -%}
+        </div>
+    {%- include disqus_comments.html -%}
         {%- endif -%}
 
         <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>

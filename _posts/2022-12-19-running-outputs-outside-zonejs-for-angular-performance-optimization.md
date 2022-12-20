@@ -6,6 +6,7 @@ published: true
 comments: true
 categories: Angular, RxJS
 cover: assets/running-outputs-outside-zonejs.jpg
+description: "We will learn how we can optimize the performance of Angular applications by running @Output()s into the outer zone."
 
 ---
 

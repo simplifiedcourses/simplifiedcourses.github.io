@@ -4,35 +4,45 @@ layout: default
 <div class="wrapper">
 
     <div class="home">
-        <h1>Content written with love, just for <strong>you!</strong></h1>
-        <p>
-            I've written these articles with a lot of love, just for you.
-            If you like them, leave a comment behind or spread the word <3!
-        </p>
+        <h1>Blog articles written with love, just for <strong>you!</strong></h1>
+       
         {{ content }}
 
         {%- if site.posts.size > 0 -%}
         <ul class="post-list">
+            <li class="post-list__post post-list__post-subscribe">
+                <div class="post-list__post-content">
+                    <h3>Join the club and get notified with new content</h3>
+                    <p>Get notified about our future blog articles by subscribing with the button below.</p>
+                    <p>We won't send spam, unsubscribe whenever you want.</p>
+                    <script src=https://www.simplified.courses/forms/2147985035/embed.js></script>
+                </div>
+            </li>
             {%- for post in site.posts -%}
             <li class="post-list__post">
                 <a href="{{ post.url | relative_url }}" title="{{ post.title }}">
                     <img src="/{{post.cover}}" alt="{{ post.title }}">
+                    <footer class="post-meta">
+
+                        <img class="author-thumb" src="/assets/brecht.png" alt="Brecht Billiet" nopin="nopin"/>
+                        <!-- author -->
+                        &nbsp;Brecht Billiet&nbsp;|&nbsp;
+
+
+                        <time class="post-date" datetime="{{ post.date | date:'%Y-%m-%d' }}">{{ post.date | date_to_string
+                            }}
+                        </time>
+                    </footer>
+                    <div class="post-list__post-content">
+                        <h3>{{post.title}}</h3>
+                        <p>{{post.description}}</p>
+                       
+
+                        {%- if site.show_excerpts -%}
+                        {{ post.excerpt }}
+                        {%- endif -%}
+                    </div>
                 </a>
-                <footer class="post-meta">
-
-                    <img class="author-thumb" src="/assets/brecht.png" alt="Brecht Billiet" nopin="nopin"/>
-                    <!-- author -->
-                    Brecht Billiet |
-
-
-                    <time class="post-date" datetime="{{ post.date | date:'%Y-%m-%d' }}">{{ post.date | date_to_string
-                        }}
-                    </time>
-                </footer>
-
-                {%- if site.show_excerpts -%}
-                {{ post.excerpt }}
-                {%- endif -%}
             </li>
             {%- endfor -%}
         </ul>

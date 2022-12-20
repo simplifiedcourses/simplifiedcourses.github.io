@@ -6,6 +6,7 @@ published: true
 comments: true
 categories: Angular
 cover: assets/angular-change-detection-on-push-or-not.jpg
+description: "Should we use Change Detection strategy OnPush or not? We will learn where it makes sense to use the Onpush strategy and what impact it has on performance."
 
 ---
 
@@ -132,7 +133,7 @@ import { ChangeDetectionStrategy } from '@angular/core';
     <!-- This makes no sense -->
     <!-- Triggering a DELETE request from a template is -->
     <!-- not something we want to do -->
-    {{deleteResult$|async}}
+    {%raw%}{{deleteResult$|async}}{%endraw%}
 `
 })
 export class AppComponent{

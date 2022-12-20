@@ -6,7 +6,7 @@ published: true
 comments: true
 categories: Angular 
 cover: assets/angular-change-detection-quiz-explained.jpg
-
+description: "In this youtube video we will explain the free Angular Change Detection Quiz in depth. This hard quiz will have no secrets for you anymore"
 ---
 
 ## Small word about the quiz

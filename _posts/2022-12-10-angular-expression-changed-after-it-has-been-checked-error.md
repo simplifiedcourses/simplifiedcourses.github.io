@@ -6,7 +6,7 @@ published: true
 comments: true
 categories: Angular 
 cover: assets/ng0100.jpg
-
+description: "ExpressionChangedAfterItHasBeenCheckedError: The error that makes Angular developers cringe. Let's reverse-engineer this error."
 ---
 
 This might be one of the most googled Angular errors out there: The "Angular `ExpressionChangedAfterItHasBeenCheckedError` **Error: NG0100 expression has changed after it was checked.**". Every Angular developer that uses Angular

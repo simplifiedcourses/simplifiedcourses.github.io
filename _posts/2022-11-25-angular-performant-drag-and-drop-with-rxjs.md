@@ -6,7 +6,7 @@ published: true
 comments: true
 categories: Angular 
 cover: assets/angular-performant-drag-and-drop.jpg
-
+description: "Here we will learn how we can create a drag-and-drop with nothing but Angular and RxJS and how we can optimize this for performance."
 ---
 
 Implementing drag-and-drop functionality can easily be achieved by leveraging one of the many

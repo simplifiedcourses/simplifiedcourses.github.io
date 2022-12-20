@@ -7,6 +7,7 @@
   border-radius: 50%;
   width:40px;
   height:40px;
+  border: 4px solid #0CC;
 }
 .site-header {
   border: none;
@@ -72,6 +73,16 @@ body {
   }
 }
 .wrapper {
+  max-width: calc(1260px + 40px + 40px);
+  @media screen and (min-width: 800px){
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  .post-image {
+    border-radius: 1.5rem;
+  }
+}
+.article-wrapper {
   max-width: 940px;
 }
 .footer {
@@ -135,36 +146,101 @@ a.post-link {
     text-decoration: none;
   }
 }
-h1.post-title {
+h1{
   padding-top: 20px;
   word-break: break-word;
+  text-align:center;
+  line-height: 4rem;
+  font-size: 3rem;
 }
-h1,h2,h3,h4, code {
+h1,h2,h3,h4 {
+  word-break: break-word;
+  font-family: poppins;
+  font-weight: 700;
+}
+code {
   word-break: break-word;
 }
-
+.post-meta {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
 .post-list {
   display: flex;
   flex-wrap: wrap;
   &__post {
-    max-width: 450px;
+    &-subscribe {
+      background: #fff;
+    }
+    max-width: 400px;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0px 0px 24px -5px rgba(0,0,0,0.10);
+    -webkit-box-shadow: 0px 0px 24px -5px rgba(0,0,0,0.10);
+    -moz-box-shadow: 0px 0px 24px -5px rgba(0,0,0,0.10);
+    border-radius: 1.5rem;
     margin: 10px;
+    &-content {
+      padding: 32px;
+      .kajabi-form--inline {
+        padding: 0;
+      }
+      #kajabi-form .kajabi-form__content{
+        padding: 0;
+        max-width: none;
+      }
+      .kajabi-form__content button {
+        color:#fff!important;
+        width: 100%;
+        font-family: poppins!important;
+        font-size: 1rem!important;
+      }
+      .kajabi-form__form-item {
+        display: flex;
+      }
+      p {
+        word-break: break-word;
+      }
+    }
     a {
-      img {
-        border-radius:8px;
-      }
+      text-decoration: none;
+      color: #1c2838;
     }
-    a:hover {
-      img {
-        outline: 8px solid #0CC;
-      }
+    img {
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
     }
-    h3 a{
+    h3 {
       font-size: 1.5rem;
       word-break: break-word;
     }
-    .post-meta {
-      padding-top: 10px;
-    }
+   
   }
+}
+.post-subscribe {
+  box-shadow: 0px 0px 24px -5px rgba(0,0,0,0.10);
+  -webkit-box-shadow: 0px 0px 24px -5px rgba(0,0,0,0.10);
+  -moz-box-shadow: 0px 0px 24px -5px rgba(0,0,0,0.10);
+  border-radius: 1.5rem;
+  padding: 32px;
+      background: #fff;
+      .kajabi-form--inline {
+        padding: 0;
+      }
+      #kajabi-form .kajabi-form__content{
+        padding: 0;
+        max-width: none;
+      }
+      .kajabi-form__content button {
+        color:#fff!important;
+        width: 100%;
+        font-family: poppins!important;
+        font-size: 1rem!important;
+      }
+      .kajabi-form__form-item {
+        display: flex;
+      }
 }
