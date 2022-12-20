@@ -5,7 +5,7 @@ date:   2022-11-25
 published: true
 comments: true
 categories: Angular 
-cover: assets/angular-performant-drag-and-drop.png
+cover: assets/angular-performant-drag-and-drop.jpg
 
 ---
 

@@ -5,7 +5,7 @@ date:   2022-12-19
 published: true
 comments: true
 categories: Angular, RxJS
-cover: assets/running-outputs-outside-zonejs.png
+cover: assets/running-outputs-outside-zonejs.jpg
 
 ---
 

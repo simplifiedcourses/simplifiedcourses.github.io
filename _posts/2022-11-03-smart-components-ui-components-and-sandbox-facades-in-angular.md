@@ -5,7 +5,7 @@ date:   2022-11-14
 published: true
 comments: true
 categories: Angular architecture
-cover: assets/smart-components-ui-components-sandbox-facades.png
+cover: assets/smart-components-ui-components-sandbox-facades.jpg
 
 ---
 This article is about 2 concepts that we could use in our Angular applications.

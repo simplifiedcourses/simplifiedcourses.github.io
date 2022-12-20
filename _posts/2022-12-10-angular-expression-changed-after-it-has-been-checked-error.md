@@ -5,7 +5,7 @@ date:   2022-12-09
 published: true
 comments: true
 categories: Angular 
-cover: assets/ng0100.png
+cover: assets/ng0100.jpg
 
 ---
 

@@ -5,7 +5,7 @@ date:   2022-11-15
 published: true
 comments: true
 categories: Angular Change Detection
-cover: assets/angular-change-detection-cheat-sheet-explained.png
+cover: assets/angular-change-detection-cheat-sheet-explained.jpg
 
 ---
 

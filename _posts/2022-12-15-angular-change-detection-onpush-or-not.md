@@ -5,7 +5,7 @@ date:   2022-12-15
 published: true
 comments: true
 categories: Angular
-cover: assets/angular-change-detection-on-push-or-not.png
+cover: assets/angular-change-detection-on-push-or-not.jpg
 
 ---
 

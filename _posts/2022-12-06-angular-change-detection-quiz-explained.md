@@ -5,7 +5,7 @@ date:   2022-11-25
 published: true
 comments: true
 categories: Angular 
-cover: assets/angular-change-detection-quiz-explained.png
+cover: assets/angular-change-detection-quiz-explained.jpg
 
 ---
 
