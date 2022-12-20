@@ -171,11 +171,12 @@ code {
 .post-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   &__post {
     &-subscribe {
       background: #fff;
     }
-    max-width: 400px;
+    max-width: 425px;
     width: 100%;
     background: #fff;
     box-shadow: 0px 0px 24px -5px rgba(0,0,0,0.10);
