@@ -13,9 +13,9 @@ In a [previous article](https://blog.simplified.courses/angular-change-detection
 
 It is also true that this optimization is not always the most important one we can take.
 There are 3 ways we can optimize Change Detection in Angular applications:
-- Applying the `OnPush` Change Detection strategy.
-- Detaching a component from the Change Detector with `detach()` and applying our custom strategy by running `detectChanges()` at the right time.
-- Avoiding that Change Detection is running too often.
+1. Applying the `OnPush` Change Detection strategy.
+2. Detaching a component from the Change Detector with `detach()` and applying our custom strategy by running `detectChanges()` at the right time.
+3. Avoiding that Change Detection is running too often.
 
 We will focus on the third optimization in this article, we will avoid too many `tick()` executions by running our code in the outer zone.
 `ngZone` has 2 zones: The **inner zone** and the **outer zone**. The inner zone is also called the **Angular zone** and the outer zone is called the **parent zone**. Angular provides us with an injectable called `NgZone` that gives us 2 functions:
@@ -74,8 +74,8 @@ Take this snippet for example:
             y: e.y,
         };
     }),
-    // debounceTime(1000),
-    // filter(...)
+    debounceTime(1000),
+    filter(...)
 );
 ```
 
@@ -108,7 +108,7 @@ This is the code with the default Angular Change Detection behavior. It does exa
 })
 export class ChildComponent {
     private document = inject(DOCUMENT);
-    @Input() val: number;
+    @Input() public val: number;
 
     // Example of simple observable bound to an @Output()
     @Output() public readonly valChange = interval(1000);
@@ -141,22 +141,22 @@ export class ChildComponent {
   `,
 })
 export class ParentComponent {
-    val = 0;
-    mouseX = null;
-    mouseY = null;
+    public val = 0;
+    public mouseX = null;
+    public mouseY = null;
 
-    public onValChange(v: number): void {
-        this.val = v;
+    public onValChange(val: number): void {
+        this.val = val;
     }
 
-    public onMove(e: { x: number; y: number }): void {
-        this.mouseX = e.x;
-        this.mouseY = e.y;
+    public onMove(mouseCoordinates: { x: number; y: number }): void {
+        this.mouseX = mouseCoordinates.x;
+        this.mouseY = mouseCoordinates.y;
     }
 }
 ```
 
-[Check the Stackblitz example](https://stackblitz.com/edit/angular-ivy-eh4sxr){:target="_blank"}. We see that wherever we move our mouse on the screen the values are being updated. We only want to update the values/trigger Change Detection when we are moving the mouse in the green square.
+[Check the Stackblitz example](https://stackblitz.com/edit/angular-ivy-rq6r7k?file=src%2Fapp%2Fchild.component.ts){:target="_blank"}. We see that wherever we move our mouse on the screen the values are being updated. We only want to update the values/trigger Change Detection when we are moving the mouse in the green square.
 
 ### Quick recap
 
@@ -165,16 +165,16 @@ At this moment we are triggering Change Detection on the root of our application
 ## Binding Angular @Output() in the outer zone
 
 We don't want to manually subscribe and run things in the outer zone... We want to keep the **reactive flow**. For that reason, we are going to create a custom operator that runs the subscription of this `@Output()` in the outer zone, so that Change Detection will not be triggered anymore.
-We will create an `outsideAngular()` operator that we can use like this:
+We will create an `runOutsideAngular()` operator that we can use like this:
 
 ```typescript
 @Output() public readonly valChange = interval(1000)
     // Subscribes to the source observable in the outer zone
-    .pipe(outsideAngular());
+    .pipe(runOutsideAngular());
 
 @Output() public readonly move = fromEvent(this.document, 'mousemove')
     .pipe(
-        outsideAngular(), // Subscribes to the source observable
+        runOutsideAngular(), // Subscribes to the source observable
                           // in the outer zone
         map((e: MouseEvent) => {
             return {
@@ -199,7 +199,7 @@ In our case, we want to subscribe on `source$` inside the **outer zone** of Angu
 For that, we need to get access to an instance of `NgZone`... We can use the `inject()` function of Angular to get access to that instance.
 
 ```typescript
-export const outsideAngular = <T>() => (source$: Observable<T>) => {
+export const runOutsideAngular = <T>() => (source$: Observable<T>) => {
     // Get access to ngZone
     const ngZone = inject(NgZone);
 
@@ -230,7 +230,7 @@ export const outsideAngular = <T>() => (source$: Observable<T>) => {
 
 Everything works as expected now: `ChildComponent` does not trigger Change Detection anymore but `ParentComponent` is notified with the new values.
 
-We can see that in this [StackBlitz example](https://stackblitz.com/edit/angular-ivy-komr7r){:target="_blank"}
+We can see that in this [StackBlitz example](https://stackblitz.com/edit/angular-ivy-vecsk5?file=src%2Fapp%2Fchild.component.ts){:target="_blank"}
 The DOM is not rerendered, but `console.log` statements are being made every second and when the user moves the mouse.
 
 ## Custom Change Detection
@@ -239,7 +239,7 @@ The DOM is not rerendered, but `console.log` statements are being made every sec
 - Run event listeners in the outer zone
 - Notify the parent through `@Output()`s without triggering Change Detection
 
-`ParentComponent` is now responsible of triggering Change Detection and we don't want to trigger it all the time. We only want to trigger it when the mouse of the user moves within the green box.
+`ParentComponent` is now responsible for triggering Change Detection and we don't want to trigger it all the time. We only want to trigger it when the mouse for the user moves within the green box.
 
 
 ```typescript
@@ -247,10 +247,10 @@ export class ParentComponent {
     // Inject ChangeDetectorRef because we want to
     // manually trigger Change Detection with the
     // detectChanges() function
-    private readonly cdRef= inject(ChangeDetectorRef)
-    val = 0;
-    mouseX = null;
-    mouseY = null;
+    private readonly changeDetectorRef= inject(ChangeDetectorRef)
+    public val = 0;
+    public mouseX = null;
+    public mouseY = null;
 
     public onValChange(v: number): void {
         // Set the value of val, but don't trigger
@@ -259,30 +259,37 @@ export class ParentComponent {
         console.log(v);
     }
 
-    public onMove(e: { x: number; y: number }): void {
+    public onMove(mouseCoordinates: { x: number; y: number }): void {
         // Set the values always
-        this.mouseX = e.x;
-        this.mouseY = e.y;
+        this.mouseX = mouseCoordinates.x;
+        this.mouseY = mouseCoordinates.y;
         // Only trigger Change Detection when the event
         // occured inside the green box
-        if(e.x <= 100 && e.y <= 100){
-            this.cdRef.detectChanges();
+        if(mouseCoordinates.x <= 100 && mouseCoordinates.y <= 100){
+            this.changeDetectorRef.detectChanges();
         }
-        console.log(e);
+        console.log(mouseCoordinates);
     }
 }
 ```
 
-We can find the optimized Stackblitz example [here](https://stackblitz.com/edit/angular-ivy-zkbwrw){:target="_blank"}
+We can find the optimized Stackblitz example [here](https://stackblitz.com/edit/angular-ivy-vbejhq?file=src%2Fapp%2Fchild.component.ts){:target="_blank"}
 
 ## Conclusion
 
 We learned that there are 3 ways of optimizing for Change Detection.
-The first way is by [using the OnPush Change Detection strategy which is described in detail in this article](https://blog.simplified.courses/angular-change-detection-onpush-or-not/){:target="_blank"}. The second one is detaching a component completely from the Change Detector and the third one is to run code in an outer zone.
+1. The first way is by [using the OnPush Change Detection strategy which is described in detail in this article](https://blog.simplified.courses/angular-change-detection-onpush-or-not/){:target="_blank"}. 
+2. Detaching a component completely from the Change Detector 
+3. Run code in an outer zone
+   
 We saw how we could achieve this by running `ngZone` its `runOutsideAngular()` function but that was hard to combine with reactive `@Output()`s.
 
-Using Observables on `@Output()`s  gives us the ability to create reactive flows and by creating an `outsideAngular()` operator we were able to create `@Output()`s that notify their parents but do not initiate Change Detection.
+Using Observables on `@Output()`s  gives us the ability to create reactive flows and by creating a `runOutsideAngular()` operator we were able to create `@Output()`s that notify their parents but do not initiate Change Detection.
 
 While that is probably not something we want to use for everything, it might be beneficial for events that trigger Change Detection too much.
 
-If you like the article, leave me a comment below and if you want to learn more about Change Detection, you can support me by buying this [Angular Change Detection book](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}.
+If you like the article, leave me a comment below and if you want to learn more about Change Detection, you might be interested in buying this [Angular Change Detection book](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}. It will help you understand and resolve performance issues in your Angular Enterprise projects.
+
+Special thanks to the reviewers:
+- [Bryan Hannes](https://bryanhannes.com){:target="_blank"}
+- [Gregor Woiwode](https://twitter.com/gregonnet){:target="_blank"}
