@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How CHATGPT helped me write a snake game in angular and how I optimized it for performance"
+title:  "CHATGPT helped me write a snake game in angular and how I optimized it for performance"
 date:   2023-01-09
 published: true
 comments: true
