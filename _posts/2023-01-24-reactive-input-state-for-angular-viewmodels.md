@@ -169,7 +169,7 @@ export class InputStateModel<T> implements OnDestroy {
     switchMap(() => {
       // This is here to avoid Typescript compilation issues
       if(!this.state$$){
-        throw new Error('State must be initialized. Did you forgot to call the connect method?')
+        throw new Error('State must be initialized. Did you forgot to call the update method?')
       }
       return this.state$$
     }),
