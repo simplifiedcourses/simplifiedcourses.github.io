@@ -268,3 +268,5 @@ Special thanks to the reviewers!
 
 - [Martin](https://twitter.com/chaos_monster){:target="_blank"}
 - [Gregor Woiwode](https://twitter.com/GregOnNet){:target="_blank"}
+
+If you liked the article, please leave a comment!
