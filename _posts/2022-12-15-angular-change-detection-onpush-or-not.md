@@ -188,3 +188,5 @@ Use Angular its `OnPush` strategy but only use it if you grasp Angular Change De
 I hope you like the article. I'm looking forward to reading your comment in the comments below!
 
 Special thanks to the reviewer [Bryan Hannes](https://bryanhannes.com/){:target="_blank"}.
+
+If you liked the article, please leave a comment!

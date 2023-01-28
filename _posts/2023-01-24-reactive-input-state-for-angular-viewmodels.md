@@ -161,7 +161,7 @@ export class InputStateModel<T> implements OnDestroy {
 
   // This will be created and nexted in the update function
   // This holds the value of all the @Input() properties
-  private state$$: BehaviorSubject<T>;
+  private state$$: BehaviorSubject<T>|undefined;
 
   // Expose a state$ observable when this instance is initialized
   public readonly state$: Observable<T> = this.initialized$$.pipe(
@@ -345,27 +345,15 @@ target.ngOnDestroy = function (): void {
 
 This will work but we have one more problem: This will not work with the default values of the inputs, since the `ngOnChanges` does not contain the default values of our **@Input()** properties.
 
-
-We will have to update the implementation of the `ngOnChanges` method like this:
+To fix this, we will also need to hook into the `ngOnInit` lifecycle hook where we will feed the `InputStateModel` with the default values. In this sample, we see how we keep track of the old implementation of the `ngOnInit` life cycle hook and hook into it to set the `InputStateModel` with the default values that we can find through `this.constructor.ɵcmp.inputs`.
 
 ```typescript
-target.ngOnChanges = function (simpleChanges: TypedSimpleChanges<T>): void{
-  // get the keys of all the Input() properties
-  const inputKeys = Object.keys(target.constructor.propDecorators).filter(
-    (key) =>
-      target.constructor.propDecorators[key].find(
-        (decorator: any) =>
-          decorator.type.prototype.ngMetadataName === 'Input'
-      )
-  );
-
-  // Make a copy of the current SimpleChanges
-  const simpleChangesToPass: TypedSimpleChanges<T> = { ...simpleChanges };
-
-  // If there are inputs that are not part of the simpleChanges
-  // it means they are default
-  inputKeys
-    .filter((inputKey) => !simpleChanges[inputKey])
+const origNgOnInit = target.constructor.prototype.ngOnInit;
+// overwrite the origin ngOnInit life cycle hook
+target.ngOnInit = function(): void{
+  const simpleChangesToPass: TypedSimpleChanges<T> = { };
+  Object.keys(this.constructor.ɵcmp.inputs)
+    .map(key => this.constructor.ɵcmp.inputs[key])
     .forEach((inputKey) => {
       simpleChangesToPass[inputKey] = new SimpleChange(
         this[inputKey],
@@ -374,13 +362,14 @@ target.ngOnChanges = function (simpleChanges: TypedSimpleChanges<T>): void{
       );
     });
 
-  this[accessorModel].update(simpleChangesToPass); // send changes to model
+  this[accessorInputModel].update(simpleChangesToPass); 
 
   // if ngOnChanges is implemented execute it as well
-  if (origNgOnChanges) {
-    origNgOnChanges.apply(this, [simpleChanges]);
+  if (origNgOnInit) {
+    origNgOnInit.apply(this);
   }
-};
+}
+
 ```
 
 The decorator is finished and now we can create a ViewModel from our inputs without any boilerplate code:

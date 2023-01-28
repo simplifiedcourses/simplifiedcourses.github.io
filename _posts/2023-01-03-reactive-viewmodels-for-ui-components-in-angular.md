@@ -20,6 +20,9 @@ There are lots of different opinions about what a ViewModel should represent and
 This article is not about starting a discussion and we will be clear about what it means for the context of this article.
 **A reactive ViewModel is a reactive model that contains up-to-date data that is specific to the template of a component.**
 
+**Update: We have updated the boilerplate and performance of ViewModels in this article:**
+[Reactive input state for angular ViewModels](https://blog.simplified.courses/reactive-input-state-for-angular-viewmodels/){:target="_blank"}.
+
 ## The pager
 
 To illustrate the power behind a reactive ViewModel for a UI component, we need an example.
@@ -322,3 +325,5 @@ Introducing these ViewModels results in:
 - Less redundancy of complexity in templates
 - A way to optimize for performance, eg for [Change Detection](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}
 - A more reactive way of programming
+
+If you liked the article, please leave a comment!

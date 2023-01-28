@@ -39,3 +39,4 @@ or want a deeper understanding of Angular Change Detection, get the ebook By cli
 [![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}.
 
 Thanks for your time and let's talk soon!
+If you liked the article, please leave a comment!

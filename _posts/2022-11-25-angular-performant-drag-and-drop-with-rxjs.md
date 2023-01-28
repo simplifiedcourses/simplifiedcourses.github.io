@@ -352,3 +352,5 @@ We can see the finished example in this Stackblitz:
 [https://stackblitz.com/edit/angular-ivy-heyrwg](https://stackblitz.com/edit/angular-ivy-heyrwg){:target="_blank"}.
 
 Special thanks to the reviewer [Bryan Hannes](https://bryanhannes.com/){:target="_blank"}.
+
+If you liked the article, please leave a comment!

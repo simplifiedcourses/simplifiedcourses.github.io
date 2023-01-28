@@ -294,3 +294,5 @@ If you like the article, leave me a comment below and if you want to learn more 
 Special thanks to the reviewers:
 - [Bryan Hannes](https://bryanhannes.com){:target="_blank"}
 - [Gregor Woiwode](https://twitter.com/gregonnet){:target="_blank"}
+
+If you liked the article, please leave a comment!

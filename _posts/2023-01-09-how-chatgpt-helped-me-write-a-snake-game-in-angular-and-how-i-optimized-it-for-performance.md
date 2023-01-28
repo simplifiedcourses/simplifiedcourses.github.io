@@ -293,3 +293,4 @@ That being said, it is a great colleague and can help us out way better than a s
 By optimizing Change Detection we can optimize the performance of our application greatly.
 In this case, we didn't even need Change Detection, so we were able to run the game in the outer zone.
 If you like to learn about Angular Change Detection, we highly recommend you to read our [book about Angular Change Detection](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}. We put a lot of love and effort into it and it is backed up with Stackblitz examples.
+If you liked the article, please leave a comment!

@@ -135,3 +135,5 @@ If you read this, you will really learn how Angular ticks!
 
 Get the ebook By clicking on the image below!
 [![](/assets/angular-change-detection-cheat-sheet-explained/ebook.png)](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}
+
+If you liked the article, please leave a comment!
