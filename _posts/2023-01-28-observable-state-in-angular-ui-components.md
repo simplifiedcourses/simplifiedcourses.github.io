@@ -215,11 +215,10 @@ export class PagerComponent {
     private readonly componentState: ObservableState<PagerState> 
         = inject(ObservableState<PagerState>)
 
-    // All inputs are readonly
     // we can update them through componentState.patch({})
-    @Input() public readonly itemsPerPage: number = 0;
-    @Input() public readonly total: number = 0;
-    @Input() public readonly pageIndex: number = 0;
+    @Input() public itemsPerPage: number = 0;
+    @Input() public total: number = 0;
+    @Input() public pageIndex: number = 0;
 
     ...
 
