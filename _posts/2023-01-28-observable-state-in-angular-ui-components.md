@@ -331,7 +331,9 @@ Let's summarize what kind of functionality this observable state already holds f
 - It should expose a **snapshot** of the current state.
 - The `intialize()` method should take the default state but should also take an input state observable as a second argument and feed the state accordingly in a safe way (no memory leaks).
 - It should be completely type-safe.
-- It should be possible to patch values as a partial object so that there is only one emission on the state object for every time we call `patch()` and not for every key.
+- It should be possible to patch values as a partial object so that there is only one emission on the state object every time we call `patch()` and not for every key.
+
+**Note:** It's important that we always update **@Input()** properties through the patch function since updating the inputs directly will not result in InputState updates. Making them **readonly** is not an option since this will prevent the parent component from using this component.
 
 ### What we will not implement today
 The implementation of this article is limited to the set of features listed above and will not contain:
