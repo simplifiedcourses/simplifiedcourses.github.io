@@ -14,9 +14,9 @@ What is state management? This is a very popular discussion topic in most teams.
 What is state? When do we manage it? What state do we need to manage? What is managing state?
 This article is about component state, which is the state that we keep inside our component.
 
-This article is a follow-up article of the previous articles:
-- [Reactive ViewModels for Ui components in Angular](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"}
+This article is a follow-up article of the previous articles (newest to oldest):
 - [Reactive input state for Angular ViewModels](https://blog.simplified.courses/reactive-input-state-for-angular-viewmodels/){:target="_blank"}
+- [Reactive ViewModels for Ui components in Angular](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"}
 
 ## Current way of handling ViewModels
 
