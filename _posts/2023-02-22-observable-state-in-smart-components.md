@@ -102,7 +102,7 @@ public toggleCollapse(): void {...}
 
 We cleaned up the setters, BehaviorSubjects and part of the `combineLatest` boilerplate but the solution was not perfect yet.
 
-[In the third article](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}, we learned how we could leverage ui-component state to clean this up. We created an `ObservableState` instance for every ui component that shared the lifecycle of that component.
+[In the third article](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}, we learned how we could leverage ui-component state to clean this up. We created an `ObservableState` instance for every ui-component that shared the lifecycle of that component.
 Meaning the `ObservableState` instance would be destroyed when its component would get destroyed. This gave us some advantages:
 - Automatic cleanups, no more `takeUntil(this.destroy$$)`
 - Less boilerPlate
@@ -188,7 +188,7 @@ I believe there are other approaches to enforce consistency and code quality in 
 **Should we use RxJS? I believe we do!** It's awesome, it's reactive and it's predictable... But we can easily get lost because there are too many solutions.
 That's why I have created a new system that follows the principles of the previous 3 articles where we can make it easier for developers.
 Before we continue, here are the requirements:
-- It's small (we don't want to opensource it but maintain it ourselves) **<100 lines of code**.
+- It's small (we don't want to open-source it but maintain it ourselves) **<100 lines of code**.
 - It's close to the Angular standards. No exotic solutions that diverge from the [Angular Change Detection](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"} system.
 - It will make zone.js removal easy in the future.
 - It's opinionated and easy to use.
@@ -226,6 +226,10 @@ What this local component state should do for us:
 - Handle replaying, ref counting for us.
 - Expose a snapshot of the latest state at any time.
 
+In the next article, we will update the `ObservableState`:
+- Create `connect()` functionality: Connect observables to our `ObservableState` instance and clean up after them.
+- Create `selectOnly()` functionality: Getting notified only when certain parts of the state change.
+- make the state hot on initialize: Working with connectable observables to make the state hot on initialization.
 
 We will create the implementation and some complex examples in the next article. Stay tuned!
 If you can't wait, just reach out to me and I'll gladly give you my code and some examples.
