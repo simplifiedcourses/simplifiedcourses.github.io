@@ -11,7 +11,7 @@ description: "We will dive deep into Observable state in Angular Smart component
 ---
 
 This article is a follow-up article of the previous articles (newest to oldest):
-- [Observable state for ui component in Angular](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}
+- [Observable state for ui components in Angular](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}
 - [Reactive input state for Angular ViewModels](https://blog.simplified.courses/reactive-input-state-for-angular-viewmodels/){:target="_blank"}
 - [Reactive ViewModels for Ui components in Angular](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"}
 

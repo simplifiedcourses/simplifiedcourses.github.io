@@ -112,7 +112,7 @@ This article is a follow-up article of the previous articles (newest to oldest):
 In the first article, we started out by creating ViewModels, which can replace the presentation Observables. In other words: ViewModels would replace the **P** in **SIP**.
 After that, we created component state for ui components and now we will simplify this rather complex RxJS code by using the [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"}.
 
-The [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} is a custom-written implementation that we started to write in [this article](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}
+The [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} is a custom-written implementation that we started to write in [this article](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}.
 
 Some characteristics of [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"}:
 - It's compact!
@@ -283,7 +283,7 @@ You can find the entire working solution in [this StackBlitz example](https://st
 
 ### Why didn't we open-source this?
 
-Well, we kinda did... We just don't maintain it for you. We advise our clients to **not install every npm package that they find**, and we allow you to own this small piece of code yourself.
+Well, we kinda did... It's in the stackblitz, right? We just don't maintain it for you. We advise our clients to **not install every npm package that they find**, and we allow you to own this small piece of code yourself.
 It's not complex, it's easy to understand, easy to maintain, and you can add functionality as much as you want.
 We will see in a followup article, how we can leverage this principle to create very simple **global state**, where we can optimize the lifecycle by using the **dependency injection system**
 that Angular offers us. There is no need to go to complex state management libraries that request a lot of boilerplate and maintenance.
@@ -295,7 +295,7 @@ This doesn't mean that we don't need RxJS anymore. It means that state managemen
 Signals work synchronously and this is exactly why our [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts) exposes a snapshot.
 Since Signals are coming in the future of Angular and refactoring from this approach towards Signals is a breeze we consider it a valid approach for current Angular development.
 
-To make you all completely happy we have taken the liberty to refactor this approach towards signals:
+To make you all completely happy, we have taken the liberty to refactor this approach towards signals:
 ```typescript
 private readonly loading = signal(true);
 private readonly numberOfPassengers = signal(100000);
@@ -330,7 +330,7 @@ public changeNumberOfPassengers(numberOfPassengers: number): void {
 }
 ```
 
-Since Signals are a thing for the future, and we just want to showcase what we know now, we will not dive deeper in this solution and we do not
+Since Signals are a thing of the future, and we just want to showcase what we know now, we will not dive deeper in this solution and we do not
 recommend to use Signals in production code until they have reachted a stable state.
 
 Checkout the [StackBlitz example with Signals](https://stackblitz.com/edit/angular-rjwjeq?file=src%2Fapp%2Fapp.component.ts){:target="_blank"}
