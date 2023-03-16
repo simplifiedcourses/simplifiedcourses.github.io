@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to prepare for angular signals"
-date:   2023-03-17
+date:   2023-03-16
 published: true
 comments: true
 categories: Angular
