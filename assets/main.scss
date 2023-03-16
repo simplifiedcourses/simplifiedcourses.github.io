@@ -251,3 +251,13 @@ code {
         display: flex;
       }
 }
+
+.workshop-link {
+  cursor:pointer;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  img {
+    border-radius: 1.5rem;
+  }
+}
