@@ -12,7 +12,7 @@ description: "Use these simple steps to ace any tech interview"
 
 A few weeks ago we did a Twitter space together with [Chau Tran](https://twitter.com/Nartc1410){:target="_blank"}. It was hosted by 
 [Daniel Glejzner](https://twitter.com/DanielGlejzner){:target="_blank"} and 
-[Pawel Glejzner](https://twitter.com/pawelkubiakdev){:target="_blank"}
+[Pawel Kubiak](https://twitter.com/pawelkubiakdev){:target="_blank"}
 We want to thank each of these people for what they are doing for the community and you can find the recording of that space here:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">🎉 Just hosted incredible <a href="https://twitter.com/hashtag/Angular?src=hash&amp;ref_src=twsrc%5Etfw">#Angular</a> Job Interview space!<br><br>Guests: GDE <a href="https://twitter.com/Nartc1410?ref_src=twsrc%5Etfw">@Nartc1410</a> and <a href="https://twitter.com/brechtbilliet?ref_src=twsrc%5Etfw">@brechtbilliet</a> - co-host <a href="https://twitter.com/pawelkubiakdev?ref_src=twsrc%5Etfw">@pawelkubiakdev</a>!<br><br>🥇 A gold mine of knowledge for those seeking Angular jobs or looking to hire engineers!<br><br>We covered in-depth Angular topics!<a href="https://t.co/wKH7d8VRNe">https://t.co/wKH7d8VRNe</a></p>&mdash; Daniel Glejzner (@DanielGlejzner) <a href="https://twitter.com/DanielGlejzner/status/1644309217296171008?ref_src=twsrc%5Etfw">April 7, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
