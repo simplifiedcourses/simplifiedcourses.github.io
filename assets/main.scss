@@ -181,7 +181,7 @@ code {
     margin-top: 16px;
     list-style-type: none;
     flex-wrap: wrap;
-    li a{
+    li a, li span{
       display: flex;
       align-items: center;;
       justify-content: center;
