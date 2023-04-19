@@ -27,7 +27,7 @@ url: "https://blog.simplified.courses" # the base hostname & protocol for your s
 twitter_username: pick_simplified
 github_username:  simplifiedcourses
 permalink: /:title/
-
+category_path: categories
 disqus:
   shortname: blog-simplified-courses
 
@@ -36,6 +36,7 @@ theme: minima
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-category-pages
 google_analytics: UA-43296458-6
 google_verification:
 disqus-shortname: brechtbilliet

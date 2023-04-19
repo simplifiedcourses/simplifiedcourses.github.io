@@ -18,13 +18,15 @@ layout: default
                                                                                               itemprop="name">Brecht Billiet</span></span>
                 {%- endif -%}
             </p>
-    <img class="post-image" src="/{{page.cover}}" alt="{{ page.title | escape }}">
-    <ul class="post-categories">
-        {% for tag in page.categories %}
-        <li>{{ tag }}</li>
-        {% endfor %}
-    </ul>
-        </header>
+        <img class="post-image" src="/{{page.cover}}" alt="{{ page.title | escape }}">
+        <ul class="post-categories">
+            {% for category in page.categories %}
+            <li>
+                <a href="{{site.baseurl}}/categories/{{ category | cgi_escape }}">{{category}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+            </header>
       
         <div class="post-content e-content" itemprop="articleBody">
             {{ content }}

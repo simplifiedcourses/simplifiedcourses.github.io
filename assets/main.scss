@@ -179,12 +179,12 @@ code {
     display: flex;
     margin: 0px;
     margin-top: 16px;
+    list-style-type: none;
     flex-wrap: wrap;
-    li {
+    li a{
       display: flex;
       align-items: center;;
       justify-content: center;
-      list-style-type: none;
       background: #0CC;
       color: #fff;
       border-radius: 8px;
@@ -197,6 +197,8 @@ code {
   display: flex;
   flex-wrap: wrap;
   &__post {
+    overflow-y: scroll;
+    max-height: 800px;
     &-subscribe {
       background: #fff;
     }

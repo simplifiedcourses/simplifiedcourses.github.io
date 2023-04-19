@@ -1,0 +1,96 @@
+---
+layout: default
+---
+<div class="wrapper">
+  {% if page.paginator %}
+
+  <!-- Pagination is active -->
+  {% assign paginator = page.paginator %}
+
+  {% if paginator.previous_page != nil or paginator.next_page != nil %}
+    <!-- Show page number if we have multiple pages -->
+    <h1>Category index page {{ paginator.page }} / {{ paginator.total_pages }} for &ldquo;{{ page.title }}&rdquo;</h1>
+  {% else %}
+    <!-- No page number if we only have a single page -->
+    <h1>Articles for the category &ldquo;{{ page.title }}&rdquo;</h1>
+  {% endif %}
+
+  <section>
+    <!-- Show post excerpts for the current page -->
+    {% for post in paginator.posts limit:paginator.per_page %}
+      <article>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <h5>{{ post.date }}</h5>
+        <p>{{ post.excerpt }}</p>
+      </article>
+    {% endfor %}
+  </section>
+  <!-- Show navigation next/previous page links if applicable -->
+  <nav><p>
+    {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}"><span aria-hidden="true">&larr;</span> Newer</a>{% endif %}
+    {% if paginator.next_page %}<a href="{{ paginator.next_page_path }}">Older <span aria-hidden="true">&rarr;</span></a>{% endif %}
+  </p></nav>
+
+{% else %}
+
+  <!-- Pagination is not active -->
+  <h1>Articles for the category &ldquo;{{ page.title }}&rdquo;</h1>
+
+ <ul class="post-list">
+            <li class="post-list__post post-list__post-subscribe">
+                <div class="post-list__post-content">
+                    <h3>Join the club and get notified with new content</h3>
+                    <p>Get notified about our future blog articles by subscribing with the button below.</p>
+                    <p>We won't send spam, unsubscribe whenever you want.</p>
+                    <script src=https://www.simplified.courses/forms/2147985035/embed.js></script>
+                </div>
+            </li>
+            {%- for post in page.posts -%}
+            <li class="post-list__post">
+                <a href="{{ post.url | relative_url }}" title="{{ post.title }}">
+                    <img src="/{{post.cover}}" alt="{{ post.title }}">
+                    <footer class="post-meta">
+
+                        <img class="author-thumb" src="/assets/brecht.png" alt="Brecht Billiet" nopin="nopin"/>
+                        <!-- author -->
+                        &nbsp;Brecht Billiet&nbsp;|&nbsp;
+
+
+                        <time class="post-date" datetime="{{ post.date | date:'%Y-%m-%d' }}">{{ post.date | date_to_string
+                            }}
+                        </time>
+                    </footer>
+                    <div class="post-list__post-content">
+                        <h3>{{post.title}}</h3>
+                        <ul class="post-list__post-categories">
+                            {% for tag in post.categories %}
+                            <li>{{ tag }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p>{{post.description}}</p>
+                       
+
+                        {%- if site.show_excerpts -%}
+                        {{ post.excerpt }}
+                        {%- endif -%}
+                    </div>
+                   
+                </a>
+            </li>
+            {%- endfor -%}
+            <li class="post-list__post">
+              <a class="twitter-timeline" href="https://twitter.com/Brechtbilliet?ref_src=twsrc%5Etfw">Tweets by Brechtbilliet</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </li>
+        </ul>
+        <h3>Other Categories</h3>
+        <ul class="post-categories">
+          <li><a href="{{site.baseurl}}/">All categories</a></li>
+            {% for category in site.categories %}
+            {% if category[0] != page.title %}
+              <li><a href="{{site.baseurl}}/categories/{{ category[0] | cgi_escape }}">{{category[0]}}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+{% endif %}
+
+</div>
