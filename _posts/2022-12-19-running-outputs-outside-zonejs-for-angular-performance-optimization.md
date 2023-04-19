@@ -4,7 +4,7 @@ title:  "Running Outputs outside zone.js for Angular performance Optimization"
 date:   2022-12-19
 published: true
 comments: true
-categories: Angular, RxJS
+categories: [Angular, RxJS, Change Detection]
 cover: assets/running-outputs-outside-zonejs.jpg
 description: "We will learn how we can optimize the performance of Angular applications by running @Output()s into the outer zone."
 

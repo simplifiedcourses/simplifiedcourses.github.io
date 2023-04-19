@@ -4,9 +4,9 @@ title:  "CHATGPT helped me write a snake game in angular and how I optimized it 
 date:   2023-01-08
 published: true
 comments: true
-categories: Angular, CHATGPT
+categories: [Angular, ChatGPT, Change Detection]
 cover: assets/chatgpt-snake-game.jpg
-description: "This article shows we can use CHATGPT to help use code and in this case write a snake game in Angular"
+description: "This article shows we can use CHATGPT to help use code and in this case write a snake game in Angular."
 
 ---
 

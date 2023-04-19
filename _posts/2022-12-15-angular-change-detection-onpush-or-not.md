@@ -4,7 +4,7 @@ title:  "Angular Change Detection OnPush or not?"
 date:   2022-12-15
 published: true
 comments: true
-categories: Angular
+categories: [Angular, Change Detection]
 cover: assets/angular-change-detection-on-push-or-not.jpg
 description: "Should we use Change Detection strategy OnPush or not? We will learn where it makes sense to use the Onpush strategy and what impact it has on performance."
 

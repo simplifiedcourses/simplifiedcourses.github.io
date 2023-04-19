@@ -175,6 +175,24 @@ code {
     flex-direction:row;
   }
 }
+.post-categories {
+    display: flex;
+    margin: 0px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    li {
+      display: flex;
+      align-items: center;;
+      justify-content: center;
+      list-style-type: none;
+      background: #0CC;
+      color: #fff;
+      border-radius: 8px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      padding: 0px 8px;
+  }
+}
 .post-list {
   display: flex;
   flex-wrap: wrap;
@@ -190,6 +208,23 @@ code {
     -moz-box-shadow: 0px 0px 24px -5px rgba(0,0,0,0.10);
     border-radius: 1.5rem;
     margin: 10px;
+    &-categories {
+      display: flex;
+      margin: 0px;
+      flex-wrap: wrap;
+      li {
+        display: flex;
+        align-items: center;;
+        justify-content: center;
+        list-style-type: none;
+        background: #0CC;
+        color: #fff;
+        border-radius: 8px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        padding: 0px 8px;
+      }
+    }
     &-content {
       padding: 32px;
       .kajabi-form--inline {

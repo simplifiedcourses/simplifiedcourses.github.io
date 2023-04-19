@@ -4,9 +4,9 @@ title:  "Reactive Input state for Angular ViewModels"
 date:   2023-01-24
 published: true
 comments: true
-categories: Angular, RxJS
+categories: [Angular, RxJS, State management]
 cover: assets/reactive-input-state-for-viewmodels-in-angular.jpg
-description: "This article shows how we can optimize the number of emissions and calculations when it comes to calculating ViewModels from input state in Angular"
+description: "This article shows how we can optimize the number of emissions and calculations when it comes to calculating ViewModels from input state in Angular."
 
 ---
 

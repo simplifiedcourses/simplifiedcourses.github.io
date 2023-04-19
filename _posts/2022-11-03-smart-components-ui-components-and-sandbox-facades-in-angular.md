@@ -4,7 +4,7 @@ title:  "Smart components, ui components and Sandbox facades in Angular"
 date:   2022-11-14
 published: true
 comments: true
-categories: Angular architecture
+categories: [Angular, Architecture]
 cover: assets/smart-components-ui-components-sandbox-facades.jpg
 description: "What are smart components and what is the difference with ui components? How can we leverage Sandbox facades to create an abstraction for the presentation layer?"
 

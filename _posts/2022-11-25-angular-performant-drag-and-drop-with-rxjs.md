@@ -4,7 +4,7 @@ title:  "Angular performant drag-and-drop with RxJS"
 date:   2022-11-25
 published: true
 comments: true
-categories: Angular 
+categories: [Angular, Change Detection] 
 cover: assets/angular-performant-drag-and-drop.jpg
 description: "Here we will learn how we can create a drag-and-drop with nothing but Angular and RxJS and how we can optimize this for performance."
 ---

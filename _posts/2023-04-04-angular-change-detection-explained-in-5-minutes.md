@@ -4,9 +4,9 @@ title:  "Angular Change Detection Explained in 5 minutes"
 date:   2023-04-03
 published: true
 comments: true
-categories: Angular
+categories: [Angular, Change Detection]
 cover: assets/angular-change-detection-explained-in-5-minutes.jpg
-description: "I created an Angular Change Detection explained in 5 minutes video"
+description: "I created an Angular Change Detection explained in 5 minutes video."
 ---
 
 Angular Change Detection is hard, and there is not that much documentation about it.

@@ -19,9 +19,13 @@ layout: default
                 {%- endif -%}
             </p>
     <img class="post-image" src="/{{page.cover}}" alt="{{ page.title | escape }}">
-
+    <ul class="post-categories">
+        {% for tag in page.categories %}
+        <li>{{ tag }}</li>
+        {% endfor %}
+    </ul>
         </header>
-
+      
         <div class="post-content e-content" itemprop="articleBody">
             {{ content }}
         </div>

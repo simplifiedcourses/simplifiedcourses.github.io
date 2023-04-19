@@ -4,9 +4,9 @@ title:  "Acing Tech Interviews in 7 steps"
 date:   2023-04-11
 published: true
 comments: true
-categories: Angular, Interviews
+categories: [Angular, Interviews, State management]
 cover: assets/acing-tech-interviews-in-7-steps.jpg
-description: "Use these simple steps to ace any tech interview"
+description: "Use these simple steps to ace any tech interview."
 
 ---
 

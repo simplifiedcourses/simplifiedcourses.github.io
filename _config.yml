@@ -27,6 +27,7 @@ url: "https://blog.simplified.courses" # the base hostname & protocol for your s
 twitter_username: pick_simplified
 github_username:  simplifiedcourses
 permalink: /:title/
+
 disqus:
   shortname: blog-simplified-courses
 
