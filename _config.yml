@@ -22,7 +22,7 @@ title: simplified Angular Blog
 email: brecht@simplified.courses
 description: >- # this means to ignore newlines until "baseurl:"
   Tech blog where we explain Simplified Angular principles and proven practices
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: pick_simplified
 github_username:  simplifiedcourses

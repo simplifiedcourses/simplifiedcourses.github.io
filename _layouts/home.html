@@ -55,12 +55,12 @@ layout: default
                 <a class="twitter-timeline" href="https://twitter.com/Brechtbilliet?ref_src=twsrc%5Etfw">Tweets by Brechtbilliet</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </li>
         </ul>
-        <!-- <h3>Categories</h3>
+        <h3>Categories</h3>
         <ul class="post-categories">
             {% for category in site.categories %}
-                <li><a href="{{site.baseurl}}/categories/{{ category[0] | cgi_escape }}">{{category[0]}}</a></li>
+                <li><a href="{{site.baseurl}}/categories/{{ category[0] | slugify }}">{{category[0]}}</a></li>
             {% endfor %}
-        </ul> -->
+        </ul> 
         <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
         {%- endif -%}
         <a href="#" id="open_preferences_center">Update cookies preferences</a>

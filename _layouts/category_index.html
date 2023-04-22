@@ -87,7 +87,7 @@ layout: default
           <li><a href="{{site.baseurl}}/">All categories</a></li>
             {% for category in site.categories %}
             {% if category[0] != page.title %}
-              <li><a href="{{site.baseurl}}/categories/{{ category[0] | cgi_escape }}">{{category[0]}}</a></li>
+              <li><a href="{{site.baseurl}}/categories/{{ category[0] | slugify }}">{{category[0]}}</a></li>
             {% endif %}
             {% endfor %}
         </ul>

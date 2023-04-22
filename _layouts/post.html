@@ -22,9 +22,8 @@ layout: default
         <ul class="post-categories">
             {% for category in page.categories %}
             <li>
-                <span>{{category}}</span>
-                <!-- <a href="{{site.baseurl}}/categories/{{ category | cgi_escape }}">{{category}}</a> -->
-            </li>
+        
+               	<a href="{{site.baseurl}}/categories/{{ category | slugify }}">{{category}}</a>    </li>
             {% endfor %}
         </ul>
             </header>
