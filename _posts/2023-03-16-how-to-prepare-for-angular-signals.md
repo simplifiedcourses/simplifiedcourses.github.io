@@ -14,7 +14,7 @@ A Signal is a **reactive primitive** that will be used to simplify reactive prog
 Currently, most of the applications running in production heavily rely on RxJS or state management frameworks to achieve reactivity.
 Some developers even store all of the local component state and server responses in a store, to ensure a consistent way of reactive communication.
 This way the store becomes a communication tool and blocks direct access to the responses of our XHR calls from within our components.
-This results in boilerplate, complexity and we prefer the KISS approach. At Simplified Courses we tend to avoid State management frameworks.
+This results in boilerplate, complexity and we prefer the KISS approach. At Simplified Courses we tend to avoid State management frameworks. Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"} 
 We believe that Signals will make reactivity a lot easier.
 
 Signals will be in **developer preview** in **Angular 16** but we have no idea when it will be completely stable.

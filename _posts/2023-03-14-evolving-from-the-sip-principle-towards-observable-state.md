@@ -93,6 +93,7 @@ There is one statement we would like to focus on:
 **RxJS isn't necessarily hard, but code written with RxJS can become very hard very fast.**.
 
 We believe that's the reason why libraries like [rx-angular/state](https://www.rx-angular.io/docs/state){:target="_blank"} and [@ngrx/component-store](https://ngrx.io/guide/component-store){:target="_blank"} are created. While Angular is evolving rapidly and we tend to avoid third party dependencies for state management, we wrote a simple and small solution ourselves.
+Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"} 
 
 ## The Observable state solution
 

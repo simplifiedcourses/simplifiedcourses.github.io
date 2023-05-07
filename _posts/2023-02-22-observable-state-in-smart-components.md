@@ -233,3 +233,4 @@ In the next article, we will update the `ObservableState`:
 
 We will create the implementation and some complex examples in the next article. Stay tuned!
 If you can't wait, just reach out to me and I'll gladly give you my code and some examples.
+Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"} 
