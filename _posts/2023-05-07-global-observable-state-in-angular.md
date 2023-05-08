@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Global Observable state in Angular"
-date:   2023-03-21
+date:   2023-05-07
 published: false
 comments: true
 categories: [Angular, State management]
@@ -17,6 +17,15 @@ This article is a follow-up article of the previous articles (newest to oldest):
 - [Reactive ViewModels for Ui components in Angular](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"}
 
 In this article, we will tackle **reusable global Observable state** in Angular.
+We already covered [ui-component state](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"} where we manage the local state of a ui-component in an opinionated way.
+We combined that state and connected it with input state (which is the state that is passed by `@Input()` properties).
+After that, we covered [Smart component state](https://blog.simplified.courses/evolving-from-the-sip-principle-towards-observable-state/){:target="_blank"} where we avoid RxJS complexity and make state management more junior-friendly.
+In this article, we are going to cover global state, (also known as shared state). The thing some developers would put inside one big @ngrx/store.
+
+## ObservableState in a nutshell
+
+Some facts you need to know about [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} for this article to make sense
+
 
 ## Why not use a state management framework?
 
