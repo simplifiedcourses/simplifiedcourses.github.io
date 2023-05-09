@@ -2,7 +2,7 @@
 layout: post
 title:  "Observable state in Angular"
 date:   2023-05-07
-published: true
+published: false
 comments: true
 categories: [Angular, State management]
 cover: assets/observable-state-in-angular.jpg
