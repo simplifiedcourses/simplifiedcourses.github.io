@@ -272,7 +272,7 @@ This `connect()` method handles a lot for us:
 - It will patch the state automatically
 
 **Don't forget!** that state has a `state$` Observable we can subscribe to, but also has a convenient snapshot that we can use.
-So this piece of code which is hideous:
+So this piece of code is hideous:
 
 ```typescript
 // bad
@@ -366,7 +366,7 @@ class ProductDetailComponent extends ObservableState<ProductDetailComponentState
         super();
         // Pick the pieces from the snapshot
         const { entries, products } = this.shoppingCartState.snapshot;
-        this.inialize({...})
+        this.initialize({...})
 
         this.connect({
             // Pick observables from another state and connect them
@@ -471,7 +471,7 @@ export class ProductOverviewSmartComponent extends ObservableState<ProductOvervi
 }
 ```
 
-In the next sample we will see that will will calculate `pagedProducts` every time the `filteredProducts`, the `pageIndex` or the `itemsPerPage` state changes:
+In the next sample we will see that will calculate `pagedProducts` every time the `filteredProducts`, the `pageIndex` or the `itemsPerPage` state changes:
 ```typescript
 type ProductOverviewState = {...}
 
@@ -523,12 +523,6 @@ export class ProductOverviewSmartComponent extends ObservableState<ProductOvervi
     }
 }
 ```
-That's it. You can find a complete example [here](https://github.com/simplifiedcourses/observable-state/blob/main/src/demo-app/components/smart/product-overview/product-overview.smart-component.ts){:target="_blank"}. If you clone the repo, you can run it with:
-
-```shell
-npm run api
-npx nx run shop:serve
-```
 
 #### API
 
@@ -538,6 +532,13 @@ npx nx run shop:serve
  * @param keys
  */
 public onlySelectWhen(keys: (keyof T)[]): Observable<T>;
+```
+
+That's it. You can find a complete example [here](https://github.com/simplifiedcourses/observable-state/blob/main/src/demo-app/components/smart/product-overview/product-overview.smart-component.ts){:target="_blank"}. If you clone the repo, you can run it with:
+
+```shell
+npm run api
+npx nx run shop:serve
 ```
 
 ## Wrapping up
