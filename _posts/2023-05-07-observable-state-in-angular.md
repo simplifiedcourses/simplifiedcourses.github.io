@@ -16,7 +16,7 @@ This article is a follow-up article of these previous articles (newest to oldest
 - [Reactive input state for Angular ViewModels](https://blog.simplified.courses/reactive-input-state-for-angular-viewmodels/){:target="_blank"}
 - [Reactive ViewModels for Ui components in Angular](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"}
 
-**I also gave a talk at ng-be where I introduce everything in 25 minutes.** You might want to check out [this video](https://www.youtube.com/watch?v=58h_w7PzNtM){:target="_blank"} before continuing.
+**I also gave a talk at ng-be where I introduced everything in 25 minutes.** You might want to check out [this video](https://www.youtube.com/watch?v=58h_w7PzNtM){:target="_blank"} before continuing.
 
 In this article, we will tackle [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}.
 We will discuss the API and why we wrote something like that.
@@ -67,8 +67,7 @@ class MyComponent extends ObservableState<MyComponentState> {
 }
 ```
 
-We have extended from `ObservableState` and passed a type called `MyComponentState`, to make the whole thing type safe
-In the constructor, we have initialized our state with the `initialize()` method that lives on `ObservableState`.
+We have extended from `ObservableState` and passed a type called `MyComponentState`, to make the whole thing type-safe in the constructor, we have initialized our state with the `initialize()` method that lives on `ObservableState`.
 Our state is now fully initialized.
 
 When we would want to create a shared State that can be provided anywhere in Angular we could develop it like this:
@@ -136,7 +135,8 @@ Connecting an `inputState$` is explained in depth [in this article](https://blog
 
 ### Patching pieces of state
 
-When using multiple BehaviorSubjects, you might end up patching multiple BehaviorSubjects at the same time which could trigger multiple emissions at the same time.
+When using multiple BehaviorSubjects, you might end up patching more of them in parallel.
+
 **Check out this bad example for instance:**
 
 ```typescript
@@ -144,7 +144,7 @@ When using multiple BehaviorSubjects, you might end up patching multiple Behavio
 class UserComponent {
     firstName$$ = new BehaviorSubject('Brecht');
     lastName$$ = new BehaviorSubject('Billiet');
-    fullName$ = combineLatest({firstName: this.firstName$$, lastName: this.lastname$$}]).pipe(
+    fullName$ = combineLatest({firstName: this.firstName$$, lastName: this.lastName$$}]).pipe(
         map(({firstName, lastName}) => firstName + ' ' + lastName)
     );
     setName(firstName: string, lastName: string): void {
@@ -471,7 +471,7 @@ export class ProductOverviewSmartComponent extends ObservableState<ProductOvervi
 }
 ```
 
-In the next sample we will see that will calculate `pagedProducts` every time the `filteredProducts`, the `pageIndex` or the `itemsPerPage` state changes:
+In the next sample we will see that it will calculate `pagedProducts` every time the `filteredProducts`, the `pageIndex` or the `itemsPerPage` state changes:
 ```typescript
 type ProductOverviewState = {...}
 
@@ -554,3 +554,9 @@ Some examples:
 If you need more examples, please reach out to me. I'm happy to help.
 
 Ps: We are also working on a `SignalState` which follows the same principles as `ObservableState`, but specifically for Angular Signals: You can check the first version of an example of the use [here](https://github.com/simplifiedcourses/observable-state/blob/main/src/demo-app/components/smart/product-overview-signal/product-overview-signal-smart.component.ts){:target="_blank"}
+
+Special thanks to the awesome reviewers:
+- [Tim Deschryver](https://timdeschryver.dev/){:target="_blank"}
+- [Mihai Paraschivescu](https://twitter.com/mikeandtherest){:target="_blank"}
+- [Daniel Glejzner](https://twitter.com/DanielGlejzner){:target="_blank"}
+- [Fabian Gosebrink](https://twitter.com/FabianGosebrink){:target="_blank"}
