@@ -103,7 +103,7 @@ The previous code has some downsides:
 - It's not very opinionated.
 - We are not managing component state very well, it's shattered across the file, across ReplaySubjects, a BehaviorSubject and other Observables.
 
-In this article, we will refactor the previous code to use [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"}.
+In this article, we will refactor the previous code to use [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}.
 This article is a follow-up article of the previous articles (newest to oldest):
 - [Observable component state in Angular](https://blog.simplified.courses/observable-state-in-smart-components/){:target="_blank"}
 - [Observable state for ui components in Angular](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}
@@ -111,11 +111,11 @@ This article is a follow-up article of the previous articles (newest to oldest):
 - [Reactive ViewModels for Ui components in Angular](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"}
 
 In the first article, we started out by creating ViewModels, which can replace the presentation Observables. In other words: ViewModels would replace the **P** in **SIP**.
-After that, we created component state for ui components and now we will simplify this rather complex RxJS code by using the [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"}.
+After that, we created component state for ui components and now we will simplify this rather complex RxJS code by using the [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}.
 
-The [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} is a custom-written implementation that we started to write in [this article](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}.
+The [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} is a custom-written implementation that we started to write in [this article](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}.
 
-Some characteristics of [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"}:
+Some characteristics of [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}:
 - It's compact!
 - It's simple!
 - It requires an initial state (default state).
@@ -128,7 +128,7 @@ Some characteristics of [ObservableState](https://stackblitz.com/edit/angular-rg
 - It exposes a snapshot and a `patch()` method that updates partial state.
 - It exposes a `state$` observable that we can subscribe to.
 
-Let's start by creating a `AppComponentState` type and extending the `AppComponent` from [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"}.
+Let's start by creating a `AppComponentState` type and extending the `AppComponent` from [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}.
 ```typescript
 type AppComponentState = {
     // source state
@@ -154,7 +154,7 @@ This will give the component access to the following methods/properties:
 - **state$:** This returns the state as an observable, that will get unsubscribed automatically on `ngOnDestroy`.
 - **snapshot**: This returns the current snapshot of our state.
 
-Let's initialize the state by calling the `initialize()` method from [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} to initialize the state with default values:
+Let's initialize the state by calling the `initialize()` method from [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} to initialize the state with default values:
 
 ```typescript
 export class AppComponent  extends ObservableState<AppComponentState> {
@@ -174,7 +174,7 @@ export class AppComponent  extends ObservableState<AppComponentState> {
 ```
 
 
-This seems pretty straightforward: We have a clean type for the entire state of this component and we have initialized the [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} with
+This seems pretty straightforward: We have a clean type for the entire state of this component and we have initialized the [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} with
 default values. Next, let's create 2 methods to update the query and number of passengers. As you can see we can update multiple pieces of state in one go, avoiding too many emissions.
 In the `changeQuery()` method, we not only want to set the `query` but also the `loading` property:
 
@@ -191,7 +191,7 @@ public changeNumberOfPassengers(numberOfPassengers: number): void {
 
 Let's dive a bit deeper into the asynchronous stuff.
 We know the starships should be loaded when the `query` changes, so we want to get notified when the `query` property of the state changes.
-For that, we can use the `onlySelectWhen()` method that is provided by [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"}.
+For that, we can use the `onlySelectWhen()` method that is provided by [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}.
 This method will return the entire state when one of the properties bound to the passed keys changes.
 When the `fetchData()` call is finished we can leverage the `tap()` operator to create a side effect that uses the `patch()` method to put the loading property of our state object to `false`.
 
@@ -215,7 +215,7 @@ constructor(){
 }
 ```
 
-The `connect()` method will subscribe only once and communicate with the private BehaviorSubject of [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} so we don't have to worry about multicasting anymore. This means we don't ever have to write `shareReplay({refCount: true, bufferSize:1})` again.
+The `connect()` method will subscribe only once and communicate with the private BehaviorSubject of [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} so we don't have to worry about multicasting anymore. This means we don't ever have to write `shareReplay({refCount: true, bufferSize:1})` again.
 Did we mention we don't ever have to write `takeUntil(this.destroy$$)` anymore either?
 
 We have calculated and connected the `starships` state, but we still need to calculate the `filteredStarships` state.
@@ -293,7 +293,7 @@ that Angular offers us. There is no need to go to complex state management libra
 
 Angular Signals will greatly improve the readability of reactive programming and will make **state management** with RxJS obsolete in a way.
 This doesn't mean that we don't need RxJS anymore. It means that state management might become way easier with Signals.
-Signals work synchronously and this is exactly why our [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts) exposes a snapshot.
+Signals work synchronously and this is exactly why our [ObservableState](https://github.com/simplifiedcourses/observable-state/) exposes a snapshot.
 Since Signals are coming in the future of Angular and refactoring from this approach towards Signals is a breeze we consider it a valid approach for current Angular development.
 
 To make you all completely happy, we have taken the liberty to refactor this approach towards signals:
@@ -340,7 +340,7 @@ Checkout the [StackBlitz example with Signals](https://stackblitz.com/edit/angul
 
 We learned that even the SIP principle doesn't fix all the reactive complexity for us.
 We have implemented our own solution that we maintain ourselves when it comes to simple state management.
-By using [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts) we have:
+By using [ObservableState](https://github.com/simplifiedcourses/observable-state/) we have:
 - introduced queue scheduling
 - made the knowledge on hot/vs cold observables obsolete
 - made sure we never have to do `takeUntil(this.destroy$$)`

@@ -32,7 +32,7 @@ So, let's see how we can prepare for this awesome feature already today.
 ### Play with it!
 
 First of all, I would recommend everyone to play with Signals so we can get used to them and see the simplicity it brings to the table. This can greatly impact our mindset in terms of reactive programming.
-In the following example, I refactored an application that was using the [SIP principle](https://blog.simplified.courses/evolving-from-the-sip-principle-towards-observable-state/){:target="_blank"} towards [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fapp%2Fapp.component.ts){:target="_blank"} and later to [Signals](https://stackblitz.com/edit/angular-rjwjeq?file=src%2Fapp%2Fapp.component.ts){:target="_blank"}.
+In the following example, I refactored an application that was using the [SIP principle](https://blog.simplified.courses/evolving-from-the-sip-principle-towards-observable-state/){:target="_blank"} towards [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} and later to [Signals](https://stackblitz.com/edit/angular-rjwjeq?file=src%2Fapp%2Fapp.component.ts){:target="_blank"}.
 
 The Signals version of the code looks like this:
 
@@ -178,7 +178,7 @@ const res$ = combineLatest([foo$$, bar$$]).pipe(
 ...
 ```
 
-If we would use [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} which is explained in depth in [this article](https://blog.simplified.courses/evolving-from-the-sip-principle-towards-observable-state/){:target="_blank"}, the code would look even cleaner.
+If we would use [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} which is explained in depth in [this article](https://blog.simplified.courses/evolving-from-the-sip-principle-towards-observable-state/){:target="_blank"}, the code would look even cleaner.
 
 ```typescript
 constructor(){
@@ -199,7 +199,7 @@ constructor(){
 ```
 We wouldn't need to worry about multicasting or unbsubscribing. The scheduling would be automatically set to `queueScheduler` and it would distinct values for us.
 There is no more `combineLatest()` (which could have multiple emissions at the same time) and we clearly see that if `foo` **or** `bar` changes, we have to fetch
-some data. The `snapshot` getter of [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} would give us the value just as a signal would do.
+some data. The `snapshot` getter of [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} would give us the value just as a signal would do.
 The previous piece of code would look like this when using Signals:
 
 ```typescript
@@ -266,7 +266,7 @@ As we can see, there is only one async pipe and refactoring the template to use 
 ```
 
 
-To make this complete we will showcase how this example would look like with [ObservableState](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} which is basically one **BehaviorSubject** on steroids behind the scenes:
+To make this complete we will showcase how this example would look like with [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} which is basically one **BehaviorSubject** on steroids behind the scenes:
 
 ```typescript
 constructor(){
