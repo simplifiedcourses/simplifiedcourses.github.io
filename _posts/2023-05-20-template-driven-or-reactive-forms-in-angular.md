@@ -2,7 +2,7 @@
 layout: post
 title:  "Template-driven or reactive forms in Angular"
 date:   2023-05-20
-published: false
+published: true
 comments: true
 categories: [Angular, Forms, State management]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
