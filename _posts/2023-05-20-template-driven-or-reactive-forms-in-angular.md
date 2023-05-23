@@ -2,7 +2,7 @@
 layout: post
 title:  "Template-driven or reactive forms in Angular"
 date:   2023-05-20
-published: true
+published: false
 comments: true
 categories: [Angular, Forms, State management]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
@@ -20,7 +20,7 @@ Here are 3 other reasons why some developers favor reactive forms over template-
 - Validations are shattered across the entire template making it a lot of work and less dynamic.
 - They can leverage RxJS a lot more by combining observables, using `debounceTime()`, `switchMap()`, etc...
 
-When watching 2 talks from [Ward Bell](https://twitter.com/wardbell){:target="_blank"} at ngConf and reading articles from [Tim De Schryver](https://timdeschryver.dev/blog/a-practical-guide-to-angular-template-driven-forms){:target="_blank"} and talking with[Jeffrey Bosch](https://twitter.com/jefiozie){:target="_blank"}, I started to realize that I had to take a closer look at template-driven forms and re-evaluate how I deal with forms today.
+When watching 2 talks from [Ward Bell](https://twitter.com/wardbell){:target="_blank"} at ngConf and reading articles from [Tim De Schryver](https://timdeschryver.dev/blog/a-practical-guide-to-angular-template-driven-forms){:target="_blank"} and talking with [Jeffrey Bosch](https://twitter.com/jefiozie){:target="_blank"}, I started to realize that I had to take a closer look at template-driven forms and re-evaluate how I deal with forms today.
 
 After doing tons and tons of research, and deciding to update some major applications to template-driven forms for a big client of mine, I have to admit that switching back to template-driven forms made forms fun again.
 
