@@ -1,6 +1,8 @@
 ---
 layout: default
 ---
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v17.0" nonce="66KyhYNp"></script>
 <div class="wrapper article-wrapper">
     <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
         <header class="post-header">
@@ -40,9 +42,7 @@ layout: default
         <a class="workshop-link" href="https://www.simplified.courses/remote-angular-proven-enterprise-solutions" target="_blank">
             <img  src="/assets/angular-proven-enterprise-solutions.jpg" alt="Angular Proven Enterprise Solutions">
         </a>
-        {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-        {%- endif -%}
+        <div class="fb-comments" data-href="{{ page.url | relative_url }}" data-width="" data-numposts="5"></div>
 
         <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 <a href="#" id="open_preferences_center">Update cookies preferences</a>
