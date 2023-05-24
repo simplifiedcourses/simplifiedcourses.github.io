@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Template-driven or reactive forms in Angular"
-date:   2023-05-20
-published: false
+date:   2023-05-23
+published: true
 comments: true
 categories: [Angular, Forms, State management]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
@@ -12,7 +12,7 @@ description: "Should we use template-driven forms or reactive forms in Angular"
 ## Introduction
 
 When Angular was released in 2016, the only solution they had for creating forms was template-driven forms. A principle where directives in the template were used to create forms. In Angular 4 the core team introduced a new concept called **reactive forms**.
-It was a new way with a reactive API that exposed RxJS Observables when we wanted them. Pretty soon everyone was agreeing that reactive forms were the new way to go. The new best practice. Template-driven forms were even frowned upon and I have been advising companies to use Reactive forms for years (that is changing now). In Reactive forms, we would use `FormBuilder` to create `FormGroup` instances with `FormControl` and `FormArray` instances.
+It was a new way with a reactive API that exposed RxJS Observables when we wanted them. Pretty soon everyone was agreeing that reactive forms were the new way to go. The new best practice. Template-driven forms were even frowned upon and I have been advising companies to use Reactive forms for years. In Reactive forms, we would use `FormBuilder` to create `FormGroup` instances with `FormControl` and `FormArray` instances.
 An argument that keeps coming back supporting Reactive Forms is that **they were better testable**. We are not sure how valid that point is since we see it as a best practice to test our components including our templates.
 Another argument was **type-safety**. Even though reactive forms weren't type-safe for a lot of years. They are now, and template-driven forms are not.
 Here are 3 other reasons why some developers favor reactive forms over template-driven forms:
@@ -481,3 +481,7 @@ Also, check out these 2 talks from ward bell:
 - [Form Validation Done Right ](https://www.youtube.com/watch?v=EMUAtQlh9Ko){:target="_blank"}
 
 Interested in playing with the code? Check out [this stackblitz](https://stackblitz.com/edit/angular-wqxqyb){:target="_blank"}!
+
+Thanks to the awesome reviewers;
+- [Daniel Glejzner](https://twitter.com/danielglejzner){:target="_blank"}
+- [Jeffrey Bosch](https://twitter.com/jefiozie){:target="_blank"}
