@@ -426,3 +426,5 @@ In the next article, we will fix the following problems:
 
 This is the first step towards truly reactive components. In the next articles, we will dive deeper and use this principle as a cog in our reactive component state. If you liked the article, please leave a comment!
 Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"} 
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

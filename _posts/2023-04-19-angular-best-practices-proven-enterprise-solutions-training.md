@@ -22,3 +22,5 @@ We have given this workshop at [ng-be conf](https://ng-be.org/){:target="_blank"
 Checkout these [Awesome Testimonials](https://www.simplified.courses/remote-angular-proven-enterprise-solutions#block-1678895697370_0){:target="_blank"} 
 
 In this article, we will go over every chapter in our Angular Best Practices training and we will tackle some Best Practices in every chapter. Let's dive in.
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

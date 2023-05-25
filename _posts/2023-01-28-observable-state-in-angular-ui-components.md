@@ -407,3 +407,5 @@ Here is an [updated Stackblitz example](https://stackblitz.com/edit/angular-ivy-
 
 In this article, the observable state implementation is not yet complete, but we will update it in the next article where we will use it for more complex state management in smart components. Stay tuned!
 Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"} 
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

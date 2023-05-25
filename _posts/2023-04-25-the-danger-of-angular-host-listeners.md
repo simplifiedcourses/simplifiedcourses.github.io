@@ -161,3 +161,5 @@ In these articles, we also optimize Change Detection by leveraging the **inner z
 - [CHATGPT helped me write a snake game in angular and how I optimized it for performance](https://blog.simplified.courses/how-chatgpt-helped-me-write-a-snake-game-in-angular-and-how-i-optimized-it-for-performance/){:target="_blank"}
 - [Running Outputs outside zone.js for Angular performance Optimization](https://blog.simplified.courses/running-outputs-outside-zonejs-for-angular-performance-optimization/){:target="_blank"}
 - [Angular performant drag-and-drop with RxJS](https://blog.simplified.courses/angular-performant-drag-and-drop-with-rxjs/){:target="_blank"}
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

@@ -84,3 +84,5 @@ In the Angular framework, there is this huge thing coming in Angular 16 which is
 It's a wrap! Don't be afraid of these interviews. They are awesome! They allow you to show how passionate you are. If you don't have the answer to a question, be honest and talk about what you do know about that topic. Realize that you are motivated, confident and one-of-a-kind. **You will ace this interview**
 
 Special thanks to the reviewer [Daniel Glejzner](https://twitter.com/DanielGlejzner){:target="_blank"}
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

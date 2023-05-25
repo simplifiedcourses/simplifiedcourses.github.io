@@ -354,3 +354,5 @@ We can see the finished example in this Stackblitz:
 Special thanks to the reviewer [Bryan Hannes](https://bryanhannes.com/){:target="_blank"}.
 
 If you liked the article, please leave a comment!
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

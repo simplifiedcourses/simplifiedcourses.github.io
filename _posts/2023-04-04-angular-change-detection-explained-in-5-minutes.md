@@ -27,3 +27,5 @@ Before we present the video we like to list a few articles where we either expla
 ## Check the video
 
 <iframe width="100%" height="500" src="https://www.youtube.com/embed/eNuMUslF8Bw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

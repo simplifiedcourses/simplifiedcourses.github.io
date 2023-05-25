@@ -40,3 +40,5 @@ or want a deeper understanding of Angular Change Detection, get the ebook By cli
 
 Thanks for your time and let's talk soon!
 If you liked the article, please leave a comment!
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)
