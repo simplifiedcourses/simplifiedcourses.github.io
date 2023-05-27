@@ -44,8 +44,8 @@ export class AppComponent {
     private readonly numberOfPassengers = signal(100000);
     private readonly query = signal('');
     // We still need RxJS for asynchronous stuff
-    private readonly results = fromObservable(
-        fromSignal(this.query).pipe(
+    private readonly results = toSignal(
+        toObservable(this.query).pipe(
         switchMap((query) => this.fetchData(query)),
         tap(() => this.loading.set(false))
         ),
@@ -88,7 +88,7 @@ But as we can see there is not much RxJS complexity going on here. There are no:
 What should become clear here is that:
 - Every Signal, meaning every piece of state has **an initial value**. That's a very healthy way of thinking about state in general.
 - We still need RxJS to implement `switchMap()` functionality. Asynchronous things like `debounceTime()` will also still be useful.
-- We use `fromObservable()` and `fromSignal()` to combine the best of both worlds: We think about **state as something synchronous** and we think
+- We use `toSignal()` and `toObservable()` to combine the best of both worlds: We think about **state as something synchronous** and we think
 about the real **RxjS logic as something asynchronous**.
 - We have a clean **ViewModel** that exposes a specific Signal that is only meant to be used by the template.
 - Setting and retrieving states are done synchronously instead of asynchronously. (by executing the signal or calling `set`)
@@ -107,7 +107,7 @@ public isOpen$$ = new BehaviorSubject<boolean>(false);// Reactive
 ```
 
 BehaviorSubjects also enforce initial values, just as signals expect initial values. This again is one step closer to the future.
-We would recommend to abstract the BehaviorSubjects away behind a [custom state implementation](https://stackblitz.com/edit/angular-rgfbr9?file=src%2Fobservable-state.ts){:target="_blank"} that handles simple state management for us. In the following example we use that custom state implementation.
+We would recommend to abstract the BehaviorSubjects away behind a [custom state implementation](https://raw.githubusercontent.com/simplifiedcourses/observable-state/main/src/state/observable-state.ts){:target="_blank"} that handles simple state management for us. In the following example we use that custom state implementation.
 As we can see here, we have a clear overview of our component state and we have initialized all the state of our component with initial data:
 
 ```typescript
@@ -206,12 +206,10 @@ The previous piece of code would look like this when using Signals:
 public readonly foo = signal(0);
 public readonly bar = signal(1);
 public readonly baz = signal(2);
-public readonly res$ = fromSignal(computed(() => ({foo: this.foo(), bar: this.bar()}))).pipe(
-    switchMap(({foo, bar}) => {
-        return this.fetch(foo, bar, this.baz())
-    })
+public readonly res$ = toObservable(computed(() => ({foo: this.foo(), bar: this.bar()}))).pipe(
+    switchMap(({foo, bar}) => this.fetch(foo, bar, this.baz()))
 );
-public readonly res = fromObservable(this.res$);
+public readonly res = toSignal(this.res$);
 
 // all the signals are available to the template here
 ```
@@ -277,9 +275,7 @@ constructor(){
         baz: 2
     });
     const res$ = this.onlySelectWhen(['foo', 'bar').pipe(
-        switchMap(({foo, bar}) => {
-            return this.fetch(foo, bar, this.snapshot.baz)
-        })
+        switchMap(({foo, bar}) => this.fetch(foo, bar, this.snapshot.baz))
     )
     this.connect({res: res$}); // store the result in our local component state
 }
@@ -292,12 +288,12 @@ In the future, using Signals, the code would look like this:
 private readonly foo = signal(0);
 private readonly bar = signal(1);
 private readonly baz = signal(2);
-private readonly res$ = fromSignal(computed(() => ({foo: this.foo(), bar: this.bar()}))).pipe(
+private readonly res$ = toObservable(computed(() => ({foo: this.foo(), bar: this.bar()}))).pipe(
     switchMap(({foo, bar}) => {
         return this.fetch(foo, bar, this.baz())
     })
 );
-private readonly res = fromObservable(this.res$);
+private readonly res = toSignal(this.res$);
 public readonly vm = computed(() => {
     return {
         foo: this.foo(),
@@ -310,7 +306,7 @@ public readonly vm = computed(() => {
 
 It's worth mentioning that libraries like [rx-angular/state](https://www.rx-angular.io/docs/state){:target="_blank"} and [@ngrx/component-store](https://ngrx.io/guide/component-store){:target="_blank"}
 follow similar patterns and also enforce you to keep your component state inside a reactive store.
-These libraries would certainly bring us closer to Signals but we try to keep it simple and avoid third-party state management libraries unless we really need them.
+These libraries would certainly bring us closer to Signals but we try to keep it simple and avoid third-party state management libraries unless we need them.
 
 ## Wrapping up
 

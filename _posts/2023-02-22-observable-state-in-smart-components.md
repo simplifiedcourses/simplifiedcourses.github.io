@@ -115,31 +115,35 @@ Meaning the `ObservableState` instance would be destroyed when its component wou
 Our example would look like this:
 
 ```typescript
-private readonly observableState: ObservableState<UserPanelState> 
-    = inject(ObservableState<UserPanelState>);
-// Get observable input state
-@InputState() private readonly inputState$!: Observable<UserPanelInputState>;
+export class MyComponent extends ObservableState<UserPanelState> {
+    // Get observable input state
+    @InputState() private readonly inputState$!: Observable<UserPanelInputState>;
 
-@Input() public firstName: string;
-@Input() public lastName:  string; 
+    @Input() public firstName: string;
+    @Input() public lastName:  string; 
 
-public readonly vm$ = this.observableState.state$;
+    public readonly vm$ = this.state$;
 
-public toggleCollapse(): void {
-    // We don't reactivity here
-    const {collapsed} = this.observableState.snapshot;
-    // Patch what we need
-    this.observableState.patch({collapsed: !collapsed})
+    public toggleCollapse(): void {
+        // We don't reactivity here
+        const {collapsed} = this.snapshot;
+        // Patch what we need
+        this.patch({collapsed: !collapsed})
+    }
+
+    constructor(){
+        super();
+        const { firstName, lastName } = this;
+        // Initialize state and connect it with
+        // the reactive input state
+        this.initialize({
+            firstName,
+            lastName
+            collapsed: false
+        }, this.inputState$)
+    }
 }
 
-constructor(){
-    // Initialize state and connect it with
-    // the reactive input state
-    this.observableState.initialize({
-        ...getDefaultInputState<UserPanelInputState>(this),
-        collapsed: false
-    }, this.inputState$)
-}
 ```
 
 We can see that we have dropped all the boilerplate code and we have one entity that we can interact with: The `ObservableState`.
@@ -209,7 +213,7 @@ Even though there are some existing solutions out there, in the next article, we
 
 ## The specs of our ObservableState
 
-[In the third article](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}, we created a class called `ObservableState`.
+[In the third article](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}, we created a class called [ObservableState](https://github.com/simplifiedcourses/observable-state){:target="_blank"}.
 We can provide it in:
 
 - Dumb components
@@ -226,9 +230,9 @@ What this local component state should do for us:
 - Handle replaying, ref counting for us.
 - Expose a snapshot of the latest state at any time.
 
-In the next article, we will update the `ObservableState`:
+In the [next article](http://localhost:4000/evolving-from-the-sip-principle-towards-observable-state/){:target="_blank"}, we will update the `ObservableState`:
 - Create `connect()` functionality: Connect observables to our `ObservableState` instance and clean up after them.
-- Create `selectOnly()` functionality: Getting notified only when certain parts of the state change.
+- Create `selectOnlyWhen()` functionality: Getting notified only when certain parts of the state change.
 - make the state hot on initialize: Working with connectable observables to make the state hot on initialization.
 
 We will create the implementation and some complex examples in the next article. Stay tuned!
