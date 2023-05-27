@@ -175,7 +175,7 @@ This looks exactly like what `FormBuilder` would have made for us, but Angular d
 ## But what about validations?
 
 Validations are a pain, and we definitely don't want to create custom validators and directives for them and add them everywhere in our templates. That is true, but I also don't like to see them in our reactive forms.
-In [this talk]() from Ward Bell, Ward explains that we shouldn't think about validation as form-validations but rather model-validations. We want to reuse these validations in different places and we want to validate a model in one place.
+In [this talk](https://www.youtube.com/watch?v=EMUAtQlh9Ko){:target="_blank"} from Ward Bell, Ward explains that we shouldn't think about validation as form-validations but rather model-validations. We want to reuse these validations in different places and we want to validate a model in one place.
 We don't want to go looking through our template-driven or reactive forms where all these validations lie.
 
 Removing validations from the forms and putting them in models brings us some advantages:
@@ -229,7 +229,7 @@ and connect the form after the view is initialized on the `ngAfterViewInit()` li
   ...
   `,
 })
-export class App extends ObservableState<{ form: User }> implements AfterViewInit {
+export class App extends ObservableState<{ user: User }> implements AfterViewInit {
   @ViewChild('form') form!: NgForm;
   ...
 
@@ -425,7 +425,7 @@ We just have to use the `onlySelectWhen()` method and connect that to the state.
 
 ```typescript
 @Component({...})
-export class App extends ObservableState<{ form: User, firstName: string }> implements AfterViewInit {
+export class App extends ObservableState<{ user: User, firstName: string }> implements AfterViewInit {
   ...
 
   constructor() {
