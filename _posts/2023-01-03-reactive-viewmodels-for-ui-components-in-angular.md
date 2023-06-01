@@ -326,5 +326,6 @@ Introducing these ViewModels results in:
 - A way to optimize for performance, eg for [Change Detection](https://www.simplified.courses/angular-change-detection-simplified-e-book){:target="_blank"}
 - A more reactive way of programming
 
-If you liked the article, please leave a comment!
+If you liked the article, please leave a comment! Creating ViewModels could be done a lot cleaner by using [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}
+
 If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

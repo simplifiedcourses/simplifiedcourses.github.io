@@ -4,7 +4,7 @@ title:  "Global Observable state in Angular"
 date:   2023-05-07
 published: false
 comments: true
-categories: [Angular, State management]
+categories: [Angular, State management, ObservableState]
 cover: assets/global-observable-state-in-angular.jpg
 description: "How do we handle global Observable state in Angular."
 ---

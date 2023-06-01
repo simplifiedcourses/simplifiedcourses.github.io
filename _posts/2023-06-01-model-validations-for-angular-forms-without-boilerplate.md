@@ -4,7 +4,7 @@ title:  "Model validations for Angular forms without boilerplate"
 date:   2023-05-31
 published: true
 comments: true
-categories: [Angular, Forms]
+categories: [Angular, Forms, ObservableState, Angular Signals]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
 description: "This article explains how we can do validations for Angular forms without struggling with boilerplate"
 ---

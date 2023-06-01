@@ -425,6 +425,8 @@ In the next article, we will fix the following problems:
 - How can we make this work together with other pieces of state.
 
 This is the first step towards truly reactive components. In the next articles, we will dive deeper and use this principle as a cog in our reactive component state. If you liked the article, please leave a comment!
-Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"} 
+Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"}
+
+When input state is not enough and our component needs local state (or even global state) as well. We would love you to take a look at [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}.
 
 If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)

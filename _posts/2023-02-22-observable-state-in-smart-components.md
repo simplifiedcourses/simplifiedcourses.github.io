@@ -4,7 +4,7 @@ title:  "Observable component state in Angular"
 date:   2023-02-22
 published: true
 comments: true
-categories: [Angular, RxJS, State management]
+categories: [Angular, RxJS, State management, ObservableState]
 cover: assets/observable-component-state-in-angular.jpg
 description: "We will dive deep into Observable state in Angular Smart components that we can use to create better reactive flows and local state management."
 

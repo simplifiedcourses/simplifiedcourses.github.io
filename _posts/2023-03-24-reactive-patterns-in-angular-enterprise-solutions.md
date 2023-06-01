@@ -4,7 +4,7 @@ title:  "Reactive patterns in Angular Enterprise solutions"
 date:   2023-03-24
 published: true
 comments: true
-categories: [Angular, State management]
+categories: [Angular, State management, ObservableState, Angular Signals]
 cover: assets/reactive-patterns-in-angular-enterprise-solutions.jpg
 description: "Brecht Billiet his ng-be 2023 conference talk."
 ---
