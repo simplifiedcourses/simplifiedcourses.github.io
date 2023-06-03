@@ -33,6 +33,19 @@ layout: default
         <div class="post-content e-content" itemprop="articleBody">
             {{ content }}
         </div>
+        <div class="post-nav__wrapper">
+            {% if page.previous %}
+            <a class="post-nav post-nav--prev" href="{{ page.previous.url }}">
+                <span class="post-nav__label">&#8592;Previous Article</span>
+            </a>
+            {% endif %}
+
+            {% if page.next %}
+            <a class="post-nav post-nav--next" href="{{ page.next.url }}">
+                <span class="post-nav__label">Next Article&#8594;</span>
+            </a>
+            {% endif %}
+        </div>
         <div class="post-subscribe">
             <h3>Join the club and get notified with new content</h3>
             <p>Get notified about our future blog articles by subscribing with the button below.</p>

@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Model validations for Angular forms without boilerplate"
-date:   2023-05-31
+title:  "Say goodbye to custom form validators in Angular"
+date:   2023-06-02
 published: true
 comments: true
 categories: [Angular, Forms, ObservableState, Angular Signals]
-cover: assets/template-driven-or-reactive-forms-in-angular.jpg
+cover: assets/say-goodbye-to-custom-form-validators-in-angular.jpg
 description: "This article explains how we can do validations for Angular forms without struggling with boilerplate"
 ---
 
@@ -79,6 +79,7 @@ export type User = {
 This is a clean model, and the validation suite could look like this:
 
 ```typescript
+// ./validations/user.validations.ts
 import { User } from '../types/user';
 import { test, enforce, create } from "vest";
 
@@ -529,6 +530,16 @@ export class AddUserComponent implements AfterViewInit {
 
 ## Wrap up
 
-Todo: wrapup
+We learned that both template-driven forms and reactive forms have issues with validators. They are complex and hard to manage.
+Model validations make more sense from an architectural point of view and with Vest-suites we can create composable, scalable
+and conditional validation suites. By using 2 directives we can easily translate those validation suites to Angular validators and
+connect them to the `FormControl` and `FormGroup` instances that are automatically created by Angular.
+We created a `inputWrapper` component that uses the validation errors in combination with content projection to show validation errors
+without any boilerplate. As a cherry on top, we refactored the entire form to signals.
+I hope you enjoyed this article. Please leave a comment and subscribe for more content.
 
-I hope you enjoyed this article
+I want to thank the awesome reviewers of this article:
+- [Daniel Glejzner](https://www.twitter.com/danielglejzner){:target="_blank"} 
+- [Thomas Laforge](https://www.twitter.com/laforge_toma){:target="_blank"} 
+- [Pawel Kubiak](https://www.twitter.com/pawelkubiakdev){:target="_blank"} 
+- [Flo Bacher](https://www.twitter.com/flobacher){:target="_blank"} 

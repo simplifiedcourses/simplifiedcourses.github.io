@@ -298,3 +298,9 @@ code {
     border-radius: 1.5rem;
   }
 }
+
+.post-nav__wrapper{
+  display: flex;
+  justify-content:space-between;
+  padding-bottom: 32px;
+}
