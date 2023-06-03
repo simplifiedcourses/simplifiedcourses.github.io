@@ -542,4 +542,3 @@ I want to thank the awesome reviewers of this article:
 - [Daniel Glejzner](https://www.twitter.com/danielglejzner){:target="_blank"} 
 - [Thomas Laforge](https://www.twitter.com/laforge_toma){:target="_blank"} 
 - [Pawel Kubiak](https://www.twitter.com/pawelkubiakdev){:target="_blank"} 
-- [Flo Bacher](https://www.twitter.com/flobacher){:target="_blank"} 
