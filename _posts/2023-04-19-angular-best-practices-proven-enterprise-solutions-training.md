@@ -23,4 +23,4 @@ Checkout these [Awesome Testimonials](https://www.simplified.courses/remote-angu
 
 In this article, we will go over every chapter in our Angular Best Practices training and we will tackle some Best Practices in every chapter. Let's dive in.
 
-If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

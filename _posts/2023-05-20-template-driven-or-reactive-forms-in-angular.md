@@ -485,3 +485,5 @@ Interested in playing with the code? Check out [this stackblitz](https://stackbl
 Thanks to the awesome reviewers;
 - [Daniel Glejzner](https://twitter.com/danielglejzner){:target="_blank"}
 - [Jeffrey Bosch](https://twitter.com/jefiozie){:target="_blank"}
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

@@ -429,4 +429,4 @@ Check out this article if you want to learn some [Angular State management Best 
 
 When input state is not enough and our component needs local state (or even global state) as well. We would love you to take a look at [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"}.
 
-If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

@@ -85,4 +85,4 @@ It's a wrap! Don't be afraid of these interviews. They are awesome! They allow y
 
 Special thanks to the reviewer [Daniel Glejzner](https://twitter.com/DanielGlejzner){:target="_blank"}
 
-If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

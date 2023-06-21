@@ -321,4 +321,4 @@ That doesn't mean we can't prepare for them! By following these principles we ca
 Hope you enjoyed it. Comment if you liked it!
 
 
-If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

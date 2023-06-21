@@ -162,4 +162,4 @@ In these articles, we also optimize Change Detection by leveraging the **inner z
 - [Running Outputs outside zone.js for Angular performance Optimization](https://blog.simplified.courses/running-outputs-outside-zonejs-for-angular-performance-optimization/){:target="_blank"}
 - [Angular performant drag-and-drop with RxJS](https://blog.simplified.courses/angular-performant-drag-and-drop-with-rxjs/){:target="_blank"}
 
-If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

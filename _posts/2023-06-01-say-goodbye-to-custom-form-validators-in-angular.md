@@ -542,3 +542,5 @@ I want to thank the awesome reviewers of this article:
 - [Daniel Glejzner](https://www.twitter.com/danielglejzner){:target="_blank"} 
 - [Thomas Laforge](https://www.twitter.com/laforge_toma){:target="_blank"} 
 - [Pawel Kubiak](https://www.twitter.com/pawelkubiakdev){:target="_blank"} 
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

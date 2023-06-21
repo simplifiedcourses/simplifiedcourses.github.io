@@ -560,3 +560,5 @@ Special thanks to the awesome reviewers:
 - [Mihai Paraschivescu](https://twitter.com/mikeandtherest){:target="_blank"}
 - [Daniel Glejzner](https://twitter.com/DanielGlejzner){:target="_blank"}
 - [Fabian Gosebrink](https://twitter.com/FabianGosebrink){:target="_blank"}
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

@@ -351,4 +351,4 @@ By using [ObservableState](https://github.com/simplifiedcourses/observable-state
 Signals are awesome, but they are not ready yet!
 Thanks for reading and stay awesome!
 
-If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training) and [Angular Coaching](https://www.simplified.courses/angular-coaching)
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}
