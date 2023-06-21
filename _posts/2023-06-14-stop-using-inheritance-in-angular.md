@@ -2,8 +2,9 @@
 layout: post
 title:  "Stop using in inheritance in Angular"
 date:   2023-06-20
-published: false
+published: true
 comments: true
+cover: assets/stop-using-inheritance-in-angular.jpg
 categories: [Angular, Architecture, Best Practices]
 description: "This article explains why we should stay away from inheritance in Angular"
 ---
