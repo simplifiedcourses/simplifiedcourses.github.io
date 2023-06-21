@@ -60,6 +60,7 @@ When we inherit from a base class we inherit everything from that base class so 
 - Breaks separation of concerns
 - Can become very complex in no-time
 - Hard to read, we have no clue what kind of logic our base class has
+- Inheritance is the strongest form of coupling. Changing the base class can break inheriting classes.
 
 Let's say that we have a class `Foo` that needs the following functionalities:
 - Logging
