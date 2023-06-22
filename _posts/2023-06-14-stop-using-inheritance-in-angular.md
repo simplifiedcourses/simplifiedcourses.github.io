@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Stop using in inheritance in Angular"
-date:   2023-06-20
+title:  "Stop using inheritance in Angular"
+date:   2023-06-21
 published: true
 comments: true
 cover: assets/stop-using-inheritance-in-angular.jpg
@@ -315,11 +315,20 @@ But we can also create instances of a dependency on all the different component 
 We can provide a dependency:
 - As a singleton: with `providedIn: 'root'`
 - As a singleton: At the `providers` property of the root component
-- Tied to a component: At the `providers` property of any component
+- Tied to a component: At the `providers` property of any component. This makes it extremely handy to let the instances destroyed automatically when the component that provides the instance gets destroyed.
 
 It's important to remember that when providing a dependency on a component we can implement the `ngOnDestroy()` lifecycle hook.
 
 If you want to test your knowledge on the topic: "Angular Dependency injection", check out this free [Angular Dependency Injection Quiz](https://www.simplified.courses/free-angular-dependency-injection-quiz){:target="_blank"}.
 
+*Note:* As a side note, we also might want to check [HostDirectives](https://angular.io/guide/directive-composition-api){:target="_blank"} which can be used for composition as well
+
+### Special thank you to the reviewers
+
+These awesome people helped me review this article. Thanks!!
+- [Jason Warner](https://twitter.com/xocomil_1){:target="_blank"}
+- [Jeffrey Bosch](https://twitter.com/jefiozie){:target="_blank"}
+- [Michael Be](https://twitter.com/mikelgo812){:target="_blank"}
+- [Jan-niklas Wortmann](https://twitter.com/niklas_wortmann){:target="_blank"}
 
 If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

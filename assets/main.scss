@@ -197,7 +197,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   &__post {
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 800px;
     &-subscribe {
       background: #fff;
