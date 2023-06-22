@@ -6,7 +6,7 @@ published: true
 comments: true
 cover: assets/stop-using-inheritance-in-angular.jpg
 categories: [Angular, Architecture, Best Practices]
-description: "This article explains why we should stay away from inheritance in Angular"
+description: "Read this if you want to know why we should stay away from inheritance in Angular"
 ---
 
 At Simplified Courses, we tend to do **a lot of Angular code-reviews** for companies that want to make sure they are still on the right track. One of the principles that often makes their codebase unmaintainable and unnecessarily complex is the principle of **inheritance**.
@@ -48,7 +48,7 @@ class Bike extends Vehicle {
 }
 ```
 
-As we can see, the `Car` class and the `Bike` class, both inherit from that base class and fix the duplicate logic issue that we had before. The nice thing is, our logic is in one central place and by inheriting from that base class we get this logic for free.
+As we can see, the `Car` class and the `Bike` class, both extend from that base class and fix the duplicate logic issue that we had before. The nice thing is, our logic is in one central place and by inheriting from that base class we get this logic for free.
 However, **we consider this a bad practice** and we will explain why.
 
 ## Why we should not use inheritance in Angular (or any technology for that matter)?
@@ -85,7 +85,7 @@ Imagine we now have a class `Bar` that needs logging, data fetching but it does 
 - Data fetching
 - Authentication
 
-The logical thing would be to add the authentication part to the `Base` class as well and let `Bar` inherit from `Base` like this:
+What could add the authentication part to the `Base` class as well and let `Bar` inherit from `Base` like this:
 
 ```typescript
 export class Base {
@@ -102,7 +102,7 @@ export class Bar extends Base {
 }
 ```
 
-Our `Base` class is becoming dirtier because now it has 4 functionalities that are unrelated and `Foo` has access to `authenticate()` when it doesn't need to, while `Bar` has access to `cache()` when it doesn't need to. This clearly breaks the single responsibility pattern and when our application grows, the `Base` class would grow in functionality and no one would even know what is inside that `Base` class. By pushing this principle further we could wind up with base classes inheriting from other base classes and so on.
+Our `Base` class is becoming dirtier because now it has 4 functionalities that are unrelated and `Foo` has access to `authenticate()` when it doesn't need to, while `Bar` has access to `cache()` when it doesn't need to. This clearly breaks the single responsibility pattern and when our application grows, the `Base` class would grow in functionality and no one would even know what is inside that `Base` class. By pushing inheritance further we could wind up with base classes inheriting from other base classes and so on.
 
 Wouldn't this snippet make more sense?
 
@@ -137,7 +137,7 @@ This is easy to mock out, breathes single responsibility and is easy to read. No
 
 ## Composition
 
-Composition is the principle where we group pieces of related code in classes and inject instances of those classes into the class rather than letting the class inherit from a base class. In Angular, we can leverage Dependency Injection for that.
+Composition is the principle where we group pieces of related code in classes and use instances of those classes in the class rather than letting the class inherit from a base class. In Angular, we can leverage Dependency Injection for that.
 
 We should always use composition unless the following statement is true:
 **There is one reason, and one reason only why we could use inheritance in Angular projects:
@@ -171,11 +171,12 @@ export class UserListComponent {
 }
 ```
 
-This means we can break down all the logic into different injectables and inject them/mock them wherever we want. This makes it easy to pick different pieces of functionality from wherever we see fit.
+This means we can split up all the logic into different injectables and inject them/mock them wherever we want. This makes it easy to pick different pieces of functionality from wherever we see fit.
 
 ### What about components?
 
-Having singleton-instances for every dependency might not always be a good idea. Sometimes we want new instances of an injectable every time a component is created.
+When providing injectables in the root of the application we create singleton instances.
+Having singleton instances for every dependency might not always be a good idea. Sometimes we want new instances of an injectable every time a component is created.
 Sometimes the lifecycle of an Angular injectable needs to be shared with the lifecycle of a component. 
 
 ### The power of instances per component
@@ -201,7 +202,8 @@ export class EditUserComponent {
 }
 ```
 
-This is redundant logic and a singleton will not fulfill our needs since it has a piece of state called `phoneNumbers`. We could let them both extend from a base class but we have already seen the downsides of that appraoch. Instead let's create an injectable called `PhoneNumberState` that has all that functionality and inject it in both the `AddUserComponent` and `EditUserComponent`. By adding it to the `providers` property of both components we will create 2 instances that will live and die along with their connected components and we won't have to share state between them.
+This is redundant logic and a singleton will not fulfill our needs since it has a piece of state called `phoneNumbers`. We could let them both extend from a base class but we have already seen the downsides of that approach. Instead, let's create an injectable called `PhoneNumberState` that has all that functionality and inject it in both the `AddUserComponent` and `EditUserComponent`. By adding it to the `providers` property of both components we will create 2 instances that will live and die along with their connected components and we won't have to share state between them.
+If we would have extended from `PhoneNumberState` we would have to add all the shared logic in `PhoneNumberState` which would make it lose its single responsibility.
 
 ```typescript
 // Create an injectable 
@@ -255,6 +257,8 @@ export class PhoneNumberState implements OnDestroy {
 }
 
 ```
+
+Now for `AddUserComponent` and `EditUserComponent` the instances would get destroyed when their component that provides them gets destroyed.
 
 ### Sharing state between child components
 
@@ -310,7 +314,7 @@ We learned that inheritance can be dangerous and it makes our codebase hard to s
 Composition is better because it follows the single responsibility pattern, it is more readable, more testable and easier to understand.
 
 Angular has a great Dependency Injection system that we can use to create singletons.
-But we can also create instances of a dependency on all the different component levels which gives us a lot of flexibility.
+But we can also create instances of a dependency on all the different component levels which gives us a lot of flexibility. In our opinion, it's better to use composition over inheritance.
 
 We can provide a dependency:
 - As a singleton: with `providedIn: 'root'`
