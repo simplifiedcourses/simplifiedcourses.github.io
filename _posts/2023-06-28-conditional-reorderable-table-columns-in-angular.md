@@ -406,3 +406,5 @@ Check out the entire solution in StackBlitz [here](https://stackblitz.com/edit/s
 ### Summary
 
 Using content projection in Angular can be something very powerful. In this article, we learned how to use `ng-template` in combination with `@ContentChildren()` and `*ngTemplateOutlet` to not only conditionally render elements, but also determine their order. I hope you enjoyed the article!
+
+If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}
