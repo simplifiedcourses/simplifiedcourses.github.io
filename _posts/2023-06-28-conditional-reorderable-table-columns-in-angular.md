@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Reorder conditional table columns in Angular"
-date:   2023-06-29
+title:  "Deep dive: Reorder conditional table columns in Angular"
+date:   2023-07-02
 published: true
 comments: true
 cover: assets/reorder-conditional-table-columns-in-angular.jpg
@@ -275,7 +275,6 @@ In our template, we would loop over all the keys of our columns and create a new
 To render the right `TemplateRef` at the right place we need access to all the `TemplateRef` children and all the  `ConditionalTemplateDirective` children of this component. Remember how it is being used (our `ConditionalTemplateDirective` always has an `ng-template` with a `conditional-template` directive applied to it):
 
 ```html
-```html
 <tr [conditional-templates-with-order]="columnsToShow">
     <ng-template conditional-template="firstName">
        ...
@@ -284,13 +283,14 @@ To render the right `TemplateRef` at the right place we need access to all the `
 </tr>
 ```
 
+This is more type-safe then the let-model approach Telerik and Angular material are using.
 To get access to those children, we can use `ContentChildren`:
 
 ```typescript
 export class ConditionalTemplatesWithOrderComponent {
     // Get access to `ng-template`
     @ContentChildren(TemplateRef)
-    protected templates!: QueryList<TemplateRef<any>>;
+    protected templates!: QueryList<TemplateRef<unknown>>;
     
     // Get access to `conditional-template`
     // which holds the key
@@ -408,3 +408,6 @@ Check out the entire solution in StackBlitz [here](https://stackblitz.com/edit/s
 Using content projection in Angular can be something very powerful. In this article, we learned how to use `ng-template` in combination with `@ContentChildren()` and `*ngTemplateOutlet` to not only conditionally render elements, but also determine their order. I hope you enjoyed the article!
 
 If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}
+
+Special thanks to the awesome reviewer:
+-[Gregor Woiwode](https://twitter.com/GregOnNet){:target="_blank"}
