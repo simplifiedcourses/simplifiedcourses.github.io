@@ -296,6 +296,7 @@ export class App extends ObservableState<{ user: User, dirty: boolean, valid: bo
     this.initialize({
       ...
       // initialize the new state values
+      // will throw an error as form is not defined when constructor is called
       dirty: this.form.dirty,
       valid: this.form.valid
     })
