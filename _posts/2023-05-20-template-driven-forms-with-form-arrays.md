@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Template-driven forms with form arrays in Angular"
-date:   2023-07-30
+date:   2023-08-06
 published: true
 comments: true
 categories: [Angular, Forms, State management, Signals]
@@ -13,10 +13,10 @@ description: "This article explains how to work with form arrays in template-dri
 
 Lately, more and more Angular developers favor template-driven forms over reactive forms because:
 - There is almost no boilerplate code.
-- It's easy to do [form validations](https://blog.simplified.courses/say-goodbye-to-custom-form-validators-in-angular/){:target="_blank"}
+- It's easy to do [form validations](https://blog.simplified.courses/say-goodbye-to-custom-form-validators-in-angular/){:target="_blank"}.
 - We let Angular do all the work! Angular will create `FormControl` and `FormGroup` instances for us automatically behind the scenes.
 - Template-driven forms are more declarative.
-I explain the pros and cons of both techniques in [this article](https://blog.simplified.courses/template-driven-or-reactive-forms-in-angular/){:target="_blank"}.
+The pros and cons of both techniques are explained in [this article](https://blog.simplified.courses/template-driven-or-reactive-forms-in-angular/){:target="_blank"}.
 
 When using Reactive forms in Angular we could use a `FormArray` if we want to create an iterable list of `FormControl` elements. This technique can be handy if we want to create a list of phonenumbers for instance.
 **Template-driven forms don't play nice with form arrays** and in this article we will focus on how to achieve the same functionality by using template-driven forms.
@@ -91,7 +91,7 @@ create `FormGroup` and `FormControls` instances automatically by using the `ngMo
 
 ## The phonenumbers functionality
 
-Let's continue with our phonenumbers example. We have a simple user form that has a `firstName` and `lastName` property, together with an array of phonenumbers.
+Let's continue with our phonenumbers example. We need a simple user form that has a `firstName` and `lastName` property, together with an array of phonenumbers.
 FormArrays are not available in template-driven forms, but we could use the following technique to achieve something similar:
 
 ```html
@@ -111,23 +111,23 @@ FormArrays are not available in template-driven forms, but we could use the foll
 </form>
 ```
 
-This would create a `FormControl` instance on the form for every phonenumber and **would pollute the automatically created reactive form** behind the scenes. It would look like this:
+This would create a `FormControl` instance on the `form` for every phonenumber and **would pollute the automatically created reactive form** behind the scenes. It would look like this:
 
 ```typescript
 ngForm = {
     form: {
         firstName: FormControl,
         lastName: FormControl,
-        phonenumber0: FormControl,
-        phonenumber1: FormControl,
-        phonenumber2: FormControl,
-        phonenumber3: FormControl,
+        phonenumber0: FormControl, // Dirty
+        phonenumber1: FormControl, // Dirty
+        phonenumber2: FormControl, // Dirty
+        phonenumber3: FormControl, // Dirty
     }
 }
 ```
+
 As we can see, an array is not possible. Angular would just create formControls with unique keys.
-Let's stop trying to use arrays and use template-driven forms they way they were meant to be used. This means our form can only exist out of form groups and form controls.
-This is the automatically created reactive form that we want to achieve:
+Let's stop trying to use arrays, and instead use template-driven forms they way they were meant to be used. This means our form can only exist out of form groups and form controls. The previous approach polluted the structure of our form. The following structure is the structure that we want to achieve:
 
 ```typescript
 ngForm = {
@@ -135,6 +135,7 @@ ngForm = {
         firstName: FormControl,
         lastName: FormControl,
         // Clean separate formGroup that contains the phonenumbers
+        // on a property related to the index
         phonenumbers: {
             0: FormControl,
             1: FormControl,
@@ -153,7 +154,7 @@ Let's update the `UserFormModel` since this is the model that will represent our
 class UserFormModel {
     public firstName = '';
     public lastName = '';
-    // Will result to the input that will be used
+    // Will represent the input that will be used
     // to add a phone number
     public addPhonenumber = '';
     // The list of actual phone numbers
@@ -169,8 +170,11 @@ Ideally, an initial version of our form would look like this:
     ...
     <h2>Phonenumbers</h2>
     <div ngModelGroup="phonenumbers">
-        <div class="phonenumber" *ngFor="let key of vm.user.phonenumbers; trackBy: tracker">
-            <input type="text" [ngModel]="vm.user.phonenumbers[key]" name="{%raw%}{{key}}{%endraw%}" />
+        <div class="phonenumber" 
+            *ngFor="let key of vm.user.phonenumbers; trackBy: tracker">
+            <input type="text" 
+                [ngModel]="vm.user.phonenumbers[key]" 
+                name="{%raw%}{{key}}{%endraw%}" />
         </div>
     </div>
     ...
@@ -178,15 +182,18 @@ Ideally, an initial version of our form would look like this:
 ```
 
 **This will result in an error** because `vm.user.phonenumbers` **is not an iterable but an object** and the `*ngFor` directive expects an iterable like an Array.
-To convert this object to an array we can use the `keyvalue` pipe. 
+To convert this object to an array we can use the `keyvalue` pipe. This pipe will return an array with a `key` and a `value` property.
 
 ```html
 <form #form="ngForm" *ngIf="vm$|async as vm" (ngSubmit)="submit()">
     ...
     <h2>Phonenumbers</h2>
     <div ngModelGroup="phonenumbers">
-        <div class="phonenumber" *ngFor="let item of vm.user.phonenumbers|keyvalue; trackBy: tracker">
-            <input type="text" [ngModel]="vm.user.phonenumbers[item.key]" name="{%raw%}{{item.key}}{%endraw%}" />
+        <div class="phonenumber" 
+            *ngFor="let item of vm.user.phonenumbers|keyvalue; trackBy: tracker">
+            <input type="text" 
+                [ngModel]="vm.user.phonenumbers[item.key]"
+                name="{%raw%}{{item.key}}{%endraw%}" />
         </div>
     </div>
     ...
@@ -199,17 +206,22 @@ because `this.form.valueChanges` is automatically feeding our component its stat
 
 ## Completing the phonenumbers functionality with adding and deleting phonenumbers
 
-The iterative part is ready but now we still need to be able to add and remove phonenumbers.
+The iterative part and the updating of phonenumbers is ready but now we still need to be able to add and remove phonenumbers.
 
 ```html
 <form #form="ngForm" *ngIf="vm$|async as vm" (ngSubmit)="submit()">
     ...
     <h2>Phonenumbers</h2>
     <div ngModelGroup="phonenumbers">
-        <div class="phonenumber" *ngFor="let item of vm.user.phonenumbers|keyvalue; trackBy: tracker">
-            <input type="text" [ngModel]="vm.user.phonenumbers[item.key]" name="{%raw%}{{item.key}}{%endraw%}" />
+        <div class="phonenumber" 
+            *ngFor="let item of vm.user.phonenumbers|keyvalue; trackBy: tracker">
+            <input type="text" 
+                [ngModel]="vm.user.phonenumbers[item.key]" 
+                name="{%raw%}{{item.key}}{%endraw%}" />
             <!-- Delete the phonenumber based on the key -->
-            <button type="button" (click)="deletePhonenumber(item.key)">Delete phonenumber</button>
+            <button type="button" (click)="deletePhonenumber(item.key)">
+                Delete phonenumber
+            </button>
         </div>
     </div>
     <!-- Bind the addPhonenumber to an input -->
@@ -221,8 +233,7 @@ The iterative part is ready but now we still need to be able to add and remove p
 ```
 
 The template is ready, we only need to add a `deletePhonenumber()` and `addPhoneNumber()` method.
-An array would be a little bit easier here, but since template-driven forms don't play nice with arrays we have to translate an array
-to an object and the other way around.
+An array would be a little bit easier here, but since template-driven forms don't play nice with arrays we have to translate an array to an object and the other way around.
 
 Let's start with the `deletePhoneNumber()` method. We will use `Object.values` to get all the values from our phonenumbers object and create a new array
 with the `addPhonenumber` value. This gives us a brand new array with the newly added phonenumber in it:
@@ -416,6 +427,7 @@ export class UserFormComponent
         });
     }
 }
+
 // Pure function that creates an object from an array
 function arrayToObject<T>(arr: T[]): { [key: number]: T } {
     return arr.reduce((acc, value, index) => ({ ...acc, [index]: value }), {});
@@ -423,8 +435,7 @@ function arrayToObject<T>(arr: T[]): { [key: number]: T } {
 
 ```
 
-The complete result of the template looks like this. This template has no boilerplate, it is readable
-and Angular takes care of everything for us:
+The complete result of the template looks like this. This template has no boilerplate, it is readable and Angular takes care of everything for us:
 
 ```html
 <form #form="ngForm" *ngIf="vm$ | async as vm" (ngSubmit)="submit()">
@@ -437,8 +448,11 @@ and Angular takes care of everything for us:
     <h2>Phonenumbers</h2>
     <div ngModelGroup="phonenumbers">
         <div
-            class="phonenumber" *ngFor="let item of vm.user.phonenumbers | keyvalue; trackBy: tracker">
-            <input type="text" [ngModel]="vm.user.phonenumbers[item.key]" name="{%raw%}{{ item.key }}{%endraw%}" />
+            class="phonenumber"
+            *ngFor="let item of vm.user.phonenumbers | keyvalue; trackBy: tracker">
+            <input type="text" 
+                [ngModel]="vm.user.phonenumbers[item.key]" 
+                name="{%raw%}{{ item.key }}{%endraw%}" />
             <button type="button" (click)="deletePhonenumber(item.key)">
                 Delete phonenumber
             </button>
@@ -455,7 +469,8 @@ You can play with the example on [Stackblitz here](https://stackblitz.com/edit/a
 
 ### Signals
 
-We have to be ready for the future, that's why we can refactor this to signals as well.
+We have to be ready for the future, that's why we will refactor this to signals as well.
+Instead of using the ObservableState method we will keep the value of our form in a simple `WriteableSignal`:
 
 ```typescript
 export class UserFormComponent implements AfterViewInit {
@@ -476,6 +491,7 @@ export class UserFormComponent implements AfterViewInit {
             this.user.update((old) => new UserFormModel({ ...old, ...v }));
         });
     }
+
     public submit(): void { ... }
 
     public addPhonenumber(): void {
@@ -519,3 +535,6 @@ Using ObservableState is easy to create reactive forms out of template-driven fo
 We can not use `FormArray` since it is a part of the reactive forms package in Angular. Since template-driven forms create `FormControl` and `FormGroup` instances
 for us automatically we can create clean form structures by converting arrays to objects and the other way around.
 Refactoring this to signals was as easy as replacing `*ngIf="vm$ | async as vm"` with `*ngIf="vm() as vm"` and our class got cleaned up nice as well.
+Hope you liked the article! If you have any questions! Reach out!
+
+Remember that we also offer [Angular Consultancy](https://www.simplified.courses/angular-coaching){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}. We also love to help out with [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} 
