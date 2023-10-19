@@ -11,6 +11,10 @@ description: "In this article we will create a type-safe Template-driven From wi
 
 In this article we will learn the most basic example of a semi-complex unidirectional form with Angular Signals.
 
+Not a reader? I created 2 YouTube video's for you explaining everything!!
+- [Livecode: Angular Unidirectional Template-driven Forms with signals](https://www.youtube.com/watch?v=ijp_qt3SYl4&t=1s){:target="_blank"}
+- [Livecode: Angular Template-driven Forms with ViewModels](https://www.youtube.com/watch?v=ONOtrl6j6Qs&t=14s){:target="_blank"}
+
 ## Creating a unidirectional Template-driven form with Angular
 
 Unidirectional dataflow is important for predictability, so we will not use the **banana-in-the-box** syntax `[()]`, but we will use `[ngModel]` without
