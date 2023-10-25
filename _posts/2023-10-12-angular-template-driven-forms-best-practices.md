@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Angular Template-driven Forms Best Practices"
-date:   2023-10-12
+title: "Angular Template-driven Forms Best Practices"
+date: 2023-10-12
 published: false
 comments: true
 categories: [Angular, Forms, Best Practices]
@@ -14,7 +14,7 @@ clear guidelines. In this article I will explain some of the Best Practices I fo
 ## Ensure a unidirectional dataflow with an empty form value
 
 For this, we need to keep the state of the form in a separate object. You could use a `BehaviorSubject` but to be future-proof
-let's put this in an Angular `Signal` called `formValue`. The goal is to never use banana-in-the-box syntax again unless it is for local state. 
+let's put this in an Angular `Signal` called `formValue`. The goal is to never use banana-in-the-box syntax again unless it is for local state.
 Since the entire form will be partial anyway, let's start with an empty value `{}` to put in the `formValue` signal.
 Here is an example:
 
@@ -36,18 +36,15 @@ export class PurchaseFormComponent implements AfterViewInit {
     protected submit(): void { ... }
 }
 ```
+
 ```html
 <h1>Template-driven Purchase form</h1>
-<form #form="ngForm"
-      (ngSubmit)="submit()">
-    <label>
-        <span>First name</span>
-        <input type="text"
-               [ngModel]="formValue.firstName"
-               name="firstName"
-        />
-    </label>
-    <button type="submit">Submit</button>
+<form #form="ngForm" (ngSubmit)="submit()">
+  <label>
+    <span>First name</span>
+    <input type="text" [ngModel]="formValue.firstName" name="firstName" />
+  </label>
+  <button type="submit">Submit</button>
 </form>
 <pre>
     {{ formValue | json }}
@@ -98,21 +95,19 @@ export class PurchaseFormComponent implements AfterViewInit {
 ```
 
 ```html
-<form #form="ngForm"
-      (ngSubmit)="submit()">
-    <label>
-        <span>First name</span>
-        <input type="text"
-               [ngModel]="vm.formValue.firstName"
-               name="firstName"/>
-    </label>
-    <button type="button" [disabled]="vm.resetDisabled" (click)="reset()">
-        Reset
-    </button>
-    Form is: {{ vm.status }}
-    <pre>
+<form #form="ngForm" (ngSubmit)="submit()">
+  <label>
+    <span>First name</span>
+    <input type="text" [ngModel]="vm.formValue.firstName" name="firstName" />
+  </label>
+  <button type="button" [disabled]="vm.resetDisabled" (click)="reset()">
+    Reset
+  </button>
+  Form is: {{ vm.status }}
+  <pre>
         {{ vm.formValue | json }}
-    </pre>
+    </pre
+  >
 </form>
 ```
 
@@ -120,12 +115,14 @@ export class PurchaseFormComponent implements AfterViewInit {
 
 The biggest selling point for Template-driven forms is: **Let Angular create the entire form structure for you**.
 That means your template can contain:
+
 - `ngModel` and `ngModelGroup` directives
 - `[disabled]` directives
 - `*ngIf` and `*ngFor` statements that Angular can use to build the form for us
 
 That's it. Keep the rest of the form creating and state logic outside your template in your ViewModel.
 Here is an example where we do the following:
+
 - We expose the `formValue`, `status` and whether the reset button should be disabled or not.
 - The `emergencyContact` field should be disabled when the person is of legal age.
 - The `showOtherGender` field should only be in the form when the value of the `gender` field is set to `other`.
@@ -142,7 +139,7 @@ export class PurchaseFormComponent implements AfterViewInit {
             this.formValue().age === 0 || this.formValue().age >= 18,
         showOtherGender: this.formValue().gender === 'other',
         showShippingAddress:
-            this.formValue().addresses?.shippingAddressDifferentFromBillingAddress,    
+            this.formValue().addresses?.shippingAddressDifferentFromBillingAddress,
     }));
 }
 ```
@@ -151,25 +148,30 @@ The HTML could look like this:
 
 ```html
 <label>
-    <span>Emergency contact</span>
-    <input type="text"
-           [ngModel]="vm.formValue.emergencyContactNumber || ''"
-           name="emergencyContactNumber"
-           [disabled]="vm.emergencyContactDisabled"/>
+  <span>Emergency contact</span>
+  <input
+    type="text"
+    [ngModel]="vm.formValue.emergencyContactNumber || ''"
+    name="emergencyContactNumber"
+    [disabled]="vm.emergencyContactDisabled"
+  />
 </label>
 ...
 <label>
-    <span>Specify other gender</span>
-    <input type="text"
-           [ngModel]="vm.formValue.genderOther"
-           name="genderOther"
-           *ngIf="vm.showOtherGender"/>
+  <span>Specify other gender</span>
+  <input
+    type="text"
+    [ngModel]="vm.formValue.genderOther"
+    name="genderOther"
+    *ngIf="vm.showOtherGender"
+  />
 </label>
 ...
-<div ngModelGroup="shippingAddress"
-     *ngIf="vm.showShippingAddress">
-    <h2>Shipping address</h2>
-    <app-address-form [address]="vm.formValue.addresses?.shippingAddress"></app-address-form>
+<div ngModelGroup="shippingAddress" *ngIf="vm.showShippingAddress">
+  <h2>Shipping address</h2>
+  <app-address-form
+    [address]="vm.formValue.addresses?.shippingAddress"
+  ></app-address-form>
 </div>
 ```
 
@@ -186,28 +188,28 @@ There are multiple approaches
 
 Sometimes we want to set values on the form based on other values of our form.
 Let's say that we want to set the `gender` to `male` and the `lastName` to `Billiet` when the `firstName` is `Brecht`...
-Let's even say we want to set the `age` to 35, the `gender` to `male`, the `passwords.password` to `Test1234` 
+Let's even say we want to set the `age` to 35, the `gender` to `male`, the `passwords.password` to `Test1234`
 and the `passwords.confirmPassword` to `Test12345` when both the `firstName` is equal to `Brecht` and the `lastName` is equal to `Billiet`
 This is what it would look like with Reactive forms:
 
 ```typescript
 this.form.controls.firstName.valueChanges.subscribe((firstName) => {
-    if (firstName === 'Brecht') {
-        this.form.patchValue({ gender: 'male', lastName: 'Billiet' });
-    }
+  if (firstName === "Brecht") {
+    this.form.patchValue({ gender: "male", lastName: "Billiet" });
+  }
 });
 
 combineLatest([
-    this.form.controls.firstName.valueChanges,
-    this.form.controls.lastName.valueChanges,
+  this.form.controls.firstName.valueChanges,
+  this.form.controls.lastName.valueChanges,
 ]).subscribe(([firstName, lastName]) => {
-    if (firstName === 'Brecht' && lastName === 'Billiet') {
-        this.form.patchValue({
-            gender: 'male',
-            age: 35,
-            passwords: { password: 'Test1234', confirmPassword: 'Test12345' },
-        });
-    }
+  if (firstName === "Brecht" && lastName === "Billiet") {
+    this.form.patchValue({
+      gender: "male",
+      age: 35,
+      passwords: { password: "Test1234", confirmPassword: "Test12345" },
+    });
+  }
 });
 ```
 
@@ -220,7 +222,7 @@ Check this out!
 export class PurchaseFormComponent implements AfterViewInit {
     public ngAfterViewInit(): void {
         this.ngForm!.form.valueChanges.subscribe((v: PurchaseFormModel) => {
-            
+
             // Put declarative logic here...
             if (v.firstName === 'Brecht') {
                 v.gender = 'male';
@@ -232,7 +234,7 @@ export class PurchaseFormComponent implements AfterViewInit {
                 v.passwords.password = 'Test1234';
                 v.passwords.confirmPassword = 'Test12345';
             }
-            
+
             this.formValue.set(v);
             ...
         });
@@ -244,13 +246,9 @@ Every time the form is updated, it checks our conditions and updates the form va
 Since the value of our form is a new reference anyway, we can just mutate the value here.
 If you are a fan of the immutable approach nothing is stopping you to update this value in an immutable way.
 
-
 ### Asynchronous operations
 
-
 ## use ngModel and ngModelGroup correctly, think about your form composition
-
-
 
 ## Created a typed model
 
