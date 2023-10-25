@@ -6,15 +6,15 @@ published: true
 cover: assets/template-driven-forms-state-management.jpg
 comments: true
 categories: [Angular, Forms, Signals, State management]
-description: "In this article we will tackle how to handle state management when using Template-driven Forms in Angular"
+description: "In this article, we will tackle how to handle state management when using Template-driven Forms in Angular"
 ---
 
 # Intro
 
-In this article we will tackle how to handle state management when using Template-driven Forms in Angular.
+In this article, we will tackle how to handle state management when using Template-driven Forms in Angular.
 A big difference in terms of state management between Template-driven forms and Reactive Forms in Angular is that with Template-driven Forms...
-**we let Angular do all the work for us!! (including state management)**
-In practice that means:
+**We let Angular do all the work for us!! (including state management)**
+In practice, that means:
 
 - Angular will create form control and form group instances for us automatically.
 - Angular will remove form control and form group instances for us automatically.
@@ -23,14 +23,17 @@ In practice that means:
 
 ## The problem with automatic state management
 
+// I feel like that's quite long and complicated to get the point as you are trying to conclude about something that's not explained yet ^^
 Even though the following example could be expected behavior, there could be a problem with automatic state management in Template-driven forms. Think about the next example:
 
-We have a form that has a form group called `addresses` that has a `billingAddress` and an optional `shippingAddress`.
+We have a form that has a form group called `addresses` that has a `billingAddress` and an optional `shippingAddress` form groups.
 The user has the ability to optionally provide the `shippingAddress` when a
 `shippingAddressIsDifferentThanBillingAddress` property that is bound to a checkbox is set to true.
 This means that when the checkbox is not selected, the `shippingAddress` should not be part of the form
 and its validators should not be executed either.
 
+// By landing on the html snippet at first sight, it looked complicated: I'd consider switching to firstly show the component snippet.
+// It would help understand vm.showShippingAddress for example
 The HTML of this code could look like this (read [This article or YouTube videos]() if you don't understand how we created the `form` directive and how the ViewModel works):
 
 ```html
@@ -61,6 +64,9 @@ The HTML of this code could look like this (read [This article or YouTube videos
 ```
 
 Angular will turn this HTML automatically in the following dynamic Reactive Form behind the scenes:
+
+// showing the component, the html and then the following form would help to understand why shippingAddress is not part of the form.
+// and i would explicitly explain it.
 
 ```typescript
 form = {
@@ -105,8 +111,9 @@ export class MyFormComponent {
 ```
 
 The advantage of using Template-driven forms is that Angular takes care of everything automatically for us.
-The problem here is that when you select the checkbox, provide the `shippingAddress` and toggle the checkbox to `false` and `true` again, that the state is lost. Even though that is what you want in most cases, there are usecases where want to keep that state.
-The reason why the state is lost is that the state is kept in the Template-driven Form that no longer has the `shippingAddress` form group. It was automatically destroyed together with the form control instances of the `shippingAddress`.
+// I'd change the order: The problem here is that state is lost when you select...
+The problem here is that when you select the checkbox, provide the `shippingAddress` and toggle the checkbox to `false` and `true` again, that the state is lost. Even though that is what you want in most cases, there are usecases where we want to keep that state.
+The state is lost because it's kept in the Template-driven Form that no longer has the `shippingAddress` form group. It was automatically destroyed together with the form control instances of the `shippingAddress`.
 When the `shippingAddressDifferentFromBillingAddress` property is set to `false` the value of the form looks like:
 
 ```json
@@ -202,23 +209,23 @@ Now Angular do the following things for us:
 
 - When initially the checkbox is set to `false`:
   - There will be no `shippingAddress` form group.
-  - There will be no form controls for the `shippingAddress`.
+  - There will be no form group for the `shippingAddress`.
 - When the checkbox is set to `true`:
-  - The `shippingAddress` form group and its form controls will get added.
+  - The `shippingAddress` form group and its form controls will be added.
   - All their potential validators will be executed.
-- When the user starts providing the `shippingAddress` those values will be kept in state.
+- When the user starts providing the `shippingAddress`, those values will be kept in state.
 - When the checkbox is set back to `false`.
   - The `shippingAddress` form group and all its form controls will be removed from the form.
-  - The validation status of the form will get recalculated without the `shippingAddress` and the validators that were attached to it.
+  - The validation status of the form will be recalculated without the `shippingAddress` and the validators that were attached to it.
 
 ## But what if we want to keep the state in the form?
 
-We generally would advise not to do that, but you I will show you a few things you can try.
+We generally would advise not to do that, but I will show you a few things you can try.
 
 ### Keeping the state of an input in the form
 
 For this example we are going to add a `gender` property and a `genderOther` property.
-When the `gender` (which is a radiobutton group) is set to `other` then, the `genderOther` control is added.
+When the `gender` (which is a radio button group) is set to `other` then, the `genderOther` control is added.
 
 The code at this moment looks like this:
 
@@ -273,7 +280,7 @@ export class MyFormComponent {
 </div>
 ```
 
-We calculate whether the `genderOther` input should be shown and in the HTML we bind 3 radiobuttons to the `gender` property of our `formValue`.
+We calculate whether the `genderOther` input should be shown and in the HTML we bind 3 radio buttons to the `gender` property of our `formValue`.
 We use an `*ngIf` directive to hide the `genderOther` based on the `showOtherGender` and that's it.
 Now when we select `other` in the `gender` radiobutton and we type a value in the `genderOther`, the value will be lost when we switch it back to `female` or `male`.
 The goal here is to make sure that the value of `genderOther` is maintained in the form, even when the value of `gender` is not set to `other`.
