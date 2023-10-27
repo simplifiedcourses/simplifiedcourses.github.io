@@ -4,7 +4,7 @@ title:  "Angular State Management Best Practices"
 date:   2023-05-06
 published: true
 comments: true
-categories: [Angular, State management, Best Practices, ObservableState, Angular Signals]
+categories: [Angular, State management, Best Practices, ObservableState, Angular Signals, ngx-signal-state]
 cover: assets/angular-state-management-best-practices.jpg
 description: "This article explains best practices on how to deal with state in Angular"
 ---

@@ -20,7 +20,8 @@ In practice, that means:
 - Angular will remove form control and form group instances for us automatically.
 - We never have to manually add/remove validators.
 - Our form will only contain the controls and groups that it needs.
-[Interested in the Youtube video? Check it here](https://youtu.be/djod9on45wc){:target="_blank"}
+
+[Interested in the YouTube video? Check it here](https://youtu.be/djod9on45wc){:target="_blank"}
 
 ## The problem with automatic state management
 

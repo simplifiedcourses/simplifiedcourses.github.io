@@ -4,7 +4,7 @@ title:  "Observable state in Angular Ui components"
 date:   2023-01-28
 published: true
 comments: true
-categories: [Angular, RxJS, State management, ObservableState]
+categories: [Angular, RxJS, State management, ObservableState, ngx-signal-state]
 cover: assets/observable-state-in-angular-ui-components.jpg
 description: "We will dive deep into Observable state in Angular Ui components that we can use as input state and local component state."
 

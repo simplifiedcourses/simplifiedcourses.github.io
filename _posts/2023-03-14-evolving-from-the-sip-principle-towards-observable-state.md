@@ -4,7 +4,7 @@ title:  "Evolving from the SIP principle towards Observable state"
 date:   2023-03-14
 published: true
 comments: true
-categories: [Angular, RxJS, State management, ObservableState, Angular Signals]
+categories: [Angular, RxJS, State management, ObservableState, Angular Signals, ngx-signal-state]
 cover: assets/evolving-from-the-sip-principle-towards-observable-state-in-angular.jpg
 description: "This article explains how I moved from the SIP principle towards Observable state and greatly simplified my code."
 ---
