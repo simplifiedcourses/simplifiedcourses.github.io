@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Angular Template-driven Forms state management"
-date: 2023-10-23
+date: 2023-10-26
 published: true
 cover: assets/template-driven-forms-state-management.jpg
 comments: true
@@ -20,6 +20,7 @@ In practice, that means:
 - Angular will remove form control and form group instances for us automatically.
 - We never have to manually add/remove validators.
 - Our form will only contain the controls and groups that it needs.
+[Interested in the Youtube video? Check it here](https://youtu.be/djod9on45wc){:target="_blank"}
 
 ## The problem with automatic state management
 
@@ -357,6 +358,7 @@ We could also use a `[hidden]` directive from Angular to hide an input from the 
 
 After that we saw how we can bind an entire form group to a hidden field to keep our state.
 I hope you enjoyed this article! Stay tuned for more content!
+[Interested in the Youtube video? Check it here](https://youtu.be/djod9on45wc){:target="_blank"}
 
 Special thanks to the reviewer:
 - [Gerome Grignon](https://twitter.com/GeromeDEV){:target="_blank"}
