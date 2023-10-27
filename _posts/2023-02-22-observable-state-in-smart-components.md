@@ -9,6 +9,8 @@ cover: assets/observable-component-state-in-angular.jpg
 description: "We will dive deep into Observable state in Angular Smart components that we can use to create better reactive flows and local state management."
 
 ---
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
 
 This article is a follow-up article of the previous articles (newest to oldest):
 - [Observable state for ui components in Angular](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}
@@ -238,5 +240,9 @@ In the [next article](http://localhost:4000/evolving-from-the-sip-principle-towa
 We will create the implementation and some complex examples in the next article. Stay tuned!
 If you can't wait, just reach out to me and I'll gladly give you my code and some examples.
 Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"} 
+
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
+
 
 If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

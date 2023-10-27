@@ -224,6 +224,9 @@ unidirectional dataflows
 That's a wrap! Whether we use state management frameworks or custom implementations, try to keep it simple,
 keep the state as low as possible, ensure you have initial values and snapshots and don't manage state you shouldn't be managing
 
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
+
 I hope you liked it. If you have feedback, please leave a comment
 
 If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

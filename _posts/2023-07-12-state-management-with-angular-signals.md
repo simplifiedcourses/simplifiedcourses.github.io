@@ -258,6 +258,10 @@ const filteredStarships = this.selectMany(
 The `starships` signal is based on the `query` signal here and does some RxJS logic because we need to debounce and perform an XHR call.
 the `filtererdStarships` signal is dependent on the freshly calculated `starships` signal but it also depends on the `numberOfPassengers` signal.
 
+**Update: ngx-signal-state now has a connectObservables method**
+Check it out! [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"}
+
+
 #### Connecting signals to the store
 
 This is one of the biggest advantages of not having a huge amount of uncontrolled signals laying around. We want to connect an object with Signals so our store gets fed automatically.
@@ -312,11 +316,7 @@ effect(() => {
 
 ## The implementation
 
-We are still implementing as we speak but you can find the current implementation in [this StackBlitz example](https://stackblitz.com/edit/stackblitz-starters-8wuadn?file=src%2Fsignal-state.ts){:target="_blank"} **It's only +- 70 lines of code.**
-
-We will cover the implementation in a next article when it is stable and more battle-tested. Remember, ObservableState is battle-tested and refactoring to Signal stores is a breeze.
-I already started the refactoring process at DHL and the process can almost be automated. The principles stay the same, it's still opinionated and it's even less code.
-In a next article we will explain how to implement your own Angular Signal store  .
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects
 
 ## The app
 

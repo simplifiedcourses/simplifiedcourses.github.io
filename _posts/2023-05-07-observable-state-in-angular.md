@@ -8,6 +8,8 @@ categories: [Angular, State management, ObservableState]
 cover: assets/observable-state-in-angular.jpg
 description: "What is Observable State and how do we use it?"
 ---
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
 
 This article is a follow-up article of these previous articles (newest to oldest):
 - [Evolving from the SIP principle towards Observable state](https://blog.simplified.courses/evolving-from-the-sip-principle-towards-observable-state/){:target="_blank"}
@@ -554,6 +556,9 @@ Some examples:
 If you need more examples, please reach out to me. I'm happy to help.
 
 Ps: We are also working on a `SignalState` which follows the same principles as `ObservableState`, but specifically for Angular Signals: You can check the first version of an example of the use [here](https://github.com/simplifiedcourses/observable-state/blob/main/src/demo-app/components/smart/product-overview-signal/product-overview-signal-smart.component.ts){:target="_blank"}
+
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
 
 Special thanks to the awesome reviewers:
 - [Tim Deschryver](https://timdeschryver.dev/){:target="_blank"}

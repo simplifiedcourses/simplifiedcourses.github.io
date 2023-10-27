@@ -9,6 +9,8 @@ cover: assets/observable-state-in-angular-ui-components.jpg
 description: "We will dive deep into Observable state in Angular Ui components that we can use as input state and local component state."
 
 ---
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
 
 What is state management? This is a very popular discussion topic in most teams.
 What is state? When do we manage it? What state do we need to manage? What is managing state?
@@ -420,5 +422,9 @@ Here is an [updated Stackblitz example](https://stackblitz.com/edit/angular-ivy-
 
 In this article, the observable state implementation is not yet complete, but we will update it in the next article where we will use it for more complex state management in smart components. Stay tuned!
 Check out this article if you want to learn some [Angular State management Best practices](https://blog.simplified.courses/angular-state-management-best-practices/){:target="_blank"} 
+
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
+
 
 If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

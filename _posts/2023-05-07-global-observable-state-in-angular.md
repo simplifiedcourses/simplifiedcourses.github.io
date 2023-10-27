@@ -286,4 +286,6 @@ export class ShoppingCartObservableState extends ObservableState<ShoppingCartSta
   public updateAmount(id: number, amount: number): void {...}
 }
 ```
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
 
