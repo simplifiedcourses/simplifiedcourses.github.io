@@ -23,18 +23,56 @@ In practice, that means:
 
 ## The problem with automatic state management
 
-// I feel like that's quite long and complicated to get the point as you are trying to conclude about something that's not explained yet ^^
-Even though the following example could be expected behavior, there could be a problem with automatic state management in Template-driven forms. Think about the next example:
+Think about the next example:
 
 We have a form that has a form group called `addresses` that has a `billingAddress` and an optional `shippingAddress` form groups.
 The user has the ability to optionally provide the `shippingAddress` when a
 `shippingAddressIsDifferentThanBillingAddress` property that is bound to a checkbox is set to true.
 This means that when the checkbox is not selected, the `shippingAddress` should not be part of the form
 and its validators should not be executed either.
+Read [This article or YouTube videos](https://blog.simplified.courses/angular-template-driven-forms-with-signals/){:target="_blank"} if you don't understand how we created the `form` directive and how the ViewModel works:
 
-// By landing on the html snippet at first sight, it looked complicated: I'd consider switching to firstly show the component snippet.
-// It would help understand vm.showShippingAddress for example
-The HTML of this code could look like this (read [This article or YouTube videos]() if you don't understand how we created the `form` directive and how the ViewModel works):
+
+```typescript
+export type PurchaseFormModel = Partial<{
+  firstName: string;
+  lastName: string;
+  gender: 'female'| 'male'| 'other';
+  genderOther: string;
+  addresses: Partial<{
+    billingAddress: AddressFormModel;
+    // should not always be shown
+    shippingAddress: AddressFormModel;
+    shippingAddressDifferentFromBillingAddress: boolean;
+  }>
+}>;
+
+
+export class MyFormComponent {
+  // Hold the value of the unidirectional form
+  private readonly formValue = signal<PurchaseFormModel>({});
+
+  // Declarative ViewModel that exposes the form value
+  // and whether the shipping address should be shown
+  protected readonly viewModel = computed(() => ({
+    formValue: this.formValue(),
+    // Declarative property on when to show the shipping address or not
+    showShippingAddress:
+      this.formValue().addresses?.shippingAddressDifferentFromBillingAddress,
+  }));
+
+  // Expose vm as getter for shorter syntax
+  protected get vm() {
+    return this.viewModel();
+  }
+
+  protected setFormValue(e: PurchaseFormModel): void {
+    // Ensure unidirectional dataflow
+    this.formValue.set(e);
+  }
+}
+```
+The HTML of this code could look like this :
 
 ```html
 <form (formValueChange)="setFormValue($event)">
@@ -63,10 +101,7 @@ The HTML of this code could look like this (read [This article or YouTube videos
 </form>
 ```
 
-Angular will turn this HTML automatically in the following dynamic Reactive Form behind the scenes:
-
-// showing the component, the html and then the following form would help to understand why shippingAddress is not part of the form.
-// and i would explicitly explain it.
+Angular will turn this HTML automatically in the following dynamic form controls and form groups behind the scenes:
 
 ```typescript
 form = {
@@ -83,37 +118,11 @@ form = {
 }
 ```
 
-Now, to make this whole thing reactive we just need to create a simple signal and ViewModel:
-
-```typescript
-export class MyFormComponent {
-  // Hold the value of the unidirectional form
-  private readonly formValue = signal<PurchaseFormModel>({});
-
-  // Declarative ViewModel that exposes the form value
-  // and whether the shipping address should be shown
-  protected readonly viewModel = computed(() => ({
-    formValue: this.formValue(),
-    showShippingAddress:
-      this.formValue().addresses?.shippingAddressDifferentFromBillingAddress,
-  }));
-
-  // Expose vm as getter for shorter syntax
-  protected get vm() {
-    return this.viewModel();
-  }
-
-  protected setFormValue(e: PurchaseFormModel): void {
-    // Ensure unidirectional dataflow
-    this.formValue.set(e);
-  }
-}
-```
-
 The advantage of using Template-driven forms is that Angular takes care of everything automatically for us.
-// I'd change the order: The problem here is that state is lost when you select...
-The problem here is that when you select the checkbox, provide the `shippingAddress` and toggle the checkbox to `false` and `true` again, that the state is lost. Even though that is what you want in most cases, there are usecases where we want to keep that state.
-The state is lost because it's kept in the Template-driven Form that no longer has the `shippingAddress` form group. It was automatically destroyed together with the form control instances of the `shippingAddress`.
+The state is lost because it's kept in the Template-driven Form that no longer has the `shippingAddress` form group. 
+It was automatically destroyed together with the form control instances of the `shippingAddress`.
+The problem here is that when you select the checkbox, provide the `shippingAddress` and toggle the checkbox to `false` and `true` again, that the state is lost. 
+Even though that is what you want in most cases, there are use-cases where we want to keep that state.
 When the `shippingAddressDifferentFromBillingAddress` property is set to `false` the value of the form looks like:
 
 ```json
@@ -330,7 +339,7 @@ Having a conditional input type might result in more boilerplate if we want to h
   <ng-template #shippingAddressState>
     <input
       type="hidden"
-      [ngModel]="formValue().addresses?.shippingAddress"
+      [ngModel]="vm.formValue.addresses?.shippingAddress"
       name="shippingAddress"
     />
   </ng-template>
@@ -348,3 +357,6 @@ We could also use a `[hidden]` directive from Angular to hide an input from the 
 
 After that we saw how we can bind an entire form group to a hidden field to keep our state.
 I hope you enjoyed this article! Stay tuned for more content!
+
+Special thanks to the reviewer:
+- [Gerome Grignon](https://twitter.com/GeromeDEV){:target="_blank"}
