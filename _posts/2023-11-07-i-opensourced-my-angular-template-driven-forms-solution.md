@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "I open-sourced my Angular Template-driven Forms Solution"
-date: 2023-10-26
+date: 2023-11-08
 published: true
 cover: assets/i-opensourced-my-angular-template-driven-forms-solution/banner.jpg
 comments: true
