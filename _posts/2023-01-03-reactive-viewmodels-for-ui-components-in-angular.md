@@ -81,6 +81,44 @@ We could do that in the `ngOnChanges()` lifecycle hook but that would result in 
 
 ### Creating a reactive ViewModel
 
+#### Update:
+
+In Angular 17 where signals are out of developer preview everything could be simplified to this:
+
+```typescript
+private readonly itemsPerPageSignal = signal(0);
+private readonly totalSignal = signal(0);
+private readonly pageIndexSignal = signal(0);
+
+@Input() public set itemsPerPage(v: number) {
+    this.itemsPerPageSignal.set(v);
+};
+@Input() public set total(v: number {
+  this.totalSignal.set(v);
+};
+@Input() public set pageIndex(v: number {
+  this.pageIndexSignal.set(v);
+};
+
+private readonly viewModel = computed(() => {
+  return {
+    total: this.totalSignal(),
+    previousDisabled: this.pageIndexSignal() === 0,
+    nextDisabled: this.pageIndexSignal() >= Math.ceil(this.totalSignal() / this.itemsPerPageSignal()) - 1,
+    itemFrom: this.pageIndexSignal() * this.itemsPerPageSignal() + 1,
+    itemTo:
+            this.pageIndexSignal() < Math.ceil(this.totalSignal() / this.itemsPerPageSignal()) - 1
+                    ? this.pageIndexSignal() * this.itemsPerPageSignal() + this.itemsPerPageSignal()
+                    : this.totalSignal(),
+  };
+});
+public get vm() {
+    return this.viewModel();
+}
+```
+
+If you are on Angular <16, the rest of this article will be for you!
+
 We will use a combination of **input setters** and **BehaviorSubjects** to achieve this.
 A **BehaviorSubject** is a **ReplaySubject** that replays the last value and has an initial value.
 Why do we need an initial value? Because later on we will use `combineLatest` to create a reactive ViewModel object and this operator will not emit unless all its source observables have emitted (which is exactly what a **BehaviorSubject** does initially).

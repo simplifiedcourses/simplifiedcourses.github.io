@@ -10,6 +10,45 @@ description: "This article shows how we can optimize the number of emissions and
 
 ---
 
+## Update: 10 November 2023
+
+With Angular Signals being out of developer preview in version 17 we could use setters with signals as well.
+Beware that signal inputs are comint as well
+
+```typescript
+private readonly itemsPerPageSignal = signal(0);
+private readonly totalSignal = signal(0);
+private readonly pageIndexSignal = signal(0);
+
+@Input() public set itemsPerPage(v: number) {
+    this.itemsPerPageSignal.set(v);
+};
+@Input() public set total(v: number {
+  this.totalSignal.set(v);
+};
+@Input() public set pageIndex(v: number {
+  this.pageIndexSignal.set(v);
+};
+
+private readonly viewModel = computed(() => {
+  return {
+    total: this.totalSignal(),
+    previousDisabled: this.pageIndexSignal() === 0,
+    nextDisabled: this.pageIndexSignal() >= Math.ceil(this.totalSignal() / this.itemsPerPageSignal()) - 1,
+    itemFrom: this.pageIndexSignal() * this.itemsPerPageSignal() + 1,
+    itemTo:
+            this.pageIndexSignal() < Math.ceil(this.totalSignal() / this.itemsPerPageSignal()) - 1
+                    ? this.pageIndexSignal() * this.itemsPerPageSignal() + this.itemsPerPageSignal()
+                    : this.totalSignal(),
+  };
+});
+public get vm() {
+    return this.viewModel();
+}
+```
+
+Below is the article that makes sense for all Angular versions < 16.
+
 ## Explaining the problem
 
 In a previous article, we have written about [Reactive ViewModels for Ui components in Angular](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"}. If you haven't read this article yet, we recommend you read it first, since this article is an improvement on the other one. With a ViewModel, we mean a **Reactive model specifically created for the view (template)**. In short, it is an RxJS Observable that contains all the properties that our template needs to render correctly. It contains all the properties and only those properties.
