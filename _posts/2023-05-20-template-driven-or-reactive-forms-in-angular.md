@@ -316,8 +316,8 @@ We can easily consume the new state through our ViewModel:
   ...
   template: `
   <form #form="ngForm" (ngSubmit)="submit()">
-      Dirty: {{vm.dirty}}
-      Valid: {{vm.valid}}
+      Dirty: {%raw%}{{vm.dirty}}{%endraw%}
+      Valid: {%raw%}{{vm.valid}}{%endraw%}
       ...
       <button>Submit form</button>
   </form>

@@ -1,23 +1,25 @@
 ---
 layout: post
-title: "A more complex ui form with viewmodels"
-date: 2023-11-11
+title: "Extracting forms complexity into ViewModels"
+date: 2023-11-19
 published: false
-cover: assets/i-openso.jpg
+cover: assets/extracting-template-driven-forms-complexity-into-viewmodels.jpg
 comments: true
 categories: [Angular, Angular Forms, Angular Signals]
-description: "In this article, I will show you a more complex ui form"
+description: "In this article, we will lean how to extract Angular Forms functionality into ViewModels"
 ---
 
 # Intro
 
+This article is about using ViewModels to ensure clean templates for Template-driven Forms.
+[Rather see the YouTube video](todo){:target="_blank"}?
 For a personal project I'm working on a solution to create recurring tasks.
 We can have a task that only executes once (eg on Black Friday),
 but we can also have tasks that repeat every day, or every few days
 or certain days every week, certain days every few weeks and so on...
-For this solution we used the `template-driven-forms` solution I shared before.
+For this solution we used the [Template-driven Forms solutio I shared before](https://blog.simplified.courses/i-opensourced-my-angular-template-driven-forms-solution/){:target="_blank"}.
 
-The type of or form looks like this:
+The type of our form looks like this:
 
 ```typescript
 export type RecurringTaskFormModel = Partial<{
@@ -37,10 +39,10 @@ export type RecurringTaskFormModel = Partial<{
 ```
 
 The form has a bunch of functionality to make this work:
-- Only show the `repetitionSettings` when the task is recurring (`repeat` to `true`)
-- When the `repeatEveryAmount` is set to `1`, singular labels should be shown in the `repetitionType`
-field, when the value is higher than `1` plural labels should be shown in the `repetitionType` field.
-- When the `repetitionType` is set to `week`, show the `repeatEveryWeekValues`
+- Only show the `repetitionSettings` when the task is recurring (`repeat` to `true`).
+- When the `repeatEveryAmount` is set to `1`, singular labels should be shown in the `repetitionType`.
+  field, when the value is higher than `1` plural labels should be shown in the `repetitionType` field.
+- When the `repetitionType` is set to `week`, show the `repeatEveryWeekValues`.
 
 ### Template logic
 
@@ -48,7 +50,10 @@ Putting that logic in the template isn't the ideal way of doing things. Template
 because Angular does all the work for us... But we want to keep our templates clean.
 
 Having these `*ngIf` statements in the template is template logic, and it shatters
-our all over the DOM, which is unwanted.
+our all over the DOM, which is unwanted. Having `*ngIf` directives is fine of course, but we want to keep away
+the template-logic as much as possible.
+
+The contents in these `*ngIf` directives is what we want to avoid:
 
 ```html
 <div ngModelGroup="repetitionSettings" *ngIf="formValue?.repeat">
@@ -71,11 +76,11 @@ It even becomes worse if we want to solve the singular/plural problem where we w
             [ngModel]="formValue?.repetitionSettings?.repetitionType">
         <option [value]="option.value"
                 *ngFor="let option of repetitionTypeOptions; trackBy: tracker">
-            {{
+            {%raw%}{{
                 formValue?.repetitionSettings?.repeatEveryAmount === 1 ?
                 option.label :
                 option.labelMultiple
-            }}
+            }} {%endraw%}
         </option>
     </select>
 </label>
@@ -104,7 +109,7 @@ All the logic mentioned before can be calculated in the viewModel which:
 - leeps our template clean
 - avoids potential redundancy
 - is declarative, reactive and readable
-- 
+
 ```typescript
 export class RecurringTasksFormUiComponent {
     private readonly recurringTaskForm = signal<RecurringTaskFormModel>({});
@@ -114,6 +119,7 @@ export class RecurringTasksFormUiComponent {
         this.recurringTaskForm.set(v);
     };
 
+    // Declarative, reactive, readable, simple computed signal that contains all the complexity
     private readonly viewModel = computed(() => {
         const form = this.recurringTaskForm();
         return {
@@ -136,7 +142,8 @@ export class RecurringTasksFormUiComponent {
 }
 ```
 
-The first snippet now looks like this:
+When creating this reactive ViewModel for us, our first snipped cleaned up very nice!
+It now looks like this:
 
 ```html
 <div ngModelGroup="repetitionSettings" *ngIf="vm.showRepetitionSettings">
@@ -149,7 +156,9 @@ The first snippet now looks like this:
 </div>
 ```
 
-The second one looks like this:
+There is no more logic in our template anymore. It all got moved to our clean ViewModel.
+The second snippet now looks like this:
+
 ```html
 <label scControlWrapper>
     <span>Repeat every type</span>
@@ -157,8 +166,22 @@ The second one looks like this:
             [ngModel]="vm.formValue?.repetitionSettings?.repetitionType">
         <option [value]="option.value"
                 *ngFor="let option of vm.repetitionTypeOptions; trackBy: tracker">
-            {{ option.label }}
+            {%raw%}{{ option.label }}{%endraw%}
         </option>
     </select>
 </label>
 ```
+
+We do the translation of multiple and singular labels in our ViewModel, resulting in a nice and clean template.
+
+### Conclusion
+
+This was a short but important article because it contains a Best Practice
+
+**Angular Template-Driven Forms can be awesome but don't put your actual logic in the template**
+Why not?
+- It's harder to test
+- The DOM is there for semantic reasons, not to contain actual functional javascript code
+- It's reactive and declarative to put it in the ViewModel
+
+Hope you enjoyed this!

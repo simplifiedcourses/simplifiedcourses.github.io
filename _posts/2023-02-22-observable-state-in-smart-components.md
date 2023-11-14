@@ -66,7 +66,7 @@ The good thing is, the template looks clean: We can extract logic from the templ
 <ng-container *ngIf="vm$|async as vm">
     <h3>Person details <button (click)="toggleCollapse()">Toggle</button></h3>
     <div *ngIf="!vm.collapsed">
-        {{vm.firstname}} {{vm.lastName}}
+        {%raw%}{{vm.firstname}} {{vm.lastName}}{%endraw%}
     </div>
 </ng-container>
 ```

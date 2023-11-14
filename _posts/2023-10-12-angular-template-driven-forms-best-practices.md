@@ -47,7 +47,7 @@ export class PurchaseFormComponent implements AfterViewInit {
   <button type="submit">Submit</button>
 </form>
 <pre>
-    {{ formValue | json }}
+    {%raw%}{{ formValue | json }}{%endraw%}
 </pre>
 ```
 
@@ -103,7 +103,7 @@ export class PurchaseFormComponent implements AfterViewInit {
   <button type="button" [disabled]="vm.resetDisabled" (click)="reset()">
     Reset
   </button>
-  Form is: {{ vm.status }}
+  Form is: {%raw%}{{ vm.status }}{%endraw%}
   <pre>
         {{ vm.formValue | json }}
     </pre

@@ -41,7 +41,7 @@ This is an example of a simple ui component, that renders the name in the DOM an
 @Component({
 selector: 'hello',
 template: `
-    <h1>Hello {{name}}!</h1>
+    <h1>Hello {%raw%}{{name}}!</h1>
     <input type="text" [(ngModel)]="name" 
         (input)="nameChange.emit(name)">
 `,
@@ -86,7 +86,7 @@ A simple example can be found below: We pass the name from the smart component t
 @Component({
 selector: 'name',
 template: `
-    <hello name="{{ name }}" (nameChange)="name=$event"></hello>
+    <hello name="{%raw%}{{ name }}{%endraw%}" (nameChange)="name=$event"></hello>
     <button (click)="save()">Save</button>
 `
 })

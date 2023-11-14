@@ -102,7 +102,7 @@ This is the code with the default Angular Change Detection behavior. It does exa
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
-        <h1>{{val}}</h1>
+        <h1>{%raw%}{{val}}{%endraw%}</h1>
         <div class="square"></div>
     `,
     ],
@@ -138,7 +138,7 @@ export class ChildComponent {
             (move)="onMove($event)"
             (valChange)="onValChange($event)">
         </child>
-        <strong>X: {{mouseX}}, Y:{{mouseY}}</strong>
+        <strong>X: {%raw%}{{mouseX}}{%endraw%}, Y:{%raw%}{{mouseY}}{%endraw%}</strong>
   `,
 })
 export class ParentComponent {

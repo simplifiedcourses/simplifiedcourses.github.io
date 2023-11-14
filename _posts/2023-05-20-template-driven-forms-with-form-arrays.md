@@ -59,7 +59,7 @@ similar:
         <input type="text" [ngModel]="vm.user.lastName" name="lastName"/>
     </label>
     <div *ngFor="let phoneNumber of phoneNumbers; let i = index">
-        <input type="text" [ngModel]="phoneNumbers[i]" name="phoneNumber{{i}}"/>
+        <input type="text" [ngModel]="phoneNumbers[i]" name="phoneNumber{%raw%}{{i}}{%endraw%}"/>
     </div>
     ...
 </form>
@@ -429,7 +429,7 @@ care of everything for us:
             <input type="text"
                    *ngIf="vm.user.phonenumbers as phonenumbers"
                    [ngModel]="phonenumbers[item.key]"
-                   name="{{ item.key }}"/>
+                   name="{%raw%}{{ item.key }}{%endraw%}"/>
             <button type="button" (click)="deletePhonenumber(item.key)">
                 Delete phonenumber
             </button>
