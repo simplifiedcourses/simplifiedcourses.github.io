@@ -5,7 +5,7 @@ date: 2023-11-11
 published: false
 cover: assets/i-openso.jpg
 comments: true
-categories: [Angular, Forms, Signals]
+categories: [Angular, Angular Forms, Angular Signals]
 description: "In this article, I will show you a more complex ui form"
 ---
 

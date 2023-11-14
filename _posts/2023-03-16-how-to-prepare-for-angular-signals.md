@@ -320,5 +320,8 @@ That doesn't mean we can't prepare for them! By following these principles we ca
 
 Hope you enjoyed it. Comment if you liked it!
 
+**Update:**
+We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
+This is only relevant if you are on Angular 16 or higher.
 
 If you like to learn directly from me, check out my [Angular Training](https://www.simplified.courses/angular-training){:target="_blank"} and [Angular Coaching](https://www.simplified.courses/angular-coaching){:target="_blank"}

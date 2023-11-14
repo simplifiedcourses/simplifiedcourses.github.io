@@ -11,6 +11,7 @@ description: "We will dive deep into Observable state in Angular Smart component
 ---
 **Update:**
 We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
+This is only relevant if you are on Angular 16 or higher.
 
 This article is a follow-up article of the previous articles (newest to oldest):
 - [Observable state for ui components in Angular](https://blog.simplified.courses/observable-state-in-angular-ui-components/){:target="_blank"}

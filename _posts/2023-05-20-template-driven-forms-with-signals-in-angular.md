@@ -4,7 +4,7 @@ title:  "Template-driven forms with Signals in Angular"
 date:   2023-06-23
 published: false
 comments: true
-categories: [Angular, Forms, State management, Signals]
+categories: [Angular, Angular Forms, State management, Angular Signals]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
 description: "This article teaches you to supercharge your Angular template-driven forms with Signals"
 ---

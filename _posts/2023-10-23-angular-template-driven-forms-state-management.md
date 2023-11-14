@@ -5,7 +5,7 @@ date: 2023-10-26
 published: true
 cover: assets/template-driven-forms-state-management.jpg
 comments: true
-categories: [Angular, Forms, Signals, State management]
+categories: [Angular, Angular Forms, Angular Signals, State management]
 description: "In this article, we will tackle how to handle state management when using Template-driven Forms in Angular"
 ---
 
@@ -359,7 +359,10 @@ We could also use a `[hidden]` directive from Angular to hide an input from the 
 
 After that we saw how we can bind an entire form group to a hidden field to keep our state.
 I hope you enjoyed this article! Stay tuned for more content!
-[Interested in the Youtube video? Check it here](https://youtu.be/djod9on45wc){:target="_blank"}
+[Interested in the YouTube video? Check it here](https://youtu.be/djod9on45wc){:target="_blank"}
+
+**Update** A full working solution with a complex Demo can be found [here](https://blog.simplified.courses/i-opensourced-my-angular-template-driven-forms-solution/){:target="_blank"}
+
 
 Special thanks to the reviewer:
 - [Gerome Grignon](https://twitter.com/GeromeDEV){:target="_blank"}

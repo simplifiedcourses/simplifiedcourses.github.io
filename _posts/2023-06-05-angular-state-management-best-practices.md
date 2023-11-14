@@ -4,18 +4,22 @@ title:  "Angular State Management Best Practices"
 date:   2023-05-06
 published: true
 comments: true
-categories: [Angular, State management, Best Practices, ObservableState, Angular Signals, ngx-signal-state]
+categories: [Angular, State management, Best Practices, Angular Signals, ngx-signal-state]
 cover: assets/angular-state-management-best-practices.jpg
 description: "This article explains best practices on how to deal with state in Angular"
 ---
 
 Best Practices are mostly a matter of personal preference and can be countered by people with different opinions.
 That being said, the Best Practices in this article are based on a decade of working with Single Page applications and managing state.
-I have been on more than 100 Angular projects in the last 7 years and I have seen tons of different approaches and learned
+I have been on more than 150 Angular projects in the last 7 years and I have seen tons of different approaches and learned
 the mindset of hundreds and hundreds of different professionals.
 
 I have done flux, redux, state models, @ngrx/store, Akita, Ngxs, BehaviorSubjects, [ObservableState](https://github.com/simplifiedcourses/observable-state){:target="_blank"}, Signals...
 I have seen a lot of things and this article is about how I reason about state.
+
+**Note:**
+I have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
+This is only relevant if you are on Angular 16 or higher.
 
 ## What is state management?
 
@@ -47,7 +51,7 @@ Now what is state management? We will talk about state management when one or mo
 ### First misconception
 
 A lot of developers think that state management means: **sharing state globally across the application**.
-That is not true, and by reasoning about state like that, people tend to manage to much state or manage it wrong.
+That is not true, and by reasoning about state like that, people tend to manage too much state or manage it wrong.
 
 State management is as simple as the following example:
 
@@ -186,13 +190,12 @@ public saveUser(): void {
 }
 ```
 
-That piece of code is using [ObservableState](https://github.com/simplifiedcourses/observable-state){:target="_blank"} but that is also
-what Signals are all about. With Signals it would look like this:
+That piece of code is using [Ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} but that we could just use signals as well. 
+With Signals it would look like this:
 
 ```typescript
 public saveUser(): void {
-    const {user, courses} = this.state();
-    this.userService.update(user, courses).subscribe({...})
+    this.userService.update(this.user(), this.courses).subscribe({...})
 }
 ```
 
@@ -202,7 +205,7 @@ When working with state, It's a healthy way to always think about initial values
 Avoid the value `null` if you can, in some cases you will need it but instantiating an array with `[]` will make your code more robust.
 You will wind up with less **"Cannot read properties of null (reading 'forEach')"** and it makes reasoning about state easier.
 Your typing of your state would also become easier since you wouldn't have to add `<your-type>|null` after every state type.
-This for instance get can quite annoying:
+This for instance get can quite painful:
 
 ```typescript
 type UserState = {
@@ -215,8 +218,8 @@ type UserState = {
 ## Best Practice number 6: Immutable data structures
 
 Immutable data structures aren't necessarily used because of performance optimizations.
-The reason why we use it is because these structures are predictable.
-We could optimize Change Detection, we can leverage RxJS operators and we can create clean
+The reason why we use it, is because these structures are predictable.
+We could optimize Change Detection, we can leverage RxJS operators, and we can create clean
 unidirectional dataflows
 
 ## Wrapping up

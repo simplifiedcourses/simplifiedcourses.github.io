@@ -4,7 +4,7 @@ title:  "Say goodbye to custom form validators in Angular"
 date:   2023-06-02
 published: true
 comments: true
-categories: [Angular, Forms, ObservableState, Angular Signals]
+categories: [Angular, Angular Forms, Angular Signals]
 cover: assets/say-goodbye-to-custom-form-validators-in-angular.jpg
 description: "This article explains how we can do validations for Angular forms without struggling with boilerplate"
 ---
@@ -15,6 +15,8 @@ This article is about making form validations:
 - effortless
 - opinionated
 - **without any boilerplate!!!**
+
+[Check a deep-dive here](https://www.youtube.com/watch?v=vKEd9cNh5R4&t=283s){:target="_blank"}
 
 That's quite the promise right?! Bear with us, we will explain how easy it is and you will never have to write a custom validator ever again. This article is based on [the talk ](https://www.youtube.com/watch?v=EMUAtQlh9Ko){:target="_blank"}
 of Ward Bell in combination with our previous article where we explain [template-driven forms or reactive forms](https://blog.simplified.courses/template-driven-or-reactive-forms-in-angular/){:target="_blank"}.
@@ -58,22 +60,22 @@ Ward Bell suggests using [Vest](https://vestjs.dev/docs/writing_your_suite/vests
 Let's say we have a model called `User` that looks like this:
 
 ```typescript
-export type User = {
+export type User = Partial<{
    firstName: string;
    lastName: string;
-   passwords: {
+   passwords: Partial<{
     password: string;
     confirmPassword: string;
-   }
+   }>
 
-  address: {
+  address: Partial<{
     street: string,
     number: string,
     city: string,
     zipcode: string,
     country: string
-  };
-}
+  }>;
+}>
 ```
 
 This is a clean model, and the validation suite could look like this:
@@ -91,21 +93,23 @@ export const userValidations = create((model: User, field: string) => {
         enforce(model.lastName).isNotBlank();
     });
     test(`address.street`, 'Street is required', () => {
-        enforce(model.address.street).isNotBlank();
+        enforce(model.address?.street).isNotBlank();
     });
     test(`passwords.password`, 'Password is required', () => {
-        enforce(model.passwords.password).isNotBlank();
+        enforce(model.passwords?.password).isNotBlank();
     });
     test(`passwords`, 'Passwords should match', () => {
         enforce(model.passwords.password).equals(
-            model.passwords.confirmPassword
+            model.passwords?.confirmPassword
         );
     });
     test(`passwords.password`, 'Should be more than 5 characters', () => {
-        enforce(model.passwords.password).longerThan(5);
+        enforce(model.passwords?.password).longerThan(5);
     });
 });
 ```
+
+[Check this YouTube video](https://www.youtube.com/watch?v=cuNl-7yu09g&t=67s){:target="_blank"} for a short demo!
 
 The first 2 arguments that the `test()` function takes, is the field and the validation message. It's important here to respect the property structure of our model.
 
@@ -125,13 +129,13 @@ Do we need to compare the two passwords if the `passwords.password` and `passwor
 export const userValidations = create((model: User, field: string) => {
     ....
     test(`passwords.password`, 'Password is required', () => {
-        enforce(model.password).isNotBlank();
+        enforce(model.passwords?.password).isNotBlank();
     });
     // don't check if passwords match if the passwords aren't both filled in
-    omitWhen(!model.password || !model.confirmPassword, () => {
+    omitWhen(!model.passwords?.password || !model.passwords?.confirmPassword, () => {
         test(`passwords`, 'Passwords should match', () => {
-            enforce(model.password).equals(
-                model.confirmPassword
+            enforce(model.passwords?.password).equals(
+                model.passwords?.confirmPassword
             );
         });
     }
@@ -139,7 +143,7 @@ export const userValidations = create((model: User, field: string) => {
     // don't check the length if the password isn't filled in yet
     omitWhen(!model.password, () => {
         test(`passwords.password`, 'Should be more than 5 characters', () => {
-         enforce(model.password).longerThan(5);
+         enforce(model.passwords?.password).longerThan(5);
         });
     });
 });
@@ -213,16 +217,6 @@ export function passwordValidations(
 
 ## Connecting our vest suites to Angular
 
-Model validations are easy. They are composable, functional, declarative, easy to read, reusable, testable, framework-agnostic and can be conditional.
-This is very nice, but what about that boilerplate reduction?
-What does this solution have to do with Angular? 
-We have to find a way to translate these model validation suites to Angular.
-
-The next thing we want to do is:
-- Make sure that not the entire suite is executed on every form change
-- Create Angular validator functions automatically based on our model validation suites.
-- Add these validator functions automatically to the right `FormControl` and `FormGroup` instances...
-
 ### Only validate the field in question
 
 For the first part, we need to use the `only` function to tell vest to only validate the field in question:
@@ -240,161 +234,48 @@ export const userValidations = create((model: User, field: string) => {
 });
 ```
 
-### Create the validator functions automatically
+### Making the connection to Vest
 
-The next thing we need to do is create a `ValidatorFn` based on the `field`, the `model` and the `suite`.
-Let's create a `createValidator` function for that:
+I created an entire working solution here where you get access to the entire code:
+[Angular Template-driven forms solution](https://blog.simplified.courses/i-opensourced-my-angular-template-driven-forms-solution/){:target="_blank"}
 
-```typescript
-import { AbstractControl, ValidatorFn } from "@angular/forms";
-import { SuiteResult } from "vest";
-import { set } from 'lodash';
+In a nutshell:
+- We will use the `ngModel` and `ngModelGroup` selectors
+- We will create new directives for them
+- Those directives will call parts of or Vest suite.
+- I explain the concepts in depth in my [Template-driven forms Course](https://www.simplified.courses/complex-angular-template-driven-forms), but you
+  can get the code for free [here](https://blog.simplified.courses/i-opensourced-my-angular-template-driven-forms-solution/){:target="_blank"}
 
-export function createValidator<T>(
-    field: string,
-    model: T,
-    suite: (model: T, field: string) => SuiteResult
-): ValidatorFn {
-    return (control: AbstractControl) => {
-        const mod: T = { ...model };
+Model validations are easy. They are composable, functional, declarative, easy to read, reusable, testable, framework-agnostic and can be conditional.
+This is very nice, but what about that boilerplate reduction?
+What does this solution have to do with Angular?
+We have to find a way to translate these model validation suites to Angular.
 
-        // this is a neat way to update foo.bar.baz in an object
-        // Update the property with path
-        set(mod, field, control.value); 
-        // Execute the suite with the model and field
-        const result = suite(mod, field); 
-        // get the errors from our field
-        const errors = result.getErrors()[field];
-        // expose both an error and errors property
-        return errors ? { error: errors[0], errors } : null;
-    };
-}
-```
+The next thing we want to do is:
+- Make sure that not the entire suite is executed on every form change
+- Create Angular validator functions automatically based on our model validation suites.
+- Add these validator functions automatically to the right `FormControl` and `FormGroup` instances...
 
-### Creating a form directive
-
-We want to pass the `model` and the `suite` to the form so that later on, 2 directives can translate the Vest suite into validator functions.
-For that, we are going to use  the `form[model][suite]` selector and just pass the model and the suite like this:
-
-```html
- <form [model]="vm.form" [suite]="suite" ...>
-    ...
- </form>
-```
-
-The implementation of the form directive looks like this:
-
-```typescript
-// ./form-validation/form.directive.ts
-import { Directive, inject, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { SuiteResult } from 'vest';
-
-@Directive({
-    // make sure it has a model and suite
-    selector: 'form[model][suite]',
-    standalone: true,
-})
-export class FormDirective<T> {
-    @Input() public model: T;
-    @Input() public suite: (model: T, field: string) => SuiteResult;
-
-    // expose ngForm, we need it in our child directives/components
-    public readonly ngForm = inject(NgForm, { self: true });
-}
-```
-
-We can see that we also inject `ngForm`, we will need this later...
-
-### Connect it to a FormControl and FormGroup instances
-
-We have a `FormDirective` that holds the information we need (`model` and `suite`), now we want to leverage the `ngModel` and `ngModelGroup` expressions in our template to automatically add the right validators to the right `FormControl` and `FormGroup` instances.
-If we are using template-driven forms we can hook into the `[ngModel]` selector and add the validators on the corresponding `FormControl` instance by using an Angular validation directive:
-
-```typescript
-import { Directive, inject} from '@angular/core';
-import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angular/forms';
-...
-
-@Directive({
-    // use the [ngModel] to avoid extra boilerplate in our template
-    selector: '[ngModel]',
-    standalone: true,
-    // Provide it as a validator to the angular NG_VALIDATORS
-    providers: [
-        { 
-            provide: NG_VALIDATORS, 
-            useExisting: FormModelDirective,
-            multi: true
-        }
-    ]
-})
-// implement the Validator interface that holds a validate function
-export class FormModelDirective<T> implements Validator {
-    // In here the magic will happen
-    public validate(control: AbstractControl): ValidationErrors|null {
-        ...
-        return validatorFn(control);
-    }
-}
-```
-
-We will spare you the implementation of this directive since it is out of scope for this article, but if you are interested, you can check it in [this stackblitz](https://stackblitz.com/edit/angular-4qdt9k?file=src%2Fform-validation%2Fform-model.directive.ts){:target="_blank"}.
-
-We are not just validating `FormControl` instances, we are also validating `FormGroup` instances, remember the `passwords` group? For that, we also need to create a `FormModelGroupDirective`:
-
-```typescript
-import { Directive, inject } from '@angular/core';
-import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
-...
-@Directive({
-    // use the [ngModelGroup] to avoid extra boilerplate in our template
-    selector: '[ngModelGroup]',
-    standalone: true,
-    // Provide it as a validator to the angular NG_VALIDATORS
-    providers: [
-        { 
-            provide: NG_VALIDATORS, u
-            seExisting: FormModelGroupDirective, 
-            multi: true 
-        },
-    ],
-})
-// implement the Validator interface that holds a validate function
-export class FormModelGroupDirective<T> implements Validator {
-  private readonly formDirective = inject(FormDirective);
-
-    // In here the magic will happen
-    public validate(control: AbstractControl): ValidationErrors | null {
-        ...
-        return validatorFn(control);
-    }
-}
-
-```
-
-
-We will spare you the implementation of this directive since it is out of scope for this article, but if you are interested, you can check it in [this stackblitz](https://stackblitz.com/edit/angular-4qdt9k?file=src%2Fform-validation%2Fform-model-group.directive.ts){:target="_blank"}.
 
 ## Connecting the dots/Show the errors
 
-We have created our form model suites, we have converted them to Angular validator functions and we found a way to connect these validators to the right `FormControl` and `FormGroup` instances automatically! Now the next step is to show these errors. For that, we are going to create a `inputWrapper` component that we can use like this:
+We have created our form model suites, we have converted them to Angular validator functions and we found a way to connect these validators to the right `FormControl` and `FormGroup` instances automatically! Now the next step is to show these errors. For that, we are going to create a `scControlWrapper` component that we can use like this:
 
 ```html
 <form [model]="vm.form" [suite]="suite" ...>
-    <label inputWrapper>
+    <label scControlWrapper>
         <span>First name</span>
         <input type="text" [ngModel]="vm.form.firstName" name="firstName" />
     </label>
 
-    <label inputWrapper>
+    <label scControlWrapper>
         <span>Last name</span>
         <input type="text" [ngModel]="vm.form.lastName" name="lastName" />
     </label>
     <app-address ...></app-address>
-    <div ngModelGroup="passwords" inputWrapper>
+    <div ngModelGroup="passwords" scControlWrapper>
         <h2>Password</h2>
-        <label>
+        <label scControlWrapper>
             <span>Password</span>
             <input
                 type="password"
@@ -402,7 +283,7 @@ We have created our form model suites, we have converted them to Angular validat
                 name="password"
             />
         </label>
-        <label>
+        <label scControlWrapper>
             <span>Confirm password</span>
             <input
                 type="password"
@@ -418,115 +299,7 @@ We can see that we have **removed all the boilerplate code**! The only 4 things 
 - `[ngModel]`
 - `ngModelGroup`
 - `name`
-- `inputWrapper`
-
-The only thing left to do is to create the `inputWrapper` component that will use content projection to show the errors at the right place:
-
-
-```typescript
-// ./input-wrapper.component.ts
-...
-
-@Component({
-    // use an attribute selector so we don't need 
-    // an additional DOM element    
-    selector: '[inputWrapper]',
-    imports: [CommonModule],
-    template: `
-        <!-- project the content here --> 
-        <ng-content></ng-content>
-        <ul *ngIf="ngModel.control.errors && (form.ngForm.submitted || ngModel.touched)">
-            <li *ngFor="let error of ngModel.control.errors.errors">{{error}}</li>
-        </ul>
-        <ng-container *ngIf="ngModelGroup && (form.ngForm.submitted || ngModelGroup.touched)">
-        <ul *ngIf="ngModelGroup.control?.errors">
-            <li *ngFor="let error of ngModelGroup.control.errors.errors">{{error}}</li>
-        </ul>
-        </ng-container>
-    `,
-    standalone: true,
-})
-export class InputWrapperComponent {
-    public readonly form = inject(FormDirective);
-   
-   // Check if there is a formControl
-    @ContentChild(NgModel) public ngModel: NgModel;
-    // Check if there is a formGroup
-    public readonly ngModelGroup: NgModelGroup = inject(NgModelGroup, {
-        optional: true,
-        self: true,
-    });
-
-    // calculate whether this has to be invalid or not
-    @HostBinding('class.invalid') public get invalid() {
-        return ...;
-    }
-}
-
-```
-
-For a full implementation, you can check it out [here](https://stackblitz.com/edit/angular-4qdt9k?file=src%2Fform-validation%2Finput-wrapper.component.ts){:target="_blank"}
-
-This is the final example in [Stackblitz](https://stackblitz.com/edit/angular-4qdt9k?file=src%2Fcomponents%2Fsmart%2Fadd-user%2Fadd-user.component.ts){:target="_blank"}
-The example uses [ObservableState](https://github.com/simplifiedcourses/observable-state){:target="_blank"} because it allows us to create complex reactive forms while still using the template-driven forms approach, but for simple solutions, we could use signals.
-
-## Let's stay future proof so refactor this entire solution to Signals!!!
-
-We all know the future of Angular is signals, so I made a signal version for you as well:
-
-```html
-<ng-container *ngIf="vm() as vm">
-  <h1>Add user</h1>
-  <p>Form dirty: {{ vm.formDirty }}</p>
-  <p>Form valid: {{ vm.formValid }}</p>
-  <form [model]="vm.user" [suite]="suite" #form="ngForm" (ngSubmit)="submit()">
-    ...
-  </form>
-</ng-container>
-
-```
-
-```typescript
-export class AddUserComponent implements AfterViewInit {
-    // Get access to the form
-    @ViewChild('form') public form: NgForm;
-
-    // Pss the suite to the template
-    public readonly suite: Suite<User> = userValidations;
-
-    // initial values for form, dirty and valid
-    private readonly formValue = signal(new User());
-    private readonly formDirty = signal(true);
-    private readonly formValid = signal(true);
-
-    // compute clean ViewModel
-    public readonly vm = computed(() => {
-        return {
-            user: this.formValue(),
-            passwordDisabled: this.formValue().address.street === '',
-            formValid: this.formValid(),
-            formDirty: this.formDirty(),
-        };
-    });
-
-    public submit(): void {
-        console.log(this.formValue());
-    }
-
-    public ngAfterViewInit(): void {
-        // connect the reactive form to the signals
-        this.form?.valueChanges?.subscribe(v => {
-            this.formValue.update(curr => new User({...curr, ...v}))
-        });
-        this.form?.statusChanges?.subscribe(() => {
-            this.formDirty.set(this.form.dirty);
-            this.formValid.set(this.form.valid);
-        });
-    }
-}
-```
-
-[Here is the complete signal version](https://stackblitz.com/edit/angular-ugjyrg?file=src%2Fcomponents%2Fsmart%2Fadd-user%2Fadd-user.component.ts){:target="_blank"} 
+- `scControlWrapper`
 
 ## Wrap up
 
@@ -534,7 +307,7 @@ We learned that both template-driven forms and reactive forms have issues with v
 Model validations make more sense from an architectural point of view and with Vest-suites we can create composable, scalable
 and conditional validation suites. By using 2 directives we can easily translate those validation suites to Angular validators and
 connect them to the `FormControl` and `FormGroup` instances that are automatically created by Angular.
-We created a `inputWrapper` component that uses the validation errors in combination with content projection to show validation errors
+We created a `scControlWrapper` component that uses the validation errors in combination with content projection to show validation errors
 without any boilerplate. As a cherry on top, we refactored the entire form to signals.
 I hope you enjoyed this article. Please leave a comment and subscribe for more content.
 

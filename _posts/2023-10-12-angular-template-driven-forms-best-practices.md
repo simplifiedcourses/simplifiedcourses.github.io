@@ -4,7 +4,7 @@ title: "Angular Template-driven Forms Best Practices"
 date: 2023-10-12
 published: false
 comments: true
-categories: [Angular, Forms, Best Practices]
+categories: [Angular, Angular Forms, Best Practices]
 description: "This article contains Best Practices on how to use Template-driven Forms in Angular"
 ---
 

@@ -13,7 +13,7 @@ description: "This article shows how we can optimize the number of emissions and
 ## Update: 10 November 2023
 
 With Angular Signals being out of developer preview in version 17 we could use setters with signals as well.
-Beware that signal inputs are comint as well
+Beware that signal inputs are coming as well.
 
 ```typescript
 private readonly itemsPerPageSignal = signal(0);
@@ -455,6 +455,21 @@ You can check a fully working example in [this stackblitz](https://stackblitz.co
 - Subscriptions are handled on `ngOnDestroy` and cleaned up automatically.
 - We can still implement the `ngOnChanges` and `ngOnDestroy` life cycle hooks if we want to but we don't have to.
 - We don't rely on any open-source projects and are working close to the Angular ecosystem
+- In angular 17, signal inputs will arrive which will probably result in something like this:
+
+```typescript
+export class PagerComponent {
+  public itemsPerPage = input(0);
+  public total = input(0);
+  public pageIndex = input(0);
+  
+  public inputState = computed(() => ({
+    itemsPePage: this.itemsPerPage(),
+    total: this.total(),
+    pageIndex: this.pageIndex(),
+  }))
+}
+```
 
 There are still a few problems though.
 In the next article, we will fix the following problems:

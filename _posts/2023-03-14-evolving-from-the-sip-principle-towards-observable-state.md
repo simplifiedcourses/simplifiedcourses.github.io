@@ -11,6 +11,7 @@ description: "This article explains how I moved from the SIP principle towards O
 
 **Update:**
 We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
+This is only relevant if you are on Angular 16 or higher.
 
 
 ## Intro

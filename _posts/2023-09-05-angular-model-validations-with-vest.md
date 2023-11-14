@@ -5,7 +5,7 @@ date:   2023-07-16
 published: false
 comments: true
 cover: assets/state-management-with-angular-signals.jpg
-categories: [Angular, Forms, Vest, Angular Signals]
+categories: [Angular, Angular Forms, Vest, Angular Signals]
 description: "This article explains how to use Angular model validations with Vest"
 ---
 

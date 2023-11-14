@@ -5,7 +5,7 @@ date: 2023-10-12
 published: true
 cover: assets/template-driven-forms-with-signals.jpg
 comments: true
-categories: [ Angular, Forms, Signals, ngx-signal-state ]
+categories: [ Angular, Angular Forms, Angular Signals, ngx-signal-state ]
 description: "In this article we will create a type-safe Template-driven From with Signals with no boilerplate!"
 ---
 
@@ -14,6 +14,7 @@ In this article we will learn the most basic example of a semi-complex unidirect
 Not a reader? I created 2 YouTube video's for you explaining everything!!
 - [Livecode: Angular Unidirectional Template-driven Forms with signals](https://www.youtube.com/watch?v=ijp_qt3SYl4&t=1s){:target="_blank"}
 - [Livecode: Angular Template-driven Forms with ViewModels](https://www.youtube.com/watch?v=ONOtrl6j6Qs&t=14s){:target="_blank"}
+
 
 ## Creating a unidirectional Template-driven form with Angular
 
@@ -330,6 +331,9 @@ Now the only thing we need to do is use the `*ngIf` directive and `[disabled]` i
 - Everything is typesafe but the `name` attribute.
 
 [Checkout the Stackblitz example here](https://stackblitz.com/edit/stackblitz-starters-og2pnw){:target="_blank"}
+
+**Update** A full working solution with a complex Demo can be found [here!](https://blog.simplified.courses/i-opensourced-my-angular-template-driven-forms-solution/){:target="_blank"}
+
 
 This example does not contain Model validations, conditional logic, and asynchronous logic because they are out of scope for this article.
 If you reach out I will gladly share examples.

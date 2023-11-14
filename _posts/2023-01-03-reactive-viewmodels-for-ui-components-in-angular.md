@@ -11,9 +11,9 @@ description: "This article shows you how to use reactive ViewModels in Angular i
 ---
 
 A while ago I wrote about [Smart components, UI components and sandbox facades in Angular](https://blog.simplified.courses/smart-components-ui-components-and-sandbox-facades-in-angular/){:target="_blank"}.
-This article is about reactive ViewModels for UI components in Angular. We will see how this approach will result in cleaner templates, and more reactive code and will give us some extra possibilities regarding performance optimization.
+This article is about reactive ViewModels for UI components in Angular. We will learn how this approach will result in cleaner templates, more reactive code and how it will give us some extra possibilities regarding performance optimization.
 
-## What's a ViewModel
+## What's a ViewModel?
 
 A ViewModel is something that has a lot of different definitions and meanings. 
 There are lots of different opinions about what a ViewModel should represent and which responsibility it has.

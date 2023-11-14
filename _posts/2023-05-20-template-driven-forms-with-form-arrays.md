@@ -4,7 +4,7 @@ title: "Template-driven forms with form arrays in Angular"
 date: 2023-08-06
 published: true
 comments: true
-categories: [ Angular, Forms, State management, Signals ]
+categories: [ Angular, Angular Forms, State management, Angular Signals ]
 cover: assets/template-driven-forms-with-form-arrays-in-angular.jpg
 description: "This article explains how to work with form arrays in template-driven forms in Angular"
 ---

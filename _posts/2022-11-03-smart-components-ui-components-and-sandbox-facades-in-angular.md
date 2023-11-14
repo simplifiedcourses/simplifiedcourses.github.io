@@ -48,7 +48,7 @@ template: `
 })
 export class HelloComponent  {
     @Input() name: string;
-    @Output() nameChange = new EventEmitter<string>()
+    @Output() nameChange = new EventEmitter<string>();
 }
 
 ```
@@ -103,9 +103,9 @@ export class NameComponent  {
 
 ```
 
-### Folder structure
+### Directory structure
 
-Even though this is obviously highly opinionated, we came up with a folder structure that looks like this:
+Even though this is obviously highly opinionated, we came up with a directory structure that looks like this:
 
 - `feat-lib/lib/src/components/ui/foo/foo.ui-component.ts`
 - `feat-lib/lib/src/components/smart/bar/bar.smart-component.ts`

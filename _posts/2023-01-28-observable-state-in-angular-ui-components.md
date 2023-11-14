@@ -11,6 +11,7 @@ description: "We will dive deep into Observable state in Angular Ui components t
 ---
 **Update:**
 We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
+This is only relevant if you are on Angular 16 or higher.
 
 What is state management? This is a very popular discussion topic in most teams.
 What is state? When do we manage it? What state do we need to manage? What is managing state?

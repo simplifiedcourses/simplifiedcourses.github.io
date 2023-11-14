@@ -4,12 +4,21 @@ title:  "Template-driven or reactive forms in Angular"
 date:   2023-05-23
 published: true
 comments: true
-categories: [Angular, Forms, State management, ObservableState]
+categories: [Angular, Angular Forms, State management]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
 description: "Should we use template-driven forms or reactive forms in Angular"
 ---
 
 ## Introduction
+
+**Update. I have [open-sourced this solution](https://blog.simplified.courses/i-opensourced-my-angular-template-driven-forms-solution/){:target="_blank"}
+Where I showcase Template-driven Forms with:**
+- A unidirectional dataflow
+- Typ(o) safety
+- Vest validation suites
+- Async validators
+- Declarative and reactive ViewModels
+- **Without any boilerplate at all!**
 
 When Angular was released in 2016, the only solution they had for creating forms was template-driven forms. A principle where directives in the template were used to create forms. In Angular 4 the core team introduced a new concept called **reactive forms**.
 It was a new way with a reactive API that exposed RxJS Observables when we wanted them. Pretty soon everyone was agreeing that reactive forms were the new way to go. The new best practice. Template-driven forms were even frowned upon and I have been advising companies to use Reactive forms for years. In Reactive forms, we would use `FormBuilder` to create `FormGroup` instances with `FormControl` and `FormArray` instances.
@@ -138,7 +147,7 @@ export class App {
 ```
 
 We have created a clean `User` class that is completely type-safe and even has initial values. The typescript part of `App` has been simplified drastically. 
-In the form element, we see that we have added the `#form="ngForm"` syntax to tell Angular this is our template-driven form.
+In the form element, we see that we have added the `#form="ngForm"` syntax to get access to the `ngForm` directive.
 For the rest, we use a combination of `ngModel`, `name` and `ngModelGroup` to create our form.
 The syntax of this form is quite simple and because we use the correct values in the `name` and `ngModelGroup` Angular has created the perfect reactive form for us behind the scenes, automatically!
 
@@ -197,29 +206,21 @@ Making it reactive, however, is an important part of this article. What we want 
 - Getting observables from groups or controls of our form
 - We don't want to have to bind all the events manually in the template. We want to work against one reactive form (which was the whole point of Reactive forms)
 
-I have created a small class (<100 lines of code) that is called [ObservableState](https://github.com/simplifiedcourses/observable-state/){:target="_blank"} that I explain in depth in [this article](https://blog.simplified.courses/observable-state-in-angular/){:target="_blank"} and it turns out this can make your form reactive in a few lines of code.
-The whole point was having an opinionated way of doing state management that is super light weight and **simplifies state management in angular completely!**.
-
-The first thing we need to do is adapt the `UserClass` so it can take partial updates:
+The first thing we need to do is create a `FormModel` type so it can take partial updates:
 
 ```typescript
-class User {
-  public firstName = '';
-  public lastName = '';
-  public passwords = {
-    password: '',
-    confirmPassword: '',
-  };
-  constructor(user?: Partial<User>) {
-    if (user) {
-      Object.assign(this, { ...user });
-    }
-  }
-}
-```
+type FormModel = Partial<{
+    firstName: string;
+    lastName: string;
+    passwords: Partial<{
+        password: string;
+        confirmPassword: string;
+    }>;
+}>;
 
-Now we need to make the `App` extend from `ObservableState<T>`, initialize it with default values (`initialize()`),
-and connect the form after the view is initialized on the `ngAfterViewInit()` lifecycle hook:
+```
+Now we need to add a `formValue` signal that holds the form state,
+make the `App` implement the `ngAfterViewinit()` lifecycle hook and feed our `formValue` signal with that.
 
 ```typescript
 @Component({
@@ -229,42 +230,32 @@ and connect the form after the view is initialized on the `ngAfterViewInit()` li
   ...
   `,
 })
-export class App extends ObservableState<{ user: User }> implements AfterViewInit {
-  @ViewChild('form') form!: NgForm;
-  ...
+xport class App implements AfterViewInit  {
+    @ViewChild('form') form!: NgForm;
 
-  constructor() {
-    super();
-    // initialize the state
-    this.initialize({
-      user: new User(),
-    });
-  }
+    // Signal that holds our state
+    protected readonly formValue = signal<FormModel>({});
 
-  // Wait until Angular has created the initial version of the form
-  public ngAfterViewInit(): void {
-    // connect it with the form
-    this.connect({
-      user: this.form.valueChanges?.pipe(
-        map((v) => new User({ ...this.snapshot.form, ...v }))
-      ),
-    });
-  }
-  public submit(): void {
-    // The state becomes the single source of truth
-    console.log(this.snapshot.user);
-  }
+    public ngAfterViewInit(): void {
+        this.form?.valueChanges?.subscribe((v) => {
+            this.formValue.set(v);
+        });
+    }
+    
+    public submit(): void {
+        console.log(this.form);
+    }
 }
 
 ```
 
-Now we can create a [ViewModel](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"} for that with the `onlySelectWhen()` method from `ObservableState`, and we can even drop the banana in the box syntax and work with one-way-databinding since the `valueChanges` of the (by angular) generated `form` feeds `ObservableState`.
+Now we can create a [ViewModel](https://blog.simplified.courses/reactive-viewmodels-for-ui-components-in-angular/){:target="_blank"} for that and even drop the banana in the box syntax and work with one-way-databinding since the `valueChanges` of the (by angular) generated `form` feeds our `formValue` signal.
 
 ```typescript
 @Component({
   ...
   template: `
-  <form #form="ngForm" *ngIf="vm$|async as vm" (ngSubmit)="submit()">
+  <form #form="ngForm" (ngSubmit)="submit()">
       <label>
         First name
         <input type="text" [ngModel]="vm.user.firstName" name="firstName"/>
@@ -274,9 +265,21 @@ Now we can create a [ViewModel](https://blog.simplified.courses/reactive-viewmod
   </form>
   `,
 })
-export class App extends ObservableState<{ user: User }> implements AfterViewInit {
-  ...
-  public readonly vm$ = this.onlySelectWhen(['user']);
+export class App implements AfterViewInit {
+    ...
+    protected readonly formValue = signal<FormModel>({});
+    
+    // Calculate the ViewModel
+    private readonly viewModel = computed(() => {
+        return {
+            user: this.formValue()
+        };
+    });
+
+    // Expose the ViewModel as a getter
+    protected get vm() {
+        return this.viewModel();
+    }
   ...
 }
 ```
@@ -284,43 +287,35 @@ export class App extends ObservableState<{ user: User }> implements AfterViewIni
 ### But what about all the other goodies reactive forms have to offer us?
 
 You are talking about the status, right?! Whether controls are `valid`, `dirty`, etc...
-If you care about these states, then we can just add them to the state:
+If you care about these states, then we can just add them to the state and create signals for them:
 
 ```typescript
 @Component({...})
 // Update the type so it also supports dirty and valid
-export class App extends ObservableState<{ user: User, dirty: boolean, valid: boolean }> implements AfterViewInit {
-  ...
-  constructor() {
-    super();
-    this.initialize({
-      ...
-      // initialize the new state values
-      // will throw an error as form is not defined when constructor is called
-      dirty: this.form.dirty,
-      valid: this.form.valid
-    })
-  }
+export class App implements AfterViewInit  {
+    ...
+    protected readonly formValue = signal<FormModel>({});
+    protected readonly formDirty = signal<boolean>(false);
+    protected readonly formValid = signal<boolean>(false);
 
-   public ngAfterViewInit(): void {
-    this.connect({
-      ...
-      // Connect both states to the state
-      dirty: this.form.statusChanges.pipe(map(() => this.form.dirty)),
-      valid: this.form.statusChanges.pipe(map(() => this.form.valid))
-    });
-  }
+    public ngAfterViewInit(): void {
+        this.form?.valueChanges?.subscribe((v) => {
+            this.formValue.set(v);
+            this.formDirty.set(this.form.form.dirty);
+            this.formValid.set(this.form.form.valid);
+        });
+    }
+    ...
 }
 ```
 
-Now every time the form becomes dirty, it will update the state which can give us an `Observable`, but also a snapshot.
-The only thing left to do is translate to a ViewModel and we can use it in a reactive way in our template:
+We can easily consume the new state through our ViewModel:
 
 ```typescript
 @Component({
   ...
   template: `
-  <form #form="ngForm" *ngIf="vm$|async as vm" (ngSubmit)="submit()">
+  <form #form="ngForm" (ngSubmit)="submit()">
       Dirty: {{vm.dirty}}
       Valid: {{vm.valid}}
       ...
@@ -329,10 +324,21 @@ The only thing left to do is translate to a ViewModel and we can use it in a rea
   `,
 })
 // Update the type so it also supports dirty and valid
-export class App extends ObservableState<{ user: User, dirty: boolean, valid: boolean }> implements AfterViewInit {
-  ...
-  public readonly vm$ = this.onlySelect(['user', 'dirty', 'valid']);
-  ...
+export class App implements AfterViewInit {
+    ...
+
+    protected readonly formValue = signal<FormModel>({});
+    protected readonly formDirty = signal<boolean>(false);
+    protected readonly formValid = signal<boolean>(false);
+    private readonly viewModel = computed(() => {
+        return {
+            user: this.formValue(),
+            dirty: this.formDirty(),
+            valid: this.formValid(),
+            confirmPasswordDisabled: !this.formValue().passwords?.password,
+            showPasswords: this.formValue().firstName,
+        };
+    });
 }
 ```
 
@@ -366,23 +372,24 @@ Now you can do most of that logic in a declarative way in the ViewModel. Look ho
 @Component({
   ...
   template: `
-  <form #form="ngForm" *ngIf="vm$|async as vm" (ngSubmit)="submit()">
+  <form #form="ngForm" (ngSubmit)="submit()">
       ...
       <input [disabled]="vm.confirmPasswordDisabled" .../>
        ...
   </form>
   `,
 })
-export class App extends ObservableState<{ user: User }> implements AfterViewInit {
+export class App implements AfterViewInit {
   ...
-  public readonly vm$ = this.onlySelectWhen(['user']).pipe(
-    map(state => {
-      return {
-        user: state.user,
-        confirmPasswordDisabled: state.user.passwords.password === ''
-      }
-    })
-  );
+    private readonly viewModel = computed(() => {
+        return {
+            user: this.formValue(),
+            dirty: this.formDirty(),
+            valid: this.formValid(),
+            confirmPasswordDisabled: !this.formValue().passwords?.password,
+            showPasswords: this.formValue().firstName,
+        };
+    });
   ...
 }
 ```
@@ -393,7 +400,7 @@ We could take it even further and remove the passwords when there is no first na
 @Component({
   ...
   template: `
-  <form #form="ngForm" *ngIf="vm$|async as vm" (ngSubmit)="submit()">
+  <form #form="ngForm" (ngSubmit)="submit()">
       ...
       <div ngModelGroup="passwords" *ngIf="vm.showPasswords">
         ...
@@ -402,16 +409,17 @@ We could take it even further and remove the passwords when there is no first na
   </form>
   `,
 })
-export class App extends ObservableState<{ user: User }> implements AfterViewInit {
+export class App  implements AfterViewInit {
   ...
-  public readonly vm$ = this.onlySelectWhen(['user']).pipe(
-    map(state => {
-      return {
-        ...
-        showPasswords: state.user.firstName !== ''
-      }
-    })
-  );
+    private readonly viewModel = computed(() => {
+        return {
+            user: this.formValue(),
+            dirty: this.formDirty(),
+            valid: this.formValid(),
+            confirmPasswordDisabled: !this.formValue().passwords?.password,
+            showPasswords: this.formValue().firstName,
+        };
+    });
   ...
 }
 ```
@@ -420,68 +428,24 @@ Try doing that with a reactive form and keep it simple at the same time. By usin
 
 ## Specific reactivity
 
-Now we can only create Observables from the entire form, but in some cases, we want to fetch new data, add form controls, remove form controls whenever things change. Since our form is connected to `ObservableState` this is easy to do:
-We just have to use the `onlySelectWhen()` method and connect that to the state. `ObservableState` will automatically perform a `distinctUntilChanges()` behind the scenes so the observable will only emit when needed:
+We can use effects, RxJS interop and a bunch of other logic.
+Take this Stackblitz example as the most complete demo of template-driven forms!
 
-
-```typescript
-@Component({...})
-export class App extends ObservableState<{ user: User, firstName: string }> implements AfterViewInit {
-  ...
-
-  constructor() {
-    super();
-    this.initialize({
-      user: new User(),
-      firstName: '' // initialize
-    });
-    // get notified when firstName changes
-    this.select('firstName').subscribe(() => {
-      console.log('first name has changed')
-    })
-  }
-
-  public ngAfterViewInit(): void {
-    this.connect({
-      ...
-      // Just connect it to the state
-      firstName: this.onlySelectWhen(['user']).pipe(
-        map(state => state.user.firstName)
-      )
-    });
-  }
-  ...
-}
-```
-
-This can turn into a very declarative approach. In the next example, we see how we can load zip codes when the country of the form changes. Everything is automatically added to the state and we can get `Observable`'s and snapshots from it.
-
-```typescript
- this.connect({
-      country: this.onlySelectWhen(['user']).pipe(
-        map(state => state.user.country)
-      ),
-      zipcodes: this.onlySelectWhen(['country']).pipe(
-        switchMap(country => this.countryService.fetchZipcodesByCountry(country))
-      )
-    });
-```
 
 ## Summary
 
 Reactive forms have benefits, and so have template-driven forms. But template-driven forms create reactive forms behind the scenes.
-Angular does that automatically for us. Using template-driven forms with `ObservableState` will give your form steroids and will get the best from both worlds:
+Angular does that automatically for us. Using template-driven forms with signals will give your form steroids and will get the best from both worlds:
 - Remove boilerplate
 - Clean templates: no `(change)` expressions shattered in the template.
 - Turn forms into easy-to-read declarative code
-- Give you observables but also snapshots. It will be easy to get signals from them as well.
 - Create a form based on a simple class with initial values
 
 Also, check out these 2 talks from ward bell:
 - [Prefer Template-Driven Forms](https://www.youtube.com/watch?v=L7rGogdfe2Q&t=3s){:target="_blank"}
 - [Form Validation Done Right ](https://www.youtube.com/watch?v=EMUAtQlh9Ko){:target="_blank"}
 
-Interested in playing with the code? Check out [this stackblitz](https://stackblitz.com/edit/angular-wqxqyb){:target="_blank"}!
+Interested in playing with a complex form? Check out [my open sourced Template-driven forms solution](https://blog.simplified.courses/i-opensourced-my-angular-template-driven-forms-solution/){:target="_blank"}!
 
 Thanks to the awesome reviewers;
 - [Daniel Glejzner](https://twitter.com/danielglejzner){:target="_blank"}
