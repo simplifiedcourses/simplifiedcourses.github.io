@@ -2,7 +2,7 @@
 layout: post
 title:  "Reactive ViewModels for UI components in Angular"
 date:   2023-01-03
-published: true
+published: false
 comments: true
 categories: [Angular, RxJS, State management]
 cover: assets/reactive-viewmodels-for-ui-components-in-angular.jpg
@@ -93,10 +93,10 @@ private readonly pageIndexSignal = signal(0);
 @Input() public set itemsPerPage(v: number) {
     this.itemsPerPageSignal.set(v);
 };
-@Input() public set total(v: number {
+@Input() public set total(v: number) {
   this.totalSignal.set(v);
 };
-@Input() public set pageIndex(v: number {
+@Input() public set pageIndex(v: number) {
   this.pageIndexSignal.set(v);
 };
 
