@@ -152,3 +152,5 @@ to run asynchronous validations every times a control changes right?! That would
 the entire time.
 
 The entire codebase can be found [here](https://stackblitz.com/edit/stackblitz-starters-sejk7c?file=src%2Fapp%2Fcomponents%2Fsimple-form%2Fsimple-form.component.ts){:target="_blank"}.
+
+Check out the [YouTube video here](https://youtu.be/cvhEPtlttq0){:target="_blank"}
