@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Asynchronous Form Validators in Angular with Vest"
-date: 2023-11-19
+date: 2023-11-26
 published: true
-cover: assets/asynchronous-form-validators-in-angular-with-vest.jpg
+cover: assets/async-form-validators-in-angular-with-vest.jpg
 comments: true
 categories: [Angular, Angular Forms]
 description: "In this article, we will create asynchronous form validators for Angular in our vest suites"
@@ -11,9 +11,11 @@ description: "In this article, we will create asynchronous form validators for A
 
 # Intro
 
-In this article, we are going to tackle Asynchronous Validations in Angular with Vest.js
+In this article, we are going to tackle Asynchronous Validations in Angular with Vest.js.
 
-Previously we learned that we can use [vest.js]() to write validation suites.
+Not a fan of the written word? Check out the YouTube video [here](https://youtu.be/pYDXY3Yo8kM){:target="_blank"}!
+
+Previously we learned that we can use [vest.js](https://vestjs.dev/){:target="_blank"} to write validation suites.
 The advantage of a validation suite is:
 - It's framework agnostic
 - It's reusable
@@ -24,9 +26,9 @@ The advantage of a validation suite is:
 Validations become a breeze when using vest.js!
 With very limited code we can write beautiful suites that can be reused everywhere in the frontend but also in the backend.
 
-After that, I explained that we use directives to connect angular validator functions to our vest suites. I open-sourced the entire thing and you can play with that [here]().
+After that, I explained that we use directives to connect angular validator functions to our vest suites. I open-sourced the entire thing and you can play with that [here](https://www.simplified.courses/forms){:target="_blank"}.
 
-We even [optimized these validations suites]() so that we can pass a `validationConfig` object that states which controls their validators should be run when a certain control is updated.
+We even [optimised these validations suites](https://blog.simplified.courses/optimise-conditional-validators-for-angular-forms/){:target="_blank"} so that we can pass a `validationConfig` object that states which controls their validators should be run when a certain control is updated.
 
 Most of the time this covers all of our use cases but sometimes we need to validate based on data that is living in our backend.
 Here are some use cases of when we would need an asynchronous validation:
@@ -44,10 +46,7 @@ For that, we can use a factory function.
 So instead of doing:
 
 ```typescript
-import { User } from '../types/user';
-import { test, enforce, create } from "vest";
-
-export const userValidations = create((model: FormModel, field: string) => {
+export const simpleFormValidations = create((model: SimpleFormModel, field: string) => {
     only(field);
     test('firstName', 'First name is required', () => {
         enforce(model.firstName).isNotBlank();
@@ -58,37 +57,36 @@ export const userValidations = create((model: FormModel, field: string) => {
 We should do:
 
 ```typescript
-export const createUserValidations = (userService: UserService) => {
-    return create((model: FormModel, field: string) => {
+export const createSimpleFormValidations = (swapiService: SwapiService) => {
+    return create((model: SimpleFormModel, field: string) => {
         only(field);
-        test('firstName', 'First name is required', () => {
-            enforce(model.firstName).isNotBlank();
+
+        omitWhen(!model.userId, () => {
+            test('userId', 'User id is already taken', async ({ signal }) => {
+                await lastValueFrom(
+                    swapiService
+                        .searchUserById(model.userId as string)
+                        .pipe(takeUntil(fromEvent(signal, 'abort')))
+                ).then(
+                    () => Promise.reject(),
+                    () => Promise.resolve()
+                );
+            });
         });
-    })
-};
+    });
+}
 ```
 
 We could also pass asynchronous functions if we would want to reuse it in another framework:
 
-```typescript
-export const createUserValidations = (getUser: (userId:string) => Promise<User>) => {
-    return create((model: FormModel, field: string) => {
-        only(field);
-        test('firstName', 'First name is required', () => {
-            enforce(model.firstName).isNotBlank();
-        });
-    })
-};
-```
 
-The component where we call `createUserValidations()` could look like this:
+The component where we call `createSimpleFormValidations()` could look like this:
 
 ```typescript
-export class Form {
-    // Inject the userService
-    private readonly userService = inject(UserService);
-    private readonly getUser = (userId: string) => lastValueFrom(this.userService.get(userId))
-    protected readonly suite = createUserValidations(this.getUser);
+export class SimpleFormComponent {
+    protected readonly swapiService = inject(SwapiService);
+    protected readonly suite = createSimpleFormValidations(this.swapiService);
+    protected readonly formValue = signal<SimpleFormModel>({})
 }
 ```
 
@@ -97,32 +95,71 @@ export class Form {
 Vest asynchronous validations work with promises. For that we can use the async await syntax.
 
 ```typescript
-export const createUserValidations = (getUser: (userId:string) => Promise<User>) => {
-    return create((model: FormModel, field: string) => {
+export const createSimpleFormValidations = (swapiService: SwapiService) => {
+    return create((model: SimpleFormModel, field: string) => {
         only(field);
-        omitWhen((!model.userId), () => {
-            test('userId', 'userId is already taken', async () => {
-                await getUser(model.userId as string).then(
-                    // User exists, reject because it shouldn't exist
-                    () => Promise.reject(),
-                    // User does not exist, no validation error
-                    () => Promise.resolve()
+
+        // Only execute when there is a user
+        omitWhen(!model.userId, () => {
+            // Our test
+            test('userId', 'User id is already taken', async () => {
+                // Convert to promise
+                await lastValueFrom(
+                    // Call the backend
+                    swapiService.searchUserById(model.userId as string)
+                ).then(
+                    () => Promise.reject(), // 200 ==> INVALID
+                    () => Promise.resolve() // 400 ==> VALID
                 );
             });
         });
-    })
+    });
 };
 ```
 
+When the backend returns a 404, it means the user does not exist, so the field would be valid.
+The other way around when the result of the backend is 200, the field should be invalid!
+
 ## Abort signal
+
+If we type multiple times this would result in multiple calls that are being made at the same time.
+Ideally we want to cancel the previous calls. For that Vest has provided an abort signal for us.
+We would use that signal in combination with the `takeUntil` operators from RxJS to stop the call if a new
+validation is happening.
+We would get the signal as an argument of our asynchronous function:
+
+```typescript
+test('userId', 'User id is already taken', async ({ signal }) => {
+    ...
+});
+```
+Then on the result observable we would take the `abort` event from our signal and clean it up with `takeUntil`:
+This is the final result:
+
+```typescript
+omitWhen(!model.userId, () => {
+    test('userId', 'User id is already taken', async ({ signal }) => {
+        // Convert to promise
+        await lastValueFrom(
+            swapiService
+                .searchUserById(model.userId as string)
+                // Clean up open requests
+                .pipe(takeUntil(fromEvent(signal, 'abort')))
+        ).then(
+            () => Promise.reject(), // 200 ==> INVALID
+            () => Promise.resolve() // 400 ==> VALID
+        );
+    });
+});
+```
 
 ## How does it work
 
-To start using this you just need to copy-paste the `templateDrivenForms` directory from [here]()
-We won't go in to depth into the internals in this article, we explain it in depth in the course though if the code
-wouldn't be self-explanatory
+To start using this you just need to copy-paste the `templateDrivenForms` directory from [here](https://stackblitz.com/~/github.com/simplifiedcourses/template-driven-forms){:target="_blank"}
+We won't go to deep into the internals in this article, we explain it in depth in the course though if the code
+wouldn't be self-explanatory. In [this YouTube video](https://youtu.be/pYDXY3Yo8kM){:target="_blank"}, it is also explained.
 
-We use a custom directive that hooks into the `[ngModel]` selector.
+In short: We use a custom directive that hooks into the `[ngModel]` selector.
 That selector implements the `AsyncValidator` interface and gets the following values from the `FormDirective`
 that hooks into the `form` selector:
 - `ngForm`: A reference to the Angular form
@@ -159,7 +196,7 @@ export class FormModelDirective implements AsyncValidator {
 }
 ```
 
-You can check the file [here]()
+You can check the file [here](https://stackblitz.com/edit/stackblitz-starters-uooinv?file=src%2Fapp%2Ftemplate-driven-forms%2Fform-model.directive.ts){:target="_blank"}
 
 The `createAsyncValidator()` function looks like this:
 
@@ -187,6 +224,16 @@ export function createAsyncValidator<T>(
 }
 ```
 
-You can check that [here]()
+You can check that [here](https://stackblitz.com/edit/stackblitz-starters-uooinv?file=src%2Fapp%2Ftemplate-driven-forms%2Futils.ts){:target="_blank"}
 
-### Debouncing the values
+### Wrapping up
+
+Before I wrap up, have some fun with the [Stackblitz example here](https://stackblitz.com/edit/stackblitz-starters-uooinv){:target="_blank"}
+
+- Asynchronous validators can be great to validate based on data that lives on the server
+- We can add asynchronous functions in our vest suites with async await
+- There is an abort signal that helps us clean up open ajax calls
+- We created async validator logic that is part of [my free boilerplate](https://simplified.courses/forms){:target="_blank"}
+- We have no boilerplate anymore and everything just works
+
+I hope you enjoyed, if you do, subscribe, spread, drop me a message 🥰🥰🥰
