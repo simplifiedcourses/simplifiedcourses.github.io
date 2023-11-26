@@ -13,7 +13,7 @@ description: "In this article, we will create asynchronous form validators for A
 
 In this article, we are going to tackle Asynchronous Validations in Angular with Vest.js.
 
-Not a fan of the written word? Check out the YouTube video [here](https://youtu.be/pYDXY3Yo8kM){:target="_blank"}!
+Not a fan of the written word? Check out the YouTube video [here](https://youtu.be/s20RfQJ73tw){:target="_blank"}!
 
 Previously we learned that we can use [vest.js](https://vestjs.dev/){:target="_blank"} to write validation suites.
 The advantage of a validation suite is:
@@ -157,7 +157,7 @@ omitWhen(!model.userId, () => {
 
 To start using this you just need to copy-paste the `templateDrivenForms` directory from [here](https://stackblitz.com/~/github.com/simplifiedcourses/template-driven-forms){:target="_blank"}
 We won't go to deep into the internals in this article, we explain it in depth in the course though if the code
-wouldn't be self-explanatory. In [this YouTube video](https://youtu.be/pYDXY3Yo8kM){:target="_blank"}, it is also explained.
+wouldn't be self-explanatory. In [this YouTube video](https://youtu.be/s20RfQJ73tw){:target="_blank"}, it is also explained.
 
 In short: We use a custom directive that hooks into the `[ngModel]` selector.
 That selector implements the `AsyncValidator` interface and gets the following values from the `FormDirective`
