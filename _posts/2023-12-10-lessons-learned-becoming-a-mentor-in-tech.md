@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lessons learned: building a career in frontend"
+title: "Lessons learned: Becoming a mentor in tech"
 date: 2023-12-09
 published: true
 cover: assets/lessons-learned-becoming-a-mentor-in-tech.jpg
