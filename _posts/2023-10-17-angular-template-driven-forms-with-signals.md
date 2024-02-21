@@ -9,6 +9,7 @@ categories: [ Angular, Angular Forms, Angular Signals, ngx-signal-state ]
 description: "In this article we will create a type-safe Template-driven From with Signals with no boilerplate!"
 ---
 
+**Updated 21 february 2024**
 In this article we will learn the most basic example of a semi-complex unidirectional form with Angular Signals.
 
 Not a reader? I created 2 YouTube video's for you explaining everything!!
@@ -113,9 +114,16 @@ export class FormDirective<T> {
     // Inject its own `NgForm` instance
     private readonly ngForm = inject(NgForm, { self: true });
     // Use the valueChanges of the form as the output
-    @Output() public readonly formValueChange = this.ngForm.form.valueChanges;
+    @Output() public readonly formValueChange = this.ngForm.form.valueChanges.pipe(
+        debounceTime(0),
+        map(() => mergeValuesAndRawValues<T>(this.ngForm.form))
+    );
 }
 ```
+
+We put a `debounceTime()` operator on it so that angular only emits when the entire form is created, and we use the 
+[mergeValuesAndRawValues()](https://github.com/simplifiedcourses/template-driven-forms/blob/main/src/app/template-driven-forms/utils.ts#L135){:target="_blank"} function,
+so we also get the disabled values from the form but don't lose any references for performance
 
 At this moment in time the view is initialized so the `ngForm` already exists. This means we don't need the `afterViewInit` lifecycle hook.
 The `formValueChange` will emit every time the form will update.

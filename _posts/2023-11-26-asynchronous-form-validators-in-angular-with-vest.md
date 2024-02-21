@@ -10,6 +10,7 @@ description: "In this article, we will create asynchronous form validators for A
 ---
 
 # Intro
+**Updated 21 february 2024**
 
 In this article, we are going to tackle Asynchronous Validations in Angular with Vest.js.
 
@@ -17,7 +18,7 @@ Not a fan of the written word? Check out the YouTube video [here](https://youtu.
 
 Previously we learned that we can use [vest.js](https://vestjs.dev/){:target="_blank"} to write validation suites.
 The advantage of a validation suite is:
-- It's framework agnostic
+- It's framework-agnostic
 - It's reusable
 - It's conditional
 - It's composable
@@ -46,7 +47,7 @@ For that, we can use a factory function.
 So instead of doing:
 
 ```typescript
-export const simpleFormValidations = create((model: SimpleFormModel, field: string) => {
+export const simpleFormValidations = staticSuite((model: SimpleFormModel, field: string) => {
     only(field);
     test('firstName', 'First name is required', () => {
         enforce(model.firstName).isNotBlank();
@@ -58,7 +59,7 @@ We should do:
 
 ```typescript
 export const createSimpleFormValidations = (swapiService: SwapiService) => {
-    return create((model: SimpleFormModel, field: string) => {
+    return staticSuite((model: SimpleFormModel, field: string) => {
         only(field);
 
         omitWhen(!model.userId, () => {

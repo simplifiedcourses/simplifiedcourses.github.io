@@ -9,6 +9,8 @@ cover: assets/say-goodbye-to-custom-form-validators-in-angular.jpg
 description: "This article explains how we can do validations for Angular forms without struggling with boilerplate"
 ---
 
+**Updated 21 february 2024**
+
 This article is about making form validations:
 - straightforward
 - clean
@@ -85,7 +87,7 @@ This is a clean model, and the validation suite could look like this:
 import { User } from '../types/user';
 import { test, enforce, create } from "vest";
 
-export const userValidations = create((model: User, field: string) => {
+export const userValidations = staticSuite((model: User, field: string) => {
     test('firstName', 'First name is required', () => {
         enforce(model.firstName).isNotBlank();
     });
@@ -110,6 +112,7 @@ export const userValidations = create((model: User, field: string) => {
 ```
 
 [Check this YouTube video](https://www.youtube.com/watch?v=cuNl-7yu09g&t=67s){:target="_blank"} for a short demo!
+*note: the video is not up to date, use staticSuite() instead of create*
 
 The first 2 arguments that the `test()` function takes, is the field and the validation message. It's important here to respect the property structure of our model.
 
@@ -126,7 +129,7 @@ Do we need to compare the two passwords if the `passwords.password` and `passwor
 ```typescript
 // ./user.validations.ts
 ...
-export const userValidations = create((model: User, field: string) => {
+export const userValidations = staticSuite((model: User, field: string) => {
     ....
     test(`passwords.password`, 'Password is required', () => {
         enforce(model.passwords?.password).isNotBlank();
@@ -138,8 +141,7 @@ export const userValidations = create((model: User, field: string) => {
                 model.passwords?.confirmPassword
             );
         });
-    }
-    );
+    });
     // don't check the length if the password isn't filled in yet
     omitWhen(!model.password, () => {
         test(`passwords.password`, 'Should be more than 5 characters', () => {
@@ -158,11 +160,11 @@ We would love to create some kind of composability like this:
 
 ```typescript
 import { User } from '../types/user';
-import { test, enforce, create } from 'vest';
+import { test, enforce, staticSuite } from 'vest';
 import { addressValidations } from './address.validations';
 import { passwordValidations } from './password.validations';
 
-export const userValidations = create((model: User, field: string) => {
+export const userValidations = staticSuite((model: User, field: string) => {
   test('firstName', 'First name is required', () => {
     enforce(model.firstName).isNotBlank();
   });
@@ -225,7 +227,7 @@ For the first part, we need to use the `only` function to tell vest to only vali
 ...
 import { ..., only } from 'vest';
 
-export const userValidations = create((model: User, field: string) => {
+export const userValidations = staticSuite((model: User, field: string) => {
     // only execute validation for this field
     only(field);
 

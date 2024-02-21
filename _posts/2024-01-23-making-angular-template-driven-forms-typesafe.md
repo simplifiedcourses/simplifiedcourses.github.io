@@ -9,6 +9,8 @@ categories: [Angular Forms, Angular]
 description: "In this article, I will show you how to make template-driven forms completely typesafe"
 ---
 
+**Updated 21 february 2024**
+
 Template-driven forms usually come with a huge productivity boost.
 In [this video](https://www.youtube.com/watch?v=ijp_qt3SYl4&t=1s){:target="_blank"} I explain how we can use signals to
 create unidirectional template-driven forms in Angular.
@@ -282,7 +284,6 @@ function validateFormValue(formValue: Record<string, any>, shape: Record<string,
 }
 ```
 
-Todo: show errors
 
 ### Form array issue
 
