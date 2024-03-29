@@ -5,6 +5,7 @@ date:   2023-06-02
 published: true
 comments: true
 categories: [Angular, Angular Forms, Angular Signals]
+authors: [brecht_billiet]
 cover: assets/say-goodbye-to-custom-form-validators-in-angular.jpg
 description: "This article explains how we can do validations for Angular forms without struggling with boilerplate"
 ---

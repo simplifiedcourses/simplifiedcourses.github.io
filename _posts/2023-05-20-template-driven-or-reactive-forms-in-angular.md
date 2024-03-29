@@ -4,6 +4,7 @@ title:  "Template-driven or reactive forms in Angular"
 date:   2023-05-23
 published: true
 comments: true
+authors: [brecht_billiet]
 categories: [Angular, Angular Forms, State management]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
 description: "Should we use template-driven forms or reactive forms in Angular"

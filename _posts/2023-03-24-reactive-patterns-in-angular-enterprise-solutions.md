@@ -3,6 +3,7 @@ layout: post
 title:  "Reactive patterns in Angular Enterprise solutions"
 date:   2023-03-24
 published: true
+authors: [brecht_billiet]
 comments: true
 categories: [Angular, State management, ObservableState, Angular Signals, ngx-signal-state]
 cover: assets/reactive-patterns-in-angular-enterprise-solutions.jpg

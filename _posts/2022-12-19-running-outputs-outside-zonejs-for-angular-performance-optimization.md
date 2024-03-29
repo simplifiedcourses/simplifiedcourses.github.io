@@ -3,6 +3,7 @@ layout: post
 title:  "Running Outputs outside zone.js for Angular performance Optimization"
 date:   2022-12-19
 published: true
+authors: [brecht_billiet]
 comments: true
 categories: [Angular, RxJS, Change Detection]
 cover: assets/running-outputs-outside-zonejs.jpg

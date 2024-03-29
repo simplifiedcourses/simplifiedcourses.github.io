@@ -4,6 +4,7 @@ title:  "Angular Change Detection Explained in 5 minutes"
 date:   2023-04-03
 published: true
 comments: true
+authors: [brecht_billiet]
 categories: [Angular, Change Detection]
 cover: assets/angular-change-detection-explained-in-5-minutes.jpg
 description: "I created an Angular Change Detection explained in 5 minutes video."

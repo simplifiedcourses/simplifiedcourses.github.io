@@ -4,6 +4,7 @@ title:  "How to prepare for angular signals"
 date:   2023-03-16
 published: true
 comments: true
+authors: [brecht_billiet]
 categories: [Angular, State management, ObservableState, Angular Signals, ngx-signal-state]
 cover: assets/how-to-prepare-for-angular-signals.jpg
 description: "Angular signals are coming. How can we prepare?"

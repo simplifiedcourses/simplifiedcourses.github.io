@@ -5,6 +5,7 @@ date:   2023-01-03
 published: false
 comments: true
 categories: [Angular, RxJS, State management]
+authors: [brecht_billiet]
 cover: assets/reactive-viewmodels-for-ui-components-in-angular.jpg
 description: "This article shows you how to use reactive ViewModels in Angular in UI components to create clear reactive flows."
 

@@ -6,6 +6,7 @@ published: false
 comments: true
 categories: [Angular, Angular Forms, State management, Angular Signals]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
+authors: [brecht_billiet]
 description: "This article teaches you to supercharge your Angular template-driven forms with Signals"
 ---
 

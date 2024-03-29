@@ -3,6 +3,7 @@ layout: post
 title: "The million dollar interview question"
 date: 2024-03-24
 published: true
+authors: [brecht_billiet]
 cover: assets/the-million-dollar-interview-question.jpg
 comments: true
 categories: [Frontend Interviews]

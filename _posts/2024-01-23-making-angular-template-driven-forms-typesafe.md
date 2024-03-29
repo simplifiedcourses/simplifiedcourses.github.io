@@ -3,6 +3,7 @@ layout: post
 title: "Making Angular template-driven forms type-safe"
 date: 2024-01-23
 published: true
+authors: [brecht_billiet]
 cover: assets/making-angular-template-driven-forms-type-safe.jpg
 comments: true
 categories: [Angular Forms, Angular]

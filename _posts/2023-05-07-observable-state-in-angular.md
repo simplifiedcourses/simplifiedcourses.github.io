@@ -4,6 +4,7 @@ title:  "Observable state in Angular"
 date:   2023-05-10
 published: true
 comments: true
+authors: [brecht_billiet]
 categories: [Angular, State management, ObservableState, ngx-signal-state]
 cover: assets/observable-state-in-angular.jpg
 description: "What is Observable State and how do we use it?"

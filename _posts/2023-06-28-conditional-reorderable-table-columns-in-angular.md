@@ -5,6 +5,7 @@ date:   2023-07-02
 published: true
 comments: true
 cover: assets/reorder-conditional-table-columns-in-angular.jpg
+authors: [brecht_billiet]
 categories: [Angular]
 description: "In this article, we will see how we can use content projection to create reorderable conditional table columns"
 ---

@@ -5,6 +5,7 @@ date:   2023-01-08
 published: true
 comments: true
 categories: [Angular, ChatGPT, Change Detection]
+authors: [brecht_billiet]
 cover: assets/chatgpt-snake-game.jpg
 description: "This article shows we can use CHATGPT to help use code and in this case write a snake game in Angular."
 

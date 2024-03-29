@@ -4,6 +4,7 @@ title:  "Angular form validations with Vest manual"
 date:   2023-07-16
 published: false
 comments: true
+authors: [brecht_billiet]
 cover: assets/state-management-with-angular-signals.jpg
 categories: [Angular, Angular Forms, Vest, Angular Signals]
 description: "This article explains how to use Angular model validations with Vest"

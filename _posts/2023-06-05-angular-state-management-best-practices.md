@@ -5,6 +5,7 @@ date:   2023-05-06
 published: true
 comments: true
 categories: [Angular, State management, Best Practices, Angular Signals, ngx-signal-state]
+authors: [brecht_billiet]
 cover: assets/angular-state-management-best-practices.jpg
 description: "This article explains best practices on how to deal with state in Angular"
 ---

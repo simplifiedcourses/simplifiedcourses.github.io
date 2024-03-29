@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Asynchronous Form Validators in Angular with Vest"
+authors: [brecht_billiet]
 date: 2023-11-26
 published: true
 cover: assets/async-form-validators-in-angular-with-vest.jpg

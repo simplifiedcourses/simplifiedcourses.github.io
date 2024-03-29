@@ -3,6 +3,7 @@ layout: post
 title: "Extracting forms complexity into ViewModels"
 date: 2023-11-19
 published: false
+authors: [brecht_billiet]
 cover: assets/extracting-template-driven-forms-complexity-into-viewmodels.jpg
 comments: true
 categories: [Angular, Angular Forms, Angular Signals]

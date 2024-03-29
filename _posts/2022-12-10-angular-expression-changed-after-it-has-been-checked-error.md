@@ -4,6 +4,7 @@ title:  "Angular ExpressionChangedAfterItHasBeenCheckedError: NG0100 Simplified 
 date:   2022-12-09
 published: true
 comments: true
+authors: [brecht_billiet]
 categories: [Angular, Change Detection]
 cover: assets/ng0100.jpg
 description: "ExpressionChangedAfterItHasBeenCheckedError: The error that makes Angular developers cringe. Let's reverse-engineer this error."

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Template-driven forms with form arrays in Angular"
+authors: [brecht_billiet]
 date: 2023-08-06
 published: true
 comments: true

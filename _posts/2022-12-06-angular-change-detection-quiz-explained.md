@@ -4,6 +4,7 @@ title:  "Angular Change Detection Quiz explained"
 date:   2022-11-25
 published: true
 comments: true
+authors: [brecht_billiet]
 categories: [Angular, Change Detection] 
 cover: assets/angular-change-detection-quiz-explained.jpg
 description: "In this youtube video we will explain the free Angular Change Detection Quiz in depth. This hard quiz will have no secrets for you anymore."

@@ -4,6 +4,7 @@ title:  "The danger of using Angular HostListeners"
 date:   2023-04-24
 published: true
 comments: true
+authors: [brecht_billiet]
 categories: [Angular, Change Detection, Best Practices]
 cover: assets/the-danger-of-using-angular-host-listeners.jpg
 description: "Why are Angular HostListeners dangerous? In which scenarios would they over-trigger Change Detection?"

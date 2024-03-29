@@ -4,6 +4,7 @@ title:  "Angular Change Detection Cheat Sheet Explained"
 date:   2022-11-15
 published: true
 comments: true
+authors: [brecht_billiet]
 categories: [Angular, Change Detection]
 cover: assets/angular-change-detection-cheat-sheet-explained.jpg
 description: "We created a free Angular Change Detection Cheat Sheet for you. In this article we will go in-depth on how to use this piece of content."

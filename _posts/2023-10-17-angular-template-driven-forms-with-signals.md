@@ -4,6 +4,7 @@ title: "Angular Template-driven Forms with Signals"
 date: 2023-10-12
 published: true
 cover: assets/template-driven-forms-with-signals.jpg
+authors: [brecht_billiet]
 comments: true
 categories: [ Angular, Angular Forms, Angular Signals, ngx-signal-state ]
 description: "In this article we will create a type-safe Template-driven From with Signals with no boilerplate!"

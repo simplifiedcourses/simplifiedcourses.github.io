@@ -23,10 +23,14 @@ layout: default
                 <a href="{{ post.url | relative_url }}" title="{{ post.title }}">
                     <img src="/{{post.cover}}" alt="{{ post.title }}">
                     <footer class="post-meta">
-
-                        <img class="author-thumb" src="/assets/brecht.png" alt="Brecht Billiet" nopin="nopin"/>
+                        {% for author_id in post.authors %}
+                        {% assign author = site.data.authors[author_id] %}&nbsp;
+                        <img class="author-thumb" src="/{{author.avatar}}" alt="{{author.name}}" nopin="nopin"/>
                         <!-- author -->
-                        &nbsp;Brecht Billiet&nbsp;|&nbsp;
+                        &nbsp;{{author.name}}&nbsp;|&nbsp;
+                        {% endfor %}
+
+
 
 
                         <time class="post-date" datetime="{{ post.date | date:'%Y-%m-%d' }}">{{ post.date | date_to_string

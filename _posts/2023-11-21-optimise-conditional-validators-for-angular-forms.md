@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Optimise conditional validators for Angular Forms"
+authors: [brecht_billiet]
 date: 2023-11-19
 published: true
 cover: assets/optimise-conditional-validators-for-angular-forms.jpg

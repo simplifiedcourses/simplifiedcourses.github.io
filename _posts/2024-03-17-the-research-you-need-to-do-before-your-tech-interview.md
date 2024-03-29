@@ -3,6 +3,7 @@ layout: post
 title: "The research you need to do before your Frontend Tech Interview"
 date: 2024-03-17
 published: true
+authors: [brecht_billiet]
 cover: assets/research-before-your-frontend-tech-interview.jpg
 comments: true
 categories: [Frontend Interviews]

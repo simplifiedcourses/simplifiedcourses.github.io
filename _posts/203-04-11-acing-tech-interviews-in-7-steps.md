@@ -5,6 +5,7 @@ date:   2023-04-11
 published: true
 comments: true
 categories: [Angular, Interviews]
+authors: [brecht_billiet]
 cover: assets/acing-tech-interviews-in-7-steps.jpg
 description: "Use these simple steps to ace any tech interview."
 

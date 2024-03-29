@@ -2,6 +2,7 @@
 layout: post
 title: "Angular Template-driven Forms state management"
 date: 2023-10-26
+authors: [brecht_billiet]
 published: true
 cover: assets/template-driven-forms-state-management.jpg
 comments: true

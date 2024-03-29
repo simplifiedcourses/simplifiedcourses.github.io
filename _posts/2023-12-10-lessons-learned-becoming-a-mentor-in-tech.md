@@ -3,6 +3,7 @@ layout: post
 title: "Lessons learned: Becoming a mentor in tech"
 date: 2023-12-09
 published: true
+authors: [brecht_billiet]
 cover: assets/lessons-learned-becoming-a-mentor-in-tech.jpg
 comments: true
 categories: [Career advice]

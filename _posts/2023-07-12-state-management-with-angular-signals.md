@@ -4,6 +4,7 @@ title:  "State management with Angular Signals"
 date:   2023-07-16
 published: true
 comments: true
+authors: [brecht_billiet]
 cover: assets/state-management-with-angular-signals.jpg
 categories: [Angular, State management, ObservableState, Angular Signals]
 description: "This article teaches you how to manage state in Angular applications in an opinionated way with Signals"
