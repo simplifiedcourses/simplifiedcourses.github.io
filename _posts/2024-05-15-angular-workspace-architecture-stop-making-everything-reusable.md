@@ -4,7 +4,7 @@ title: "Angular workspace architecture: Stop making everything re-usable"
 date: 2024-05-15
 published: true
 cover: assets/angular-workspace-architecture-stop-making-everything-reusable.jpg
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular architecture]
 description: "Are you making everything re-usable just in case? Your making a mistake and I will explain why"

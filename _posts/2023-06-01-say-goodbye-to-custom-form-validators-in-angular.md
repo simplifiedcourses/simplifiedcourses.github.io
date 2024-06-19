@@ -3,7 +3,7 @@ layout: post
 title:  "Say goodbye to custom form validators in Angular"
 date:   2023-06-02
 published: true
-comments: true
+comments: false
 categories: [Angular, Angular Forms, Angular Signals]
 authors: [brecht_billiet]
 cover: assets/say-goodbye-to-custom-form-validators-in-angular.jpg

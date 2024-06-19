@@ -3,7 +3,7 @@ layout: post
 title:  "Observable state in Angular"
 date:   2023-05-10
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, State management, ObservableState, ngx-signal-state]
 cover: assets/observable-state-in-angular.jpg

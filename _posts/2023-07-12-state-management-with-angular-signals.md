@@ -3,7 +3,7 @@ layout: post
 title:  "State management with Angular Signals"
 date:   2023-07-16
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 cover: assets/state-management-with-angular-signals.jpg
 categories: [Angular, State management, ObservableState, Angular Signals]

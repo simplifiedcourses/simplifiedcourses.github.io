@@ -5,7 +5,7 @@ date: 2023-10-26
 authors: [brecht_billiet]
 published: true
 cover: assets/template-driven-forms-state-management.jpg
-comments: true
+comments: false
 categories: [Angular, Angular Forms, Angular Signals, State management]
 description: "In this article, we will tackle how to handle state management when using Template-driven Forms in Angular"
 ---

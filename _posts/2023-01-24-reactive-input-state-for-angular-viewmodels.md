@@ -3,7 +3,7 @@ layout: post
 title:  "Reactive Input state for Angular ViewModels"
 date:   2023-01-24
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, RxJS, State management]
 cover: assets/reactive-input-state-for-viewmodels-in-angular.jpg

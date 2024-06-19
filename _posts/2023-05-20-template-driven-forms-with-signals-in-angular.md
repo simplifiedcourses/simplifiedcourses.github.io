@@ -3,7 +3,7 @@ layout: post
 title:  "Template-driven forms with Signals in Angular"
 date:   2023-06-23
 published: false
-comments: true
+comments: false
 categories: [Angular, Angular Forms, State management, Angular Signals]
 cover: assets/template-driven-or-reactive-forms-in-angular.jpg
 authors: [brecht_billiet]

@@ -5,7 +5,7 @@ date: 2024-01-23
 published: true
 authors: [brecht_billiet]
 cover: assets/making-angular-template-driven-forms-type-safe.jpg
-comments: true
+comments: false
 categories: [Angular Forms, Angular]
 description: "In this article, I will show you how to make template-driven forms completely typesafe"
 ---

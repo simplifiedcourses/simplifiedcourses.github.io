@@ -3,7 +3,7 @@ layout: post
 title:  "Angular Change Detection Cheat Sheet Explained"
 date:   2022-11-15
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Change Detection]
 cover: assets/angular-change-detection-cheat-sheet-explained.jpg

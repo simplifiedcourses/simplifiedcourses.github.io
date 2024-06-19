@@ -5,7 +5,7 @@ date: 2024-03-24
 published: true
 authors: [brecht_billiet]
 cover: assets/the-million-dollar-interview-question.jpg
-comments: true
+comments: false
 categories: [Frontend Interviews]
 description: "In this article, I will explain one of the toughest questions to anser on a tech interview"
 ---

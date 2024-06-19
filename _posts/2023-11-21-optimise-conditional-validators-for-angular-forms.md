@@ -5,7 +5,7 @@ authors: [brecht_billiet]
 date: 2023-11-19
 published: true
 cover: assets/optimise-conditional-validators-for-angular-forms.jpg
-comments: true
+comments: false
 categories: [Angular, Angular Forms]
 description: "In this article, we will optimise the execution of ngValidators for Angular forms"
 ---

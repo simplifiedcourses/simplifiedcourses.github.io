@@ -5,7 +5,7 @@ date: 2023-12-09
 published: true
 authors: [brecht_billiet]
 cover: assets/lessons-learned-becoming-a-mentor-in-tech.jpg
-comments: true
+comments: false
 categories: [Career advice]
 description: "In this article, I will share 6 tips with you that drastically impacted my career"
 ---

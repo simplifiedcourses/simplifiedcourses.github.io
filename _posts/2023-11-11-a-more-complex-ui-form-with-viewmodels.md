@@ -5,7 +5,7 @@ date: 2023-11-19
 published: false
 authors: [brecht_billiet]
 cover: assets/extracting-template-driven-forms-complexity-into-viewmodels.jpg
-comments: true
+comments: false
 categories: [Angular, Angular Forms, Angular Signals]
 description: "In this article, we will lean how to extract Angular Forms functionality into ViewModels"
 ---

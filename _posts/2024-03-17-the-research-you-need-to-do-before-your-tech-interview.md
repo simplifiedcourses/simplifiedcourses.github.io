@@ -5,7 +5,7 @@ date: 2024-03-17
 published: true
 authors: [brecht_billiet]
 cover: assets/research-before-your-frontend-tech-interview.jpg
-comments: true
+comments: false
 categories: [Frontend Interviews]
 description: "In this article, I will explain the research you need to do before attending your Frontend Tech Interview"
 ---

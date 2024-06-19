@@ -3,7 +3,7 @@ layout: post
 title:  "Smart components, ui components and Sandbox facades in Angular"
 date:   2022-11-14
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Architecture]
 cover: assets/smart-components-ui-components-sandbox-facades.jpg

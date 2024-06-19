@@ -3,7 +3,7 @@ layout: post
 title:  "Deep dive: Reorder conditional table columns in Angular"
 date:   2023-07-02
 published: true
-comments: true
+comments: false
 cover: assets/reorder-conditional-table-columns-in-angular.jpg
 authors: [brecht_billiet]
 categories: [Angular]

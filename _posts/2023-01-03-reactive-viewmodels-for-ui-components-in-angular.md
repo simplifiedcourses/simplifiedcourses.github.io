@@ -3,7 +3,7 @@ layout: post
 title:  "Reactive ViewModels for UI components in Angular"
 date:   2023-01-03
 published: false
-comments: true
+comments: false
 categories: [Angular, RxJS, State management]
 authors: [brecht_billiet]
 cover: assets/reactive-viewmodels-for-ui-components-in-angular.jpg

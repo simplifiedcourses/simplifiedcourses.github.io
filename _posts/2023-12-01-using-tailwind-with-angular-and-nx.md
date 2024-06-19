@@ -5,7 +5,7 @@ date: 2023-12-03
 published: true
 cover: assets/using-tailwind-with-angular-and-nx.jpg
 authors: [brecht_billiet]
-comments: true
+comments: false
 categories: [Angular, TailwindCSS, NxDevtools]
 description: "In this article, we will explain how we can use tailwindcss with angular and Nx devtools"
 ---

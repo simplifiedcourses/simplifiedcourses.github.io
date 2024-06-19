@@ -3,7 +3,7 @@ layout: post
 title:  "Angular Change Detection OnPush or not?"
 date:   2022-12-15
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Change Detection]
 cover: assets/angular-change-detection-on-push-or-not.jpg

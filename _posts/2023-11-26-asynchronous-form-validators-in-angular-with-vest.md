@@ -5,7 +5,7 @@ authors: [brecht_billiet]
 date: 2023-11-26
 published: true
 cover: assets/async-form-validators-in-angular-with-vest.jpg
-comments: true
+comments: false
 categories: [Angular, Angular Forms]
 description: "In this article, we will create asynchronous form validators for Angular in our vest suites"
 ---

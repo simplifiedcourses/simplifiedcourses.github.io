@@ -4,7 +4,7 @@ title: "Be ambitious during tech interview, but don't overdo it either"
 date: 2024-03-28
 published: true
 cover: assets/frontend-tech-interview-be-ambitious-but-dont-overdo-it-either.jpg
-comments: true
+comments: false
 authors: [tomasz_ducin]
 categories: [Frontend Interviews]
 description: "In this article, I will explain the importance of the right balance in being ambitious during your next Frontend Tech Interview"

@@ -3,7 +3,7 @@ layout: post
 title:  "Observable component state in Angular"
 date:   2023-02-22
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, RxJS, State management, ObservableState, ngx-signal-state]
 cover: assets/observable-component-state-in-angular.jpg

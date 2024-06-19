@@ -3,7 +3,7 @@ layout: post
 title:  "Angular Change Detection Explained in 5 minutes"
 date:   2023-04-03
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Change Detection]
 cover: assets/angular-change-detection-explained-in-5-minutes.jpg

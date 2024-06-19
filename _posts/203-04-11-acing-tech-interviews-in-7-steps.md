@@ -3,7 +3,7 @@ layout: post
 title:  "Acing Tech Interviews in 7 steps"
 date:   2023-04-11
 published: true
-comments: true
+comments: false
 categories: [Angular, Interviews]
 authors: [brecht_billiet]
 cover: assets/acing-tech-interviews-in-7-steps.jpg

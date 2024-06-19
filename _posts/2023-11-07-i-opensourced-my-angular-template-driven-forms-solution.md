@@ -4,7 +4,7 @@ title: "I open-sourced my Angular Template-driven Forms Solution"
 date: 2023-11-08
 published: true
 cover: assets/i-opensourced-my-angular-template-driven-forms-solution/banner.jpg
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Angular Forms, Angular Signals]
 description: "In this article, I show you how and why I open-sourced my Angular Template-driven Forms solution"

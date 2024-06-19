@@ -3,7 +3,7 @@ layout: post
 title:  "Angular Change Detection Quiz explained"
 date:   2022-11-25
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Change Detection] 
 cover: assets/angular-change-detection-quiz-explained.jpg

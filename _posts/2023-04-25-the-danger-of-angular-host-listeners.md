@@ -3,7 +3,7 @@ layout: post
 title:  "The danger of using Angular HostListeners"
 date:   2023-04-24
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Change Detection, Best Practices]
 cover: assets/the-danger-of-using-angular-host-listeners.jpg

@@ -3,7 +3,7 @@ layout: post
 title:  "CHATGPT helped me write a snake game in angular and how I optimized it for performance"
 date:   2023-01-08
 published: true
-comments: true
+comments: false
 categories: [Angular, ChatGPT, Change Detection]
 authors: [brecht_billiet]
 cover: assets/chatgpt-snake-game.jpg

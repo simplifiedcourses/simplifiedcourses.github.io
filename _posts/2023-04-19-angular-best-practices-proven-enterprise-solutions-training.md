@@ -3,7 +3,7 @@ layout: post
 title:  "Angular Best Practices - Proven Enterprise Solutions"
 date:   2023-04-19
 published: false
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Change Detection, Change Detection, Best Practices]
 cover: assets/angular-best-practices-in-depth.jpg

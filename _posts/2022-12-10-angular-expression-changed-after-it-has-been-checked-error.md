@@ -3,7 +3,7 @@ layout: post
 title:  "Angular ExpressionChangedAfterItHasBeenCheckedError: NG0100 Simplified and reverse-engineered"
 date:   2022-12-09
 published: true
-comments: true
+comments: false
 authors: [brecht_billiet]
 categories: [Angular, Change Detection]
 cover: assets/ng0100.jpg
