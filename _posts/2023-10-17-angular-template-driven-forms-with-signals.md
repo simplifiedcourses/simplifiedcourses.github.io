@@ -10,7 +10,10 @@ categories: [ Angular, Angular Forms, Angular Signals, ngx-signal-state ]
 description: "In this article we will create a type-safe Template-driven From with Signals with no boilerplate!"
 ---
 
-**Updated 21 february 2024**
+**Note, this article is outdated**
+
+Everything is now part of [ngx-signal-forms](https://www.npmjs.com/package/ngx-vest-forms){:target="_blank"}.
+
 In this article we will learn the most basic example of a semi-complex unidirectional form with Angular Signals.
 
 Not a reader? I created 2 YouTube video's for you explaining everything!!

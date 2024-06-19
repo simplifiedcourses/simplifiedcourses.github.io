@@ -11,7 +11,10 @@ description: "In this article, we will create asynchronous form validators for A
 ---
 
 # Intro
-**Updated 21 february 2024**
+**Note, this article is outdated**
+
+Everything is now part of [ngx-signal-forms](https://www.npmjs.com/package/ngx-vest-forms){:target="_blank"}.
+
 
 In this article, we are going to tackle Asynchronous Validations in Angular with Vest.js.
 

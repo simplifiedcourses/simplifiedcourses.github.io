@@ -15,6 +15,11 @@ description: "In this article, we will optimise the execution of ngValidators fo
 In [this video](https://www.youtube.com/watch?v=vKEd9cNh5R4&t=27s){:target="_blank"}, I explained how to write Angular
 validations with [Vest.js](https://vestjs.dev/){:target="_blank"} suites.
 
+**Note, this article is outdated**
+
+Everything is now part of [ngx-signal-forms](https://www.npmjs.com/package/ngx-vest-forms){:target="_blank"}.
+
+
 We have dived into regular validations but also conditional validations.
 This example shows that the `confirmPassword` field is only required when the `password` field has a value.
 and that both passwords should match but only when they are both filled in.
@@ -99,6 +104,9 @@ export class SimpleFormComponent {
   }
 }
 ```
+
+This api is part of [ngx-signal-forms](https://www.npmjs.com/package/ngx-vest-forms){:target="_blank"}.
+
 
 And we would update the HTML like this:
 

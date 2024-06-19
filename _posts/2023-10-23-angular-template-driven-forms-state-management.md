@@ -13,6 +13,9 @@ description: "In this article, we will tackle how to handle state management whe
 # Intro
 **Updated 21 february 2024**
 
+**Note, this article is outdated**
+
+Everything is now part of [ngx-signal-forms](https://www.npmjs.com/package/ngx-vest-forms){:target="_blank"}.
 
 In this article, we will tackle how to handle state management when using Template-driven Forms in Angular.
 A big difference in terms of state management between Template-driven forms and Reactive Forms in Angular is that with Template-driven Forms...
