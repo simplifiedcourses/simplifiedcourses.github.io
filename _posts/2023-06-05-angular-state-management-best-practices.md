@@ -10,6 +10,9 @@ cover: assets/angular-state-management-best-practices.jpg
 description: "This article explains best practices on how to deal with state in Angular"
 ---
 
+**Update July 2024: For the latest and greatest on state management, please check this article**:
+[Modern Angular State Management with Signals](https://blog.simplified-courses/modern-angular-state-management-with-signals/){:target="_blank"}
+
 Best Practices are mostly a matter of personal preference and can be countered by people with different opinions.
 That being said, the Best Practices in this article are based on a decade of working with Single Page applications and managing state.
 I have been on more than 150 Angular projects in the last 7 years and I have seen tons of different approaches and learned

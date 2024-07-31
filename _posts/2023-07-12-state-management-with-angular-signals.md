@@ -10,6 +10,9 @@ categories: [Angular, State management, ObservableState, Angular Signals]
 description: "This article teaches you how to manage state in Angular applications in an opinionated way with Signals"
 ---
 
+**Update July 2024: For the latest and greatest on state management, please check this article**:
+[Modern Angular State Management with Signals](https://blog.simplified-courses/modern-angular-state-management-with-signals/){:target="_blank"}
+
 ## Some history
 
 I have been focused on making Angular State Management easier and developer friendly for years now.

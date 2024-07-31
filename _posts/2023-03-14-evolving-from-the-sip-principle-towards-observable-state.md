@@ -10,6 +10,10 @@ cover: assets/evolving-from-the-sip-principle-towards-observable-state-in-angula
 description: "This article explains how I moved from the SIP principle towards Observable state and greatly simplified my code."
 ---
 
+**Update July 2024: For the latest and greatest on state management, please check this article**:
+[Modern Angular State Management with Signals](https://blog.simplified-courses/modern-angular-state-management-with-signals/){:target="_blank"}
+
+
 **Update:**
 We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.
 This is only relevant if you are on Angular 16 or higher.
