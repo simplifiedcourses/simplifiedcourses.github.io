@@ -11,7 +11,7 @@ description: "This article teaches you how to manage state in Angular applicatio
 ---
 
 **Update July 2024: For the latest and greatest on state management, please check this article**:
-[Modern Angular State Management with Signals](https://blog.simplified-courses/modern-angular-state-management-with-signals/){:target="_blank"}
+[Modern Angular State Management with Signals](https://blog.simplified.courses/modern-angular-state-management-with-signals/){:target="_blank"}
 
 ## Some history
 

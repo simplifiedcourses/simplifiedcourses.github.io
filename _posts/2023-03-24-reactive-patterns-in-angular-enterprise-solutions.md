@@ -11,7 +11,7 @@ description: "Brecht Billiet his ng-be 2023 conference talk."
 ---
 
 **Update July 2024: For the latest and greatest on state management, please check this article**:
-[Modern Angular State Management with Signals](https://blog.simplified-courses/modern-angular-state-management-with-signals/){:target="_blank"}
+[Modern Angular State Management with Signals](https://blog.simplified.courses/modern-angular-state-management-with-signals/){:target="_blank"}
 
 **Simplified Courses** had the opportunity to give a talk at the awesome Belgian [ng-be](https://ng-be.org/){:target="_blank"} Angular conference.
 

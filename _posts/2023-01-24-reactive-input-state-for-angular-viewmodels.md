@@ -12,7 +12,7 @@ description: "This article shows how we can optimize the number of emissions and
 ---
 
 **Update July 2024: For the latest and greatest on state management, please check this article**:
-[Modern Angular State Management with Signals](https://blog.simplified-courses/modern-angular-state-management-with-signals/){:target="_blank"}
+[Modern Angular State Management with Signals](https://blog.simplified.courses/modern-angular-state-management-with-signals/){:target="_blank"}
 
 ## Update: 10 November 2023
 

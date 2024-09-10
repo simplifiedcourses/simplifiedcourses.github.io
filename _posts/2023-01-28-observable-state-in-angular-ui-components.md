@@ -12,7 +12,7 @@ description: "We will dive deep into Observable state in Angular Ui components t
 ---
 
 **Update July 2024: For the latest and greatest on state management, please check this article**:
-[Modern Angular State Management with Signals](https://blog.simplified-courses/modern-angular-state-management-with-signals/){:target="_blank"}
+[Modern Angular State Management with Signals](https://blog.simplified.courses/modern-angular-state-management-with-signals/){:target="_blank"}
 
 **Update:**
 We have created an open-source npm package called [ngx-signal-state](https://github.com/simplifiedcourses/ngx-signal-state){:target="_blank"} that can you can use in all your Angular projects.

@@ -12,7 +12,7 @@ description: "This article shows you how to use reactive ViewModels in Angular i
 ---
 
 **Update July 2024: For the latest and greatest on state management, please check this article**:
-[Modern Angular State Management with Signals](https://blog.simplified-courses/modern-angular-state-management-with-signals/){:target="_blank"}
+[Modern Angular State Management with Signals](https://blog.simplified.courses/modern-angular-state-management-with-signals/){:target="_blank"}
 
 A while ago I wrote about [Smart components, UI components and sandbox facades in Angular](https://blog.simplified.courses/smart-components-ui-components-and-sandbox-facades-in-angular/){:target="_blank"}.
 This article is about reactive ViewModels for UI components in Angular. We will learn how this approach will result in cleaner templates, more reactive code and how it will give us some extra possibilities regarding performance optimization.
